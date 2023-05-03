@@ -9,17 +9,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        Toast.makeText(this, "onCreate() is called", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "onCreate() is called", Toast.LENGTH_LONG).show()
     }
 
     override fun onStart() {
         super.onStart()
 
-        Toast.makeText(this, "onStart() is called", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "onStart() is called", Toast.LENGTH_LONG).show()
     }
 
     override fun onResume() {
         super.onResume()
-        Toast.makeText(this, "onResume() is called", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "onResume() is called", Toast.LENGTH_LONG).show()
     }
 }
