@@ -22,4 +22,25 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Toast.makeText(this, "onResume() is called", Toast.LENGTH_LONG).show()
     }
+
+    override fun onRestart() {
+        super.onRestart()
+        Toast.makeText(this, "onRestart() is called", Toast.LENGTH_LONG).show()
+
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Toast.makeText(this, "onPause() is called", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Toast.makeText(this, "onStop() is called", Toast.LENGTH_LONG).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Toast.makeText(this, "onDestroy() is called", Toast.LENGTH_LONG).show()
+    }
 }
