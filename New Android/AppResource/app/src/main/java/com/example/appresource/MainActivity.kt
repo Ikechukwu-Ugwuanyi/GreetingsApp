@@ -4,12 +4,13 @@ package com.example.appresource
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
 
     }
 
@@ -18,5 +19,12 @@ class MainActivity : AppCompatActivity() {
         return true
     }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.addgame -> Toast.makeText(this, "Add Game Selected", Toast.LENGTH_SHORT).show()
+            R.id.dgame -> Toast.makeText(this, "Delete Game Selected", Toast.LENGTH_SHORT).show()
+            R.id.ngame -> Toast.makeText(this, "New Game Selected", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
