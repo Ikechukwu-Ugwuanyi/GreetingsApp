@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             R.id.addgame -> Toast.makeText(this, "Add Game Selected", Toast.LENGTH_SHORT).show()
             R.id.dgame -> Toast.makeText(this, "Delete Game Selected", Toast.LENGTH_SHORT).show()
             R.id.ngame -> Toast.makeText(this, "New Game Selected", Toast.LENGTH_SHORT).show()
+            R.id.qgame -> Toast.makeText(this, "Quit Game Selected", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
     }

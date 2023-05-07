@@ -16,5 +16,10 @@
         android:icon="@drawable/baseline_fiber_manual_record_24"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/qgame"
+        android:title="Quit Game"
+        android:icon="@drawable/baseline_fiber_manual_record_24"/>
+
 
 </menu>
