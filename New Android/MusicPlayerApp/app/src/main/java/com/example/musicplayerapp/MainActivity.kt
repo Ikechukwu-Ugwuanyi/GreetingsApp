@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val playBtn : Button = findViewById(R.id.play_icon)
-        val stopBtn : Button = findViewById(R.id.pauseBtn)
+        val pauseBtn : Button = findViewById(R.id.pauseBtn)
         val forwardBtn : Button = findViewById(R.id.btn_foward)
         val backButton : Button = findViewById(R.id.btn_back)
 
@@ -65,10 +65,10 @@ class MainActivity : AppCompatActivity() {
        handler.postDelayed(UpdateSongTime, 100)
 
         //Setting the Music Title
-        textTitle.text = "" + resources.getIdentifier("love_is_all", "raw", packageName)
+        textTitle.text = "" + resources.getResourceEntryName(R.raw.love_is_all)
 
         //Stop Button
-        stopBtn.setOnClickListener() {
+        pauseBtn.setOnClickListener() {
             mediaPlayer.pause()
         }
 
