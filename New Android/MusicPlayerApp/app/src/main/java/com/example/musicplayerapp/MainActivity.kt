@@ -7,6 +7,7 @@ import android.os.Handler
 import android.widget.Button
 import android.widget.SeekBar
 import android.widget.TextView
+import android.widget.Toast
 import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
@@ -31,7 +32,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val playBtn : Button = findViewById(R.id.play_icon)
-        val pauseBtn : Button = findViewById(R.id.pauseBtn)
+        val stopBtn : Button = findViewById(R.id.pauseBtn)
         val forwardBtn : Button = findViewById(R.id.btn_foward)
         val backButton : Button = findViewById(R.id.btn_back)
 
@@ -63,10 +64,48 @@ class MainActivity : AppCompatActivity() {
 
        handler.postDelayed(UpdateSongTime, 100)
 
-        //Creating the Runnable
+        //Setting the Music Title
+        textTitle.text = "" + resources.getIdentifier("love_is_all", "raw", packageName)
 
+        //Stop Button
+        stopBtn.setOnClickListener() {
+            mediaPlayer.pause()
         }
 
+        //Forward Button
+        forwardBtn.setOnClickListener() {
+            var temp = startTime
+            if ((temp + forwardTime) <= finalTime) {
+                startTime = startTime + forwardTime
+                mediaPlayer.seekTo(startTime.toInt())
+            } else {
+                Toast.makeText(this, "Cant't Jump Forward", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        //Backward Button
+
+        backButton.setOnClickListener() {
+            var temp = startTime.toInt()
+            if ((temp - backwardTime) > 0) {
+                startTime = startTime - backwardTime
+                mediaPlayer.seekTo(startTime.toInt())
+            } else {
+                Toast.makeText(this, "Can't jump Backward", Toast.LENGTH_LONG).show()
+            }
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+    //Creating the Runnable
     val UpdateSongTime : Runnable = object :  Runnable {
         override fun run() {
             startTime = mediaPlayer.currentPosition.toDouble()
