@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     //Media Player
     var mediaPlayer = MediaPlayer()
     lateinit var textTime: TextView
-    lateinit var seekBar: SeekBar
+    lateinit var seekbar: SeekBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,14 +39,14 @@ class MainActivity : AppCompatActivity() {
         val textTitle : TextView = findViewById(R.id.songTitle)
         textTime = findViewById(R.id.timeLeft)
 
-        seekBar = findViewById(R.id.seekbar)
+        seekbar = findViewById(R.id.seekbar)
 
         mediaPlayer = MediaPlayer.create(
             this,
             R.raw.love_is_all
         )
 
-        seekBar.isClickable = false
+        seekbar.isClickable = false
 
         playBtn.setOnClickListener() {
             mediaPlayer.start()
@@ -55,12 +55,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         if(oneTimeOnly == 0) {
-            seekBar.max = finalTime.toInt()
+            seekbar.max = finalTime.toInt()
             oneTimeOnly = 1
         }
 
         textTime.text = startTime.toString()
-        seekBar.setProgress(startTime.toInt())
+        seekbar.setProgress(startTime.toInt())
 
        handler.postDelayed(UpdateSongTime, 100)
 
@@ -121,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
             )
 
-            seekBar.progress = startTime.toInt()
+            seekbar.progress = startTime.toInt()
             handler.postDelayed(this, 100) //To delay tge seekbar
 
         }
