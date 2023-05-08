@@ -25,7 +25,7 @@
         android:id="@+id/imageView"
         android:layout_width="150dp"
         android:layout_height="151dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="76dp"
         android:src="@drawable/baseline_library_music_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -33,10 +33,10 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/songTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="44dp"
         android:text="Song Title"
         android:textAlignment="center"
         android:textColor="@color/white"
@@ -46,52 +46,52 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/pauseBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="136dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="216dp"
         android:background="@drawable/pause_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_back" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_foward" />
 
     <Button
-        android:id="@+id/play_icon"
+        android:id="@+id/btn_back"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/play_button"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/back_icon"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btn_back" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_foward"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="200dp"
+        android:layout_marginBottom="216dp"
         android:background="@drawable/forward_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
-        android:id="@+id/btn_back"
+        android:id="@+id/play_icon"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginBottom="200dp"
-        android:background="@drawable/back_icon"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="216dp"
+        android:background="@drawable/play_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@id/btn_back" />
 
     <SeekBar
         android:id="@+id/seekbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/play_icon" />
 
@@ -99,7 +99,7 @@
         android:id="@+id/timeLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="76dp"
         android:text="00:00"
         android:textColor="@color/black"
         android:textSize="24sp"
