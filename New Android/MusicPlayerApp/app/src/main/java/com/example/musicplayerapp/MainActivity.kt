@@ -64,25 +64,27 @@ class MainActivity : AppCompatActivity() {
        handler.postDelayed(UpdateSongTime, 100)
 
         //Creating the Runnable
-        val UpdateSongTime : Runnable = object :  Runnable {
-            override fun run() {
-                startTime = mediaPlayer.currentPosition.toDouble()
-                textTime.text = "" + String.format(
-                    "%d min , %d sec",
-                    TimeUnit.MILLISECONDS.toMinutes(startTime.toLong()),
-                    TimeUnit.MILLISECONDS.toSeconds(startTime.toLong()
-                            - TimeUnit.MINUTES.toSeconds(
-                        TimeUnit.MILLISECONDS.toMinutes(
-                            startTime.toLong()
-                        )
-                    ))
 
-                )
+        }
 
-                seekBar.progress = startTime.toInt()
-                handler.postDelayed(this, 100) //To delay tge seekbar
+    val UpdateSongTime : Runnable = object :  Runnable {
+        override fun run() {
+            startTime = mediaPlayer.currentPosition.toDouble()
+            textTime.text = "" + String.format(
+                "%d min , %d sec",
+                TimeUnit.MILLISECONDS.toMinutes(startTime.toLong()),
+                TimeUnit.MILLISECONDS.toSeconds(startTime.toLong()
+                        - TimeUnit.MINUTES.toSeconds(
+                    TimeUnit.MILLISECONDS.toMinutes(
+                        startTime.toLong()
+                    )
+                ))
 
-            }
+            )
+
+            seekBar.progress = startTime.toInt()
+            handler.postDelayed(this, 100) //To delay tge seekbar
+
         }
 
 
