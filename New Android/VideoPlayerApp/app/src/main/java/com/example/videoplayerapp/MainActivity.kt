@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         mediaController.setMediaPlayer(videoView)
         videoView.setMediaController(mediaController)
 
+        //Playing on app initiation
+        videoView.start()
+
 
     }
 }
