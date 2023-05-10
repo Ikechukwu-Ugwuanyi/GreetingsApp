@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun sayTheColor(view : View) {
-        val clickedButton : Button = view as Button
+        var clickedButton : Button = view as Button
 
         var mediaPlayer: MediaPlayer = MediaPlayer.create(
             this,
@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
                 packageName
             )
         )
+
         mediaPlayer.start()
-
-
     }
 }
