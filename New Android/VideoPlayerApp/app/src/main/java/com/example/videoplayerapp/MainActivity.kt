@@ -23,19 +23,20 @@ class MainActivity : AppCompatActivity() {
         videoView.setMediaController(mediaController)
 
         //Playing on app initiation
-        //videoView.start()
+        videoView.start()
 
         //Video Display from the Internet
         val videoView2 : VideoView = findViewById(R.id.videoView2)
 
-        val uri : Uri = Uri.parse("https://www.youtube.com/watch?v=BWXLqY2bEBA")
-        videoView2.setVideoURI(uri)
+        //val uri : Uri = Uri.parse("https://youtu.be/BWXLqY2bEBA")
+        videoView2.setVideoPath("https://static.videezy.com/system/resources/previous/002//231/original/5226496.mp4")
 
         val mediaController2 = MediaController(this)
 
         mediaController2.setAnchorView(videoView2)
         mediaController2.setMediaPlayer(videoView2)
         videoView2.setMediaController(mediaController2)
+        videoView2.start()
 
 
 
