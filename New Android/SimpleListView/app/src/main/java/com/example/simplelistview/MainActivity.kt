@@ -11,11 +11,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //1 - Adapter View
-        var listView : ListView = findViewById(R.id.listView)
+        /*var listView : ListView = findViewById(R.id.listView)
 
         //2 Data Source : Array of Strings
         var worldCupArray = arrayOf(
-            "Germany", "Brazil", "England", "Spain","Qatar","Netherlands", "France", "Croatia", "Italy", "Uruguay", "Nigeria"
+            "Germany", "Brazil", "England", "Spain","Qatar","Netherlands", "France", "Croatia", "Italy", "Uruguay", "Nigeria",
+            "France", "Croatia", "Italy", "Uruguay", "Nigeria"
         )
 
         //3 - Adapter
@@ -24,6 +25,31 @@ class MainActivity : AppCompatActivity() {
         arrayAdapter = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
+            worldCupArray
+        )
+
+        listView.adapter = arrayAdapter
+
+
+         */
+
+        //CUSTOM LIST VIEW
+        //1 - Adapter View
+        val listView : ListView = findViewById(R.id.listView)
+
+        //2 Data Source : Array of Strings
+        val worldCupArray = arrayOf(
+            "Germany", "Brazil", "England", "Spain","Qatar","Netherlands", "France", "Croatia", "Italy", "Uruguay", "Nigeria",
+            "France", "Croatia", "Italy", "Uruguay", "Nigeria"
+        )
+
+        //3 - Adapter
+        val arrayAdapter : ArrayAdapter<*>
+
+        arrayAdapter = ArrayAdapter(
+            this,
+            R.layout.list_item,
+            R.id.textView,
             worldCupArray
         )
 
