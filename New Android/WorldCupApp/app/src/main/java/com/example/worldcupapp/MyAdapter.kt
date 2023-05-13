@@ -1,11 +1,14 @@
 package com.example.worldcupapp
 
 import android.app.Activity
+import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 
 class MyAdapter(private var activity: Activity, private var items: ArrayList<CountryModal>) : BaseAdapter() {
@@ -26,13 +29,26 @@ class MyAdapter(private var activity: Activity, private var items: ArrayList<Cou
         val viewHolder: ViewHolder
 
         if(convertView == null) {
-
+            val inflater = activity?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            view = inflater.inflate(R.layout.list_item_layout, null)
+            viewHolder = ViewHolder(view)
+            view?.tag = viewHolder
+        } else {
+            view = convertView
+            viewHolder = view.tag as ViewHolder
         }
     }
 
-    private class ViewHolder(view : View?) {
-        val txtName: TextView? = null
-        val txtCupWin: TextView? = null
-        val flagImg: ImageView? = null
+    private class ViewHolder(row : View?) {
+        var txtName: TextView? = null
+        var txtCupWin: TextView? = null
+        var flagImg: ImageView? = null
+
+        init {
+            this.txtName = row?.findViewById(R.id.textView)
+            this.txtCupWin = row?.findViewById(R.id.textView2)
+            this.flagImg = row?.findViewById(R.id.imageView)
+        }
+
     }
 }
