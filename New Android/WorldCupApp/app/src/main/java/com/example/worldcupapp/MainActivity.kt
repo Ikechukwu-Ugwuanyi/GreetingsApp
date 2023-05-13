@@ -67,6 +67,18 @@ class MainActivity : AppCompatActivity() {
             R.drawable.england
         )
 
+        var country8: CountryModal = CountryModal(
+            "Spain",
+            "1",
+            R.drawable.spain
+        )
+
+        var country9: CountryModal = CountryModal(
+            "Argentina",
+            "3",
+            R.drawable.argentina
+        )
+
         countryList.add(country1)
         countryList.add(country2)
         countryList.add(country3)
@@ -74,6 +86,8 @@ class MainActivity : AppCompatActivity() {
         countryList.add(country5)
         countryList.add(country6)
         countryList.add(country7)
+        countryList.add(country8)
+        countryList.add(country9)
 
         return  countryList
 
