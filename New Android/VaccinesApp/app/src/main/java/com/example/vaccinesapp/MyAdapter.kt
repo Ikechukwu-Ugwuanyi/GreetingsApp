@@ -1,12 +1,14 @@
 package com.example.vaccinesapp
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class MyAdapter(val vaccineList: ArrayList<VaccineModel>)
-    : RecyclerView.Adapter<>() {
+    : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
         inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             lateinit var vaccineImage: ImageView
@@ -18,7 +20,23 @@ class MyAdapter(val vaccineList: ArrayList<VaccineModel>)
             }
         }
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
+        val v = LayoutInflater.from(parent.context)
+            .inflate(R.layout.recycler_item_layout, parent, false)
 
+        return MyViewHolder(v)
+    }
+
+    override fun getItemCount(): Int {
+        return vaccineList.size
+    }
+
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+
+        holder.vaccineTitle.setText(vaccineList[position].name)
+        holder.vaccineImage.setImageResource(vaccineList[position].img)
+
+    }
 
 
 }
