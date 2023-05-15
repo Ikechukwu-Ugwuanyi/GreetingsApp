@@ -21,7 +21,7 @@ class GameAdapter(val gamesList: ArrayList<GameModel>) :
 
                 itemView.setOnClickListener() {
                     Toast.makeText(itemView.context, "You Chose: ${gamesList[adapterPosition].cardTxt}",
-                    Toast.LENGTH_SHORT)
+                    Toast.LENGTH_SHORT).show()
                 }
             }
 
