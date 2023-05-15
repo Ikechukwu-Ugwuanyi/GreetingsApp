@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="220dp"
             android:layout_height="120dp"
-            android:id="@+id/cardviewImg"/>
+            android:id="@+id/cardViewImg"/>
 
         <TextView
             android:id="@+id/cardViewTxt"
@@ -25,7 +25,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginStart="26dp"
             android:layout_marginTop="19dp"
-            android:layout_toEndOf="@+id/cardviewImg"
+            android:layout_toEndOf="@+id/cardViewImg"
             android:text="Game Title"
             android:textSize="28sp"
             android:textStyle="bold" />

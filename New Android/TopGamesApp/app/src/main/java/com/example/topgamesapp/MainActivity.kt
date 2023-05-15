@@ -37,5 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         //3. Adapter
         val adapter = GameAdapter(gameList)
+        recyclerView.adapter = adapter
     }
 }

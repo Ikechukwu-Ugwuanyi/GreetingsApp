@@ -16,7 +16,7 @@ class GameAdapter(val gamesList: ArrayList<GameModel>) :
             var gameTitle: TextView
 
             init {
-                gameImg = itemView.findViewById(R.id.cardviewImg)
+                gameImg = itemView.findViewById(R.id.cardViewImg)
                 gameTitle = itemView.findViewById(R.id.cardViewTxt)
 
                 itemView.setOnClickListener() {
