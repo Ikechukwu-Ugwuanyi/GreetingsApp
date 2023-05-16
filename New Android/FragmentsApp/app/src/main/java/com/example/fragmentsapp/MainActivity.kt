@@ -22,5 +22,13 @@ class MainActivity : AppCompatActivity() {
             ftrans.replace(R.id.frameLayout1, fragment1)
                 .commit()
         }
+
+        btn2.setOnClickListener() {
+            val fragment2: Fragment = Fragment2()
+
+            val ftrans: FragmentTransaction = supportFragmentManager.beginTransaction()
+            ftrans.replace(R.id.frameLayout1, fragment2)
+                .commit()
+        }
     }
 }
