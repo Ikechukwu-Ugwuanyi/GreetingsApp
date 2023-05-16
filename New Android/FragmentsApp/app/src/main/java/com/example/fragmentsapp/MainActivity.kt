@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             val fragment2: Fragment = Fragment2()
 
             val ftrans: FragmentTransaction = supportFragmentManager.beginTransaction()
-            ftrans.replace(R.id.frameLayout1, fragment2)
+            ftrans.replace(R.id.frameLayout2, fragment2)
                 .commit()
         }
     }
