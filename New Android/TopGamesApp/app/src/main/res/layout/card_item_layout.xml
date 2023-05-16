@@ -27,7 +27,7 @@
             android:layout_marginTop="19dp"
             android:layout_toEndOf="@+id/cardViewImg"
             android:text="Game Title"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
     </RelativeLayout>
