@@ -11,13 +11,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val listView: ListView = findViewById(R.id.listView)
+        val listView : ListView = findViewById(R.id.listView)
 
-        val states : ArrayList<*> = arrayListOf("Kano", "Lagos", "Abuja", "Sokoto", "Jos", "Enugu ")
+        val states = arrayListOf("Abuja", "Kogi", "Lagos", "Sokoto", "Enugu")
 
-        val adapter : BaseAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, states)
+        val statesAdapter:BaseAdapter = ArrayAdapter(this, android.R.layout.simple_selectable_list_item, states)
 
-        listView.adapter = adapter
+        listView.adapter = statesAdapter
+
+
 
 
 
