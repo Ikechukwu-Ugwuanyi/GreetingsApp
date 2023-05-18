@@ -29,7 +29,7 @@ class GameAdapter(val gamesList: ArrayList<GameModel>) :
         }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val v =LayoutInflater.from(parent.context)
+        val v = LayoutInflater.from(parent.context)
             .inflate(R.layout.card_item_layout, parent, false)
 
         return MyViewHolder(v)
