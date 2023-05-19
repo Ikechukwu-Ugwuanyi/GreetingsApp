@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ListView
+import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         listView.adapter = statesAdapter
         */
+
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+
+        val myData = Datasource().loadAffirmations()
+
+        val adapter = MyAdapter(myData)
+
+        recyclerView.adapter = adapter
 
 
 
