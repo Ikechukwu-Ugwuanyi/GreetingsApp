@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         //Video Player
         val videoView: VideoView = findViewById(R.id.videoView)
-        videoView.setVideoPath("android.resource://"+ packageName + R.raw.tafmun)
+        videoView.setVideoPath("android.resource://"+ packageName+"/" + R.raw.tafmun)
 
         val mediaController: MediaController = MediaController(this)
         mediaController.setMediaPlayer(videoView)
