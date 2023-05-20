@@ -36,14 +36,15 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter */
 
         //Video Player
-        val videoView: VideoView = findViewById(R.id.videoView)
-        videoView.setVideoPath("android.resource://"+ packageName+"/" + R.raw.tafmun)
+        val videoView: VideoView =findViewById(R.id.videoView)
+        videoView.setVideoPath("android.resource://"+packageName+"/"+R.raw.tafmun)
 
         val mediaController: MediaController = MediaController(this)
-        mediaController.setMediaPlayer(videoView)
         mediaController.setAnchorView(videoView)
+        mediaController.setMediaPlayer(videoView)
 
         videoView.setMediaController(mediaController)
+        videoView.start()
 
 
 
