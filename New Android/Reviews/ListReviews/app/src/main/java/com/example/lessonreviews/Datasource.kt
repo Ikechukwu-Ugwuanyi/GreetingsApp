@@ -12,7 +12,7 @@ package com.example.lessonreviews
              Affirmations(R.string.affirmation7, R.drawable.image7),
              Affirmations(R.string.affirmation8, R.drawable.image8),
              Affirmations(R.string.affirmation9, R.drawable.image9),
-             Affirmations(R.string.affirmation10, R.drawable.image10),
+             Affirmations(R.string.affirmation10, R.drawable.image10)
          )
 
      }
