@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     //French Teacher App
-    fun SayColor(view: View) {
+    fun sayColor(view: View) {
         var clickedBtn: Button = view as Button
 
         var mediaPlayer = MediaPlayer.create(this,
