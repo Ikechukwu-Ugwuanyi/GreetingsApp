@@ -16,54 +16,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.french_sounds)
-
-        //LIST VIEW REVIEW
-        /*val listView : ListView = findViewById(R.id.listView)
-
-        val states = arrayOf("Abuja", "Kogi", "Lagos", "Sokoto", "Enugu")
-
-        val statesAdapter:BaseAdapter = ArrayAdapter(this, android.R.layout.simple_selectable_list_item, states)
-
-        listView.adapter = statesAdapter
-        */
-
-
-        /*RECYCLER VIEW
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-
-        val myData = Datasource().loadAffirmations()
-
-        val adapter = MyAdapter(myData)
-
-        recyclerView.adapter = adapter */
-
-        //Video Player
-        /*val videoView: VideoView =findViewById(R.id.videoView)
-        videoView.setVideoPath("android.resource://"+packageName+"/"+R.raw.tafmun)
-
-        val mediaController: MediaController = MediaController(this)
-        mediaController.setAnchorView(videoView)
-        mediaController.setMediaPlayer(videoView)
-
-        videoView.setMediaController(mediaController)
-        videoView.start() */
-
-
-
     }
 
     //French Teacher App
-    fun sayColor(view: View) {
-        var clickedBtn: Button = view as Button
 
-        var mediaPlayer = MediaPlayer.create(this,
-            resources.getIdentifier(clickedBtn.tag.toString(),
+    fun sayTheColor(view : View) {
+        var clickedButton : Button = view as Button
+
+        var mediaPlayer: MediaPlayer = MediaPlayer.create(
+            this,
+            resources.getIdentifier(
+                clickedButton.tag.toString(),
                 "raw",
-                packageName))
+                packageName
+            )
+        )
 
         mediaPlayer.start()
-
-
-
     }
+
 }
