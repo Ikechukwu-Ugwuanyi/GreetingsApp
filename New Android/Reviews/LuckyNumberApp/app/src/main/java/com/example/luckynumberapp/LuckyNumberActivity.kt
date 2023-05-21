@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import java.lang.Math.random
 import java.util.Random
 
 class LuckyNumberActivity : AppCompatActivity() {
@@ -22,6 +23,11 @@ class LuckyNumberActivity : AppCompatActivity() {
         var random_num = generateRandomNum()
 
         luckyNum.setText(""+random_num)
+
+        btnShare.setOnClickListener() {
+            shareData(user_name, random_num)
+        }
+
     }
 
     fun receiveUsername(): String {
@@ -32,15 +38,17 @@ class LuckyNumberActivity : AppCompatActivity() {
     }
 
     //Random Numbers Generator
-    fun generateRandomNum(): Random {
-        val random = Random(1000)
+    fun generateRandomNum(): Int {
+        val random  = Random().nextInt(1000)
         return random
     }
 
     //Sharing
     fun shareData(username: String, num: Int) {
         var i = Intent(Intent.ACTION_SEND)
+        i.setType("text/plain")
         i.putExtra(Intent.EXTRA_SUBJECT, "$username is lucky today!")
         i.putExtra(Intent.EXTRA_TEXT, "His Lucky number is $num")
+        startActivity(i)
     }
 }
