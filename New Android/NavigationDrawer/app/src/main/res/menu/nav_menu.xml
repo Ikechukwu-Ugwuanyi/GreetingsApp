@@ -4,15 +4,15 @@
     tools:showIn="navigation_view">
 
         <group android:checkableBehavior="single">
-        <item
+            <item
             android:id="@+id/home"
             android:title="Home Page"/>
 
-        <item
+             <item
             android:id="@+id/message"
             android:title="Message Page"/>
 
-        <item
+            <item
             android:id="@+id/settings"
             android:title="Settings Page"/>
 ]       </group>

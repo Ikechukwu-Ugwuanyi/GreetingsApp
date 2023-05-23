@@ -51,11 +51,8 @@ class MainActivity : AppCompatActivity() {
                 R.id.login -> {
                     replaceFragment(LoginFragment(), it.title.toString())
                 }
-
             }
-
              true
-
 
         }
     }
