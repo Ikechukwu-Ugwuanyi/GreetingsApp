@@ -10,7 +10,7 @@ import com.example.viewpager.MainActivity
 class MyAdapter(mainActivity: MainActivity) : FragmentStateAdapter(mainActivity) {
 
     private val Fragments_Size = 3
-    override fun getItemCount(): Int {
+    override fun getItemCount(): Int  {
         return this.Fragments_Size
     }
 
