@@ -18,8 +18,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
 
-       binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
 
         binding.apply {
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
                 textView.setText("Hello $enteredText")
             }
         }
-
 
     }
 }
