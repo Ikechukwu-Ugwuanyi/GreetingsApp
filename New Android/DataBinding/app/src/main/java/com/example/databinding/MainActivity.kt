@@ -20,14 +20,15 @@ class MainActivity : AppCompatActivity() {
 
        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        val textView: TextView = findViewById(R.id.textView)
-        val editText:EditText = findViewById(R.id.editText)
-        val btn:Button = findViewById(R.id.btn)
 
-        btn.setOnClickListener() {
-            val enteredText: String = editText.text.toString()
-            textView.setText("Hello $enteredText")
+
+        binding.apply {
+            btn.setOnClickListener() {
+                val enteredText: String = editText.text.toString()
+                textView.setText("Hello $enteredText")
+            }
         }
+
 
     }
 }
