@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import com.example.databinding.databinding.ActivityMainBinding
 
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -24,10 +25,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             btn.setOnClickListener() {
-                intent = Intent(this@MainActivity, DataBindingObjects::class.java)
-                startActivity(intent)
+
                 val enteredText: String = editText.text.toString()
-                textView.setText("Hello $enteredText")
+               textView.setText("Hello $enteredText")
+
+                val intent = Intent(this@MainActivity, DataBindingObjects::class.java)
+                startActivity(intent)
             }
         }
 
