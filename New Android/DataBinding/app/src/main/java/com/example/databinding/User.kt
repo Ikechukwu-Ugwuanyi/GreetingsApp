@@ -1,4 +1,6 @@
 package com.example.databinding
 
-class User {
-}
+ data class User (
+     var id: Int,
+     val name: String,
+     var pass: String)

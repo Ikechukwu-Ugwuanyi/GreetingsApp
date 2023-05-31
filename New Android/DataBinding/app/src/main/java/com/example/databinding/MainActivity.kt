@@ -1,6 +1,7 @@
 package com.example.databinding
 
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -23,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
         binding.apply {
             btn.setOnClickListener() {
+                intent = Intent(this@MainActivity, DataBindingObjects::class.java)
+                startActivity(intent)
                 val enteredText: String = editText.text.toString()
                 textView.setText("Hello $enteredText")
             }
