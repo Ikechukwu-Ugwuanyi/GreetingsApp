@@ -11,13 +11,20 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     lateinit var viewModel: MainActivityViewModel
+    lateinit var factory: MainActivityViewModelFactory
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        //Binding Object
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        viewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
+        //ViewModel
+        viewModel = ViewModelProvider(this, factory).get(MainActivityViewModel::class.java)
+
+        //ViewModel Factory
+        factory = MainActivityViewModelFactory(100)
 
 
         binding.textView.text = viewModel.getCurrentCount().toString()
