@@ -15,11 +15,7 @@ class DataBindingObjects : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_data_binding_objects)
 
         var u1: User = User(2, "Jack", "123")
+        binding.user = u1
 
-        binding.apply {
-            textView.setText(""+u1.id)
-            textView2.setText(""+u1.name)
-            textView3.setText(""+u1.pass)
-        }
     }
 }
