@@ -13,7 +13,7 @@ class MainActivityViewModel(startTingNum: Int): ViewModel() {
         total.value = startTingNum
     }
 
-    fun setUp(input: Int) {
+    fun sumUp(input: Int) {
         total.value = (total.value)?.plus(input)
     }
 }
