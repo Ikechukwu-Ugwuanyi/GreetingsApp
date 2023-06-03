@@ -24,6 +24,5 @@ class MainActivity : AppCompatActivity() {
 
         binding.myViewModel = viewModel
 
-
     }
 }
