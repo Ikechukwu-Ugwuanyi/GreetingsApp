@@ -12,12 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
-//    fun sayTheColor(view: View) {
-//        val clickedBtn: Button = view as Button
-//        val mediaPlayer:MediaPlayer = MediaPlayer.create(this,
-//        resources.getIdentifier(clickedBtn.tag.toString(), "raw", packageName))
-//        mediaPlayer.start()
-//    }
+
 
 
 }
