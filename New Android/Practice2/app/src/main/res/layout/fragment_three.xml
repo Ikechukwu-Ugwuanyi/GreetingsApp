@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#673AB7"
+    android:background="@drawable/image3"
     android:layout_height="match_parent"
     tools:context=".FragmentThree">
 
@@ -10,9 +10,10 @@
     <TextView
         android:layout_width="match_parent"
         android:textSize="30sp"
+        android:textStyle="bold"
         android:textColor="@color/white"
         android:layout_margin="15sp"
         android:layout_height="match_parent"
-        android:text="Hello Fragment Three" />
+        android:text="Solid Rocks" />
 
 </FrameLayout>

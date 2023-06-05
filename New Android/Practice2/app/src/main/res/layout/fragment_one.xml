@@ -3,16 +3,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2196F3"
+    android:background="@drawable/image1"
     tools:context=".FragmentOne">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:textSize="30sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         android:layout_margin="15sp"
         android:layout_height="match_parent"
-        android:text="@string/hello_fragment_one" />
+        android:text="Sheep Sailing" />
 
 </FrameLayout>
