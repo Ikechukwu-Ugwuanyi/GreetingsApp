@@ -7,10 +7,31 @@
         <item
             android:id="@+id/home"
             android:title="Home Page"
-            android:icon="@drawable/home">
+            android:icon="@drawable/baseline_home_24"/>
+
+        <item
+            android:id="@+id/msg"
+            android:title="Message Page"
+            android:icon="@drawable/baseline_message_24"/>
+
+        <item
+            android:id="@+id/setting"
+            android:title="Settings Page"
+            android:icon="@drawable/baseline_settings_24"/>
     </group>
 
+    <item android:title="Profile"/>
 
+    <group android:checkableBehavior="single">
 
+        <item android:title="Bookmarks"
+            android:icon="@drawable/baseline_bookmark_24"
+            android:id="@+id/bookmark"/>
+
+        <item android:title="Login Page"
+            android:id="@+id/login"
+            android:icon="@drawable/baseline_login_24"/>
+
+    </group>
 
 </menu>
