@@ -7,10 +7,9 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 
 class MyAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    val fragment_size = 3
 
     override fun getItemCount(): Int {
-        return this.fragment_size
+        return 3
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -19,9 +18,8 @@ class MyAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : Fragme
 
             1 -> return FragmentTwo()
 
-            2 -> return FragmentThree()
         }
 
-        return FragmentOne()
+        return FragmentThree()
     }
 }
