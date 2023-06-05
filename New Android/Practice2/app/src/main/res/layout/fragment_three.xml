@@ -13,6 +13,6 @@
         android:textColor="@color/white"
         android:layout_margin="15sp"
         android:layout_height="match_parent"
-        android:text="Hello Fragment Two" />
+        android:text="Hello Fragment Three" />
 
 </FrameLayout>
