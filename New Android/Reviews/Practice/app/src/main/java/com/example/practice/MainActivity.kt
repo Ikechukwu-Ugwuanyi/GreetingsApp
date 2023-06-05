@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
 
 
         drawerLayout.addDrawerListener(toggle)
-
         toggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
