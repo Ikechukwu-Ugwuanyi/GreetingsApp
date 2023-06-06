@@ -8,46 +8,45 @@ import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var nameTextView : TextView
+
+    private lateinit var  nameText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val editText: EditText = findViewById(R.id.editText)
-        nameTextView = findViewById(R.id.textView2)
-        val btn: Button = findViewById(R.id.saveBtn)
+        val editText : EditText = findViewById(R.id.editText)
+        nameText = findViewById(R.id.textView2)
+        val btn : Button = findViewById(R.id.saveBtn)
 
-        DisplaySavedName()
+        getSharedPreferenceData()
 
         btn.setOnClickListener() {
-            val enteredText : String = editText.text.toString()
-            SaveNameInSharedPref(enteredText)
+            val enteredText = editText.text.toString()
+            SaveNameInSharedPreference(enteredText)
         }
+
     }
 
-    private fun SaveNameInSharedPref(enteredText: String) {
-        //Saving the text into Shared Preferences
-        val sharedPreferences : SharedPreferences =
-            getSharedPreferences("UserName", MODE_PRIVATE)
+    private fun SaveNameInSharedPreference(enteredText: String) {
+        val sharedPreference : SharedPreferences =
+            getSharedPreferences("Name", MODE_PRIVATE)
 
-        //Writing data to shared Preferences
-        val editor: SharedPreferences.Editor =
-            sharedPreferences.edit()
-
-        editor.putString("name", enteredText)
+        //Writing thee shared preferences
+        val editor: SharedPreferences.Editor = sharedPreference.edit()
+        editor.putString("xx", enteredText)
         editor.commit()
+    }
+
+    fun getSharedPreferenceData() {
+        val sharedPreferences: SharedPreferences =
+        getSharedPreferences("Name", MODE_PRIVATE)
+
+        val s1 : String? = sharedPreferences.getString("xx", "")
+
+        nameText.setText(s1)
 
     }
 
-    fun DisplaySavedName() {
-        //Reading data from sharedPreferences
-        val sharedPreferences : SharedPreferences =
-            getSharedPreferences("UserName", MODE_PRIVATE)
 
-        val s1 : String? = sharedPreferences.getString("name", "")
-
-        nameTextView.setText(s1)
-
-    }
 }
