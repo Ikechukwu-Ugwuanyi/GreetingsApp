@@ -19,33 +19,33 @@ class MainActivity : AppCompatActivity() {
         nameText = findViewById(R.id.textView2)
         val btn : Button = findViewById(R.id.saveBtn)
 
-        getSharedPreferenceData()
+        displaySharedPreferenceData()
 
         btn.setOnClickListener() {
             val enteredText = editText.text.toString()
-            SaveNameInSharedPreference(enteredText)
+            saveNameInSharedPreference(enteredText)
         }
 
+
     }
 
-    private fun SaveNameInSharedPreference(enteredText: String) {
-        val sharedPreference : SharedPreferences =
+    private fun saveNameInSharedPreference(enteredText: String) {
+        val sharedPreferences : SharedPreferences =
             getSharedPreferences("Name", MODE_PRIVATE)
 
-        //Writing thee shared preferences
-        val editor: SharedPreferences.Editor = sharedPreference.edit()
-        editor.putString("xx", enteredText)
+        val editor : SharedPreferences.Editor =
+            sharedPreferences.edit()
+        editor.putString("name", enteredText)
         editor.commit()
+
     }
 
-    fun getSharedPreferenceData() {
-        val sharedPreferences: SharedPreferences =
-        getSharedPreferences("Name", MODE_PRIVATE)
+    private fun displaySharedPreferenceData() {
+        val sharedPreferences : SharedPreferences =
+            getSharedPreferences("Name", MODE_PRIVATE)
 
-        val s1 : String? = sharedPreferences.getString("xx", "")
-
+        val s1 : String? = sharedPreferences.getString("name", "")
         nameText.setText(s1)
-
     }
 
 
