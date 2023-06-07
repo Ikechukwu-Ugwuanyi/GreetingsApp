@@ -17,9 +17,12 @@ class ViewmodelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_viewmodel)
 
-        viewModel = ViewModelProvider(this, factory).get(ViewModelActivityViewModel::class.java)
-
         factory = ViewModelFactory(100)
+
+        viewModel = ViewModelProvider(this, factory)
+            .get(ViewModelActivityViewModel::class.java)
+
+
 
 
         binding.textView4.text = viewModel.getCurrentCount().toString()
