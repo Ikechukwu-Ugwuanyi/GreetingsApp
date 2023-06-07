@@ -14,10 +14,12 @@ class ViewmodelActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_viewmodel)
 
+        binding.textView4.text = counter.toString()
+
 
         binding.btn.setOnClickListener() {
             counter++
-            binding.textView4.setText(counter).toString()
+            binding.textView4.text = counter.toString()
         }
 
 
