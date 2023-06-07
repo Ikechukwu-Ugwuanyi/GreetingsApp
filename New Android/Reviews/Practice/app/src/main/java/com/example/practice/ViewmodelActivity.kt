@@ -3,25 +3,27 @@ package com.example.practice
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.example.practice.databinding.ActivityViewmodelBinding
 
 class ViewmodelActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityViewmodelBinding
-    private var counter = 0
+    lateinit var viewModel : ViewModelActivityViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_viewmodel)
 
-        binding.textView4.text = counter.toString()
+        viewModel = ViewModelProvider(this).get(ViewModelActivityViewModel::class.java)
 
+        binding.textView4.text = viewModel.getCurrentCount().toString()
 
         binding.btn.setOnClickListener() {
-            counter++
-            binding.textView4.text = counter.toString()
-        }
 
+            binding.textView4.text = viewModel.getUpdatedCount().toString()
+        }
 
     }
 }
