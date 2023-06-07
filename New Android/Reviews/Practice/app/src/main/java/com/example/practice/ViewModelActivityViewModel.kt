@@ -2,7 +2,7 @@ package com.example.practice
 
 import androidx.lifecycle.ViewModel
 
-class ViewModelActivityViewModel : ViewModel() {
+class ViewModelActivityViewModel(startingNum: Int) : ViewModel() {
 
     private var counter = 0
 
@@ -11,6 +11,6 @@ class ViewModelActivityViewModel : ViewModel() {
     }
 
     fun getUpdatedCount() :Int {
-        return counter++
+        return ++counter
     }
 }
