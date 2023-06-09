@@ -22,9 +22,6 @@ class ViewmodelActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, factory)
             .get(ViewModelActivityViewModel::class.java)
 
-
-
-
         binding.textView4.text = viewModel.getCurrentCount().toString()
 
         binding.btn.setOnClickListener() {
