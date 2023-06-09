@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FF5722"
     android:layout_height="match_parent"
     tools:context=".LoginFragment">
 
@@ -9,6 +10,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="Hello Login Fragment"
+        android:textSize="32sp"
+        android:layout_margin="20dp"
+        android:textColor="@color/white"/>
 
 </FrameLayout>
