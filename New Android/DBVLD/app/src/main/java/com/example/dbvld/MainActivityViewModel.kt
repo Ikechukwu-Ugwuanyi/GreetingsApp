@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 
 class MainActivityViewModel : ViewModel() {
 
-    private var counter = MutableLiveData<Int>()
+    var counter = MutableLiveData<Int>()
 
     init {
         counter.value = 0
