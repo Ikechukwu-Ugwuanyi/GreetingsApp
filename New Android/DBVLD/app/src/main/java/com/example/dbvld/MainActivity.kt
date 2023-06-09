@@ -21,12 +21,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.myViewModel = viewModel
 
-        viewModel.counter.observe(
-            this,
-            Observer {
-                binding.textView.text = it.toString()
-            }
-        )
+        binding.lifecycleOwner = this
+
+//        viewModel.counterData.observe(
+//            this,
+//            Observer {
+//                binding.textView.text = it.toString()
+//            }
+//        )
 
 
     }
