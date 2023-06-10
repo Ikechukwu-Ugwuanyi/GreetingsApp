@@ -13,8 +13,8 @@ import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var toggle : ActionBarDrawerToggle
-    lateinit var drawerLayout : DrawerLayout
+     lateinit var toggle : ActionBarDrawerToggle
+     lateinit var drawerLayout : DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,10 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawerLayout)
 
-        toggle = ActionBarDrawerToggle(this@MainActivity,
-        drawerLayout,
-        R.string.open,
-        R.string.close)
+        toggle = ActionBarDrawerToggle(
+            this@MainActivity,
+            drawerLayout,
+            R.string.open,
+            R.string.close)
 
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
@@ -39,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.home -> {
                     replaceFragment(HomeFragment(), it.title.toString())
-            }
+                }
                 R.id.settings -> {
                     replaceFragment(SettingsFragment(), it.title.toString())
                 }
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     replaceFragment(LoginFragment(), it.title.toString())
                 }
         }
-            return@setNavigationItemSelectedListener true
+            true
 
     }
 
@@ -81,4 +82,4 @@ class MainActivity : AppCompatActivity() {
         setTitle(title)
     }
 
-    }
+}

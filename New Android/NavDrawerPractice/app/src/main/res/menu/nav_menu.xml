@@ -23,7 +23,7 @@
     <item android:title="Profile">
         <menu>
 
-        <group android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
 
                 <item
                 android:id="@+id/login"
@@ -36,7 +36,7 @@
                 android:icon="@drawable/notification"/>
 
 
-        </group>
+            </group>
 
         </menu>
     </item>
