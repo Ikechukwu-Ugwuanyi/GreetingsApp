@@ -1,8 +1,11 @@
 package com.example.contactsmanagerapp.viewUI
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ExpandableListView.OnChildClickListener
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.contactsmanagerapp.R
 import com.example.contactsmanagerapp.databinding.CardItemBinding
 import com.example.contactsmanagerapp.room.User
 
@@ -24,15 +27,18 @@ class MyRecyclerViewAdapter(private val userList:List<User>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        TODO("Not yet implemented")
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding : CardItemBinding = DataBindingUtil.
+                inflate(layoutInflater, R.layout.card_item, parent, false)
+        return MyViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        holder.bind(userList[position], clickListener)
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return userList.size
     }
 
 
