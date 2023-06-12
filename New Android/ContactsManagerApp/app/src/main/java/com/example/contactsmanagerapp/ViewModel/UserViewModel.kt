@@ -1,6 +1,7 @@
 package com.example.contactsmanagerapp.ViewModel
 
-import android.database.Observable
+
+import androidx.databinding.Observable
 import android.provider.SyncStateContract.Helpers.insert
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
@@ -17,10 +18,10 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(), Obser
     private lateinit var userToUpdateOrDelete: User
 
     @Bindable
-    val  inputName = MutableLiveData<String>()
+    val  inputName = MutableLiveData<String?>()
 
     @Bindable
-    val  inputEmail = MutableLiveData<String>()
+    val  inputEmail = MutableLiveData<String?>()
 
     @Bindable
     val saveOrUpdateButtonText = MutableLiveData<String>()
@@ -55,5 +56,20 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(), Obser
 
     fun clearAll() = viewModelScope.launch {
         repository.deleteAll()
+    }
+
+    fun update(user: User) = viewModelScope.launch {
+        repository.update(user)
+    }
+
+    fun delete(user: User) = viewModelScope.launch {
+        repository.delete(user)
+    }
+
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+
+    }
+
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
     }
 }
