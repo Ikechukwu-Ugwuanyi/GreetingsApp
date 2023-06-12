@@ -46,23 +46,26 @@
                 app:layout_constraintTop_toBottomOf="@id/namEdit" />
 
             <Button
+                android:onClick="@{()->userViewModel.saveOrUpdate()}"
                 android:id="@+id/BtnSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_marginEnd="56dp"
-                android:text="SAVE"
+                android:text="@={userViewModel.saveOrUpdateButtonText}"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.439"
+                app:layout_constraintStart_toEndOf="@+id/namEdit"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:onClick="@{()->userViewModel.clearAllOrDelete()}"
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="DELETE"
+                android:text="@={userViewModel.clearAllOrDeleteButtonText}"
                 app:layout_constraintEnd_toEndOf="@+id/BtnSave"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/BtnSave"
                 app:layout_constraintTop_toBottomOf="@+id/BtnSave" />
 
