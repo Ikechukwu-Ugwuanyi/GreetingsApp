@@ -6,7 +6,7 @@
     <data>
         <variable
             name="userViewModel"
-            type="com.example.contactsmanagerapp.ViewModel.UserViewModel" />
+            type="com.example.contactsmanagerapp.myviewModel.UserViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,7 +37,7 @@
             <EditText
                 android:id="@+id/emailEdit"
                 android:layout_width="180dp"
-                android:text="@={userViewModel.inputName}"
+                android:text="@={userViewModel.inputEmail}"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"

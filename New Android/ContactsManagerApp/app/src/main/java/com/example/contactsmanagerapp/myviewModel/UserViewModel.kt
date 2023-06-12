@@ -1,9 +1,7 @@
-package com.example.contactsmanagerapp.ViewModel
+package com.example.contactsmanagerapp.myviewModel
 
 
 import androidx.databinding.Observable
-import android.provider.SyncStateContract.Helpers.insert
-import android.provider.SyncStateContract.Helpers.update
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

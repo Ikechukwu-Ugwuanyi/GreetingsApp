@@ -7,8 +7,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.contactsmanagerapp.ViewModel.UserViewModel
-import com.example.contactsmanagerapp.ViewModel.UserViewModelFactory
+import com.example.contactsmanagerapp.myviewModel.UserViewModel
+import com.example.contactsmanagerapp.myviewModel.UserViewModelFactory
 import com.example.contactsmanagerapp.databinding.ActivityMainBinding
 import com.example.contactsmanagerapp.room.User
 import com.example.contactsmanagerapp.room.UserDatabase
