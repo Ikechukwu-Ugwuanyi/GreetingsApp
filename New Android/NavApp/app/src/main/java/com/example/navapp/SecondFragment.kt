@@ -10,7 +10,7 @@ import com.example.navapp.databinding.FragmentSecondBinding
 
 
 class SecondFragment : Fragment() {
-   lateinit var binding: FragmentSecondBinding
+   private lateinit var binding: FragmentSecondBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

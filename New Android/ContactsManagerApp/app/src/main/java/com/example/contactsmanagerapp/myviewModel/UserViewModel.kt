@@ -49,7 +49,6 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(), Obser
             val email = inputEmail.value!!
 
             insert(User(0, name, email))
-
             inputName.value = null
             inputEmail.value = null
         }
