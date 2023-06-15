@@ -11,7 +11,7 @@ import kotlinx.android.parcel.Parcelize
 data class Note(
     @PrimaryKey
     val id: Int,
-    val notyTitle: String,
+    val noteTitle: String,
     val noteBody: String
 
 ): Parcelable
