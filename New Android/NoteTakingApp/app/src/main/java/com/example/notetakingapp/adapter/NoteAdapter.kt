@@ -3,15 +3,18 @@ package com.example.notetakingapp.adapter
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notetakingapp.databinding.NoteLayoutBinding
 import com.example.notetakingapp.fragments.HomeFragment
+import com.example.notetakingapp.fragments.HomeFragmentDirections
 import com.example.notetakingapp.model.Note
 import kotlin.random.Random
+import java.util.*
 
-class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
+class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
     class NoteViewHolder(val itemBinding: NoteLayoutBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
@@ -56,7 +59,10 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder> {
         holder.itemBinding.ibColor.setBackgroundColor(color)
 
         holder.itemView.setOnClickListener{
-            val direction = HomeFragmentDirections.action()
+            val direction = HomeFragmentDirections.
+            actionHomeFragmentToUpdateNoteFragment(currentNote)
+
+            it.findNavController().navigate(direction)
         }
     }
 
