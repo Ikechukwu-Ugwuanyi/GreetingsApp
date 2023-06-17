@@ -45,14 +45,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         notesViewModel = (activity as MainActivity).noteViewModel
         noteAdapter = NoteAdapter()
 
-        binding.recyclerView.apply {
-            layoutManager = StaggeredGridLayoutManager(
-                2,
-                StaggeredGridLayoutManager.VERTICAL
+        setUpRecyclerView()
+
+        binding.fabAddNote.setOnClickListener{
+            it.findNavController().navigate(
+                R.id.action_homeFragment_to_newNoteFragment
             )
-            setHasFixedSize(true)
-            adapter = noteAdapter
         }
+
+
 
         activity?.let {
             notesViewModel.getAllNotes().observe(
@@ -61,6 +62,19 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
                 noteAdapter.differ.submitList(note)
                 updateUI(note)
             }
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        noteAdapter = NoteAdapter()
+
+        binding.recyclerView.apply {
+            layoutManager = StaggeredGridLayoutManager(
+                2,
+                StaggeredGridLayoutManager.VERTICAL
+            )
+            setHasFixedSize(true)
+            adapter = noteAdapter
         }
     }
 
