@@ -29,7 +29,7 @@ class NewNoteFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setHasOptionsMenu(true)
+        setHasOptionsMenu(true)
 
     }
 

@@ -73,6 +73,7 @@ class UserViewModel(private val repository: UserRepository) : ViewModel(), Obser
         repository.deleteAll()
     }
 
+
     fun update(user: User) = viewModelScope.launch {
         repository.update(user)
 
