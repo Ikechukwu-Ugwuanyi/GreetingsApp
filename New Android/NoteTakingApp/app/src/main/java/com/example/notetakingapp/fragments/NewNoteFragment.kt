@@ -85,6 +85,7 @@ class NewNoteFragment : Fragment() {
         _binding = null
     }
 
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when(item.itemId) {
             R.id.menu_save -> {
