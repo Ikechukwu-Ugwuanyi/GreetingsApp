@@ -13,14 +13,15 @@ class SequentialParallelCoroutine : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sequential_parallel_coroutine)
 
-        CoroutineScope(Dispatchers.Main).launch {
-            val one = doSomethingUseful1()
-            val two = doSomethingUseful2()
+        fun main() {
+            CoroutineScope(Dispatchers.Main).launch {
+                val one = doSomethingUseful1()
+                val two = doSomethingUseful2()
 
-            val result = one + two
-            Log.v("TAG", "The result is $result")
+                val result = one + two
+                Log.v("TAG", "The result is $result")
+            }
         }
-
 
     }
 
