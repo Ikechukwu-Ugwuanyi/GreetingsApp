@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -13,20 +14,26 @@ class SequentialParallelCoroutine : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sequential_parallel_coroutine)
 
-        fun main() {
-            CoroutineScope(Dispatchers.Main).launch {
-                val one = doSomethingUseful1()
-                val two = doSomethingUseful2()
+        CoroutineScope(Dispatchers.Main).launch {
+            Log.v("TAG", "The app is started")
 
-                val result = one + two
-                Log.v("TAG", "The result is $result")
+            val one = async {
+                doSomethingUseful1()
             }
+
+
+            val two = async {
+                doSomethingUseful2()
+            }
+
+            val result = one.await() + two.await()
+            Log.v("TAG", "The result is $result")
         }
 
     }
 
     suspend fun doSomethingUseful1(): Int{
-        delay(5000)
+        delay(9000)
         Log.v("TAG", "Function 1 is done")
         return 11
     }
