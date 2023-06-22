@@ -33,7 +33,7 @@ class SequentialParallelCoroutine : AppCompatActivity() {
     }
 
     suspend fun doSomethingUseful1(): Int{
-        delay(9000)
+        delay(10000)
         Log.v("TAG", "Function 1 is done")
         return 11
     }
