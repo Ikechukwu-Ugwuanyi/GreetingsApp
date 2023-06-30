@@ -2,6 +2,7 @@ package com.example.retrofitapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.liveData
@@ -24,6 +25,14 @@ class MainActivity : AppCompatActivity() {
             }
 
         responseLiveData.observe(this, Observer {
+            val albumList = it.body()?.listIterator()
+
+            if (albumList != null){
+                while (albumList.hasNext()) {
+                    val albumItem = albumList.next()
+                    Log.i("TAG", albumItem.title)
+                }
+            }
 
         })
 
