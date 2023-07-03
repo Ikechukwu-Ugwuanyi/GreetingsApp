@@ -1,8 +1,8 @@
 package com.example.dependencvyinjectionapp
 
-class Car {
+class Car(private val engine: Engine) {
 
-    private val engine = Engine()
+    //private val engine = Engine()
 
     fun start(){
         engine.startEngine()
