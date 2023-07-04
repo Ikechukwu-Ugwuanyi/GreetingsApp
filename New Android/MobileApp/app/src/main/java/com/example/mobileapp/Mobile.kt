@@ -2,7 +2,7 @@ package com.example.mobileapp
 
 import android.util.Log
 
-class Mobile(val battery: Battery, val simCard: Display, val display: SimCard) {
+class Mobile(val battery: Battery, val simCard: SimCard, val display: Display) {
 
     init {
         battery.displayBatterPower()
