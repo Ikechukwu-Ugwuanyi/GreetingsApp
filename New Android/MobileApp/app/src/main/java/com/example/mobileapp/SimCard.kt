@@ -1,4 +1,14 @@
 package com.example.mobileapp
 
-class SimCard {
+import android.util.Log
+
+class SimCard(private val serviceProvider: ServiceProvider) {
+
+    init {
+        Log.i("TAG", "Sim card Created!")
+    }
+
+    fun connectToNetwork() {
+        serviceProvider.getServiceProvider()
+    }
 }
