@@ -9,6 +9,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        DaggerMobileComponent.create().getMobileInstance()
+
+
+
 //        val battery = Battery()
 //        val display = Display()
 //        val serviceProvider = ServiceProvider()
