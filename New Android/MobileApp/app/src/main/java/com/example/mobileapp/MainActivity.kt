@@ -13,8 +13,12 @@ class MainActivity : AppCompatActivity() {
 //        val serviceProvider = ServiceProvider()
 //        val simCard = SimCard(serviceProvider)
 
+        val serviceProvider = ServiceProvider()
+        val simCard = SimCard()
+        simCard.setServiceProvider(serviceProvider)
+
         val mobile = Mobile(Battery(),
-            SimCard(ServiceProvider()),
+            simCard,
             Display())
         mobile.turnOnMobile()
     }
