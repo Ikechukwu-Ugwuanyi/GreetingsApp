@@ -1,8 +1,9 @@
 package com.example.mobileapp
 
 import android.util.Log
+import javax.inject.Inject
 
-class Battery {
+class Battery @Inject constructor(){
 
     init {
         Log.i("TAG", "Battery Created")

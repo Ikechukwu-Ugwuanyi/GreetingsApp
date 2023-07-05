@@ -1,8 +1,9 @@
 package com.example.mobileapp
 
 import android.util.Log
+import javax.inject.Inject
 
-class Mobile(val battery: Battery, val simCard: SimCard, val display: Display) {
+class Mobile @Inject constructor(val battery: Battery, val simCard: SimCard, val display: Display) {
 
     init {
         battery.displayBatterPower()

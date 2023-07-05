@@ -1,8 +1,9 @@
 package com.example.mobileapp
 
 import android.util.Log
+import javax.inject.Inject
 
-class SimCard() {
+class SimCard @Inject constructor(){
     public lateinit var  serviceProvider: ServiceProvider
 
 //    fun setServiceProvider(serviceProvider: ServiceProvider) {
