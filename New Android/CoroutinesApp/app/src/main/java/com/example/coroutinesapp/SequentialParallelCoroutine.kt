@@ -21,7 +21,6 @@ class SequentialParallelCoroutine : AppCompatActivity() {
                 doSomethingUseful1()
             }
 
-
             val two = async {
                 doSomethingUseful2()
             }
