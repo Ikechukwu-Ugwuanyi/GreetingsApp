@@ -9,7 +9,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        DaggerMobileComponent.create().getMobileInstance()
+       // DaggerMobileComponent.create().getMobileInstance()
+
+        DaggerMobileComponent.create()
+            .inject(this)
+
+        mobile.turnOnMobile()
 
 
 
