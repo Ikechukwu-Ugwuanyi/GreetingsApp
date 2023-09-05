@@ -17,4 +17,5 @@ class Mobile @Inject constructor (val battery: Battery, val simCard : SimCard, v
     fun turnOnMobile() {
         Log.i("TAG", "Mobile is turned on!")
     }
+
 }

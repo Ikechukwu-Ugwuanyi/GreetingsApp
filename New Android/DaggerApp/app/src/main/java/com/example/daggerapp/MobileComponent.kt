@@ -6,3 +6,4 @@ import dagger.Component
 interface MobileComponent {
     fun getMobileInstance() : Mobile
 }
+
