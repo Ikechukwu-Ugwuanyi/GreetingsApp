@@ -14,10 +14,10 @@ interface UserDAO {
     suspend fun insertUser(user: User) : Long
 
     @Update
-    suspend fun updateUser(user: User) : Long
+    suspend fun updateUser(user: User)
 
     @Delete
-    suspend fun deleteAll(user: User)
+    suspend fun deleteUser(user: User)
 
     @Query("DELETE FROM user")
     suspend fun deleteAll()
