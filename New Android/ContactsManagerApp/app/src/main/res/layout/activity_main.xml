@@ -25,8 +25,8 @@
 
             <EditText
                 android:id="@+id/namEdit"
-                android:text="@={userViewModel.inputName}"
                 android:layout_width="180dp"
+                android:text="@={userViewModel.inputName}"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
