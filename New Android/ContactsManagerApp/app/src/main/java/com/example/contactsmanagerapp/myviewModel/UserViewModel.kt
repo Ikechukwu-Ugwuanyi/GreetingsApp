@@ -1,6 +1,5 @@
 package com.example.contactsmanagerapp.myviewModel
 
-import android.provider.SyncStateContract.Helpers.insert
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
@@ -61,6 +60,10 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
 
     fun delete(user: User) = viewModelScope.launch {
         repository.delete(user)
+    }
+
+    fun initUpdateAndDelete(selectedItem: User) {
+
     }
 
 
