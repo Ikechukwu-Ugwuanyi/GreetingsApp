@@ -1,5 +1,6 @@
 package com.example.contactsmanagerapp.myviewModel
 
+import android.provider.SyncStateContract.Helpers.insert
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.contactsmanagerapp.room.User
 import com.example.contactsmanagerapp.room.UserRepository
 import kotlinx.coroutines.launch
+import java.nio.file.Files.delete
 
 class UserViewModel(private val repository: UserRepository) :ViewModel(), Observable {
 
@@ -22,28 +24,46 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
     val inputEmail = MutableLiveData<String?>()
 
     @Bindable
-    val saveOrDeleteButtonText = MutableLiveData<String>()
+    val saveOrUpdateButtonText = MutableLiveData<String>()
 
     @Bindable
     val clearAllOrDeleteButtonText = MutableLiveData<String>()
 
     init {
-        saveOrDeleteButtonText.value = "Save"
+        saveOrUpdateButtonText.value = "Save"
         clearAllOrDeleteButtonText.value = "Clear All"
     }
 
     fun saveOrUpdate() {
-        val name = inputName.value!!
-        val email = inputEmail.value!!
+        if (isUpdateOrDelete) {
+            //Make Update
+            userToUpdateOrDelete.name = inputName.value!!
+            userToUpdateOrDelete.email = inputEmail.value!!
 
-        insert(User(0, name, email))
+            update(userToUpdateOrDelete)
 
-        inputName.value = null
-        inputEmail.value = null
+        } else{
+            //Insert Functionality
+            val name = inputName.value!!
+            val email = inputEmail.value!!
+
+            insert(User(0, name, email))
+
+            inputName.value = null
+            inputEmail.value = null
+
+        }
+
     }
 
     fun clearAllOrDelete() {
-        clearAll()
+        if (isUpdateOrDelete) {
+            delete(userToUpdateOrDelete)
+        } else {
+            clearAll()
+        }
+
+
     }
 
     private fun insert(user: User) = viewModelScope.launch{
@@ -56,13 +76,34 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
 
     fun update(user: User) = viewModelScope.launch {
         repository.update(user)
+
+        //Resetting the buttons and fields
+        inputName.value = null
+        inputEmail.value = null
+        isUpdateOrDelete = false
+        saveOrUpdateButtonText.value = "Save"
+        clearAllOrDeleteButtonText.value = "Clear All"
     }
 
     fun delete(user: User) = viewModelScope.launch {
         repository.delete(user)
+
+        //Resetting the buttons and fields
+        inputName.value = null
+        inputEmail.value = null
+        isUpdateOrDelete = false
+        saveOrUpdateButtonText.value = "Save"
+        clearAllOrDeleteButtonText.value = "Clear All"
     }
 
-    fun initUpdateAndDelete(selectedItem: User) {
+    fun initUpdateAndDelete(user: User) {
+
+        //Resetting the buttons and fields
+        inputName.value = user.name
+        inputEmail.value = user.email
+        isUpdateOrDelete = true
+        saveOrUpdateButtonText.value = "Update"
+        clearAllOrDeleteButtonText.value = "Delete"
 
     }
 
