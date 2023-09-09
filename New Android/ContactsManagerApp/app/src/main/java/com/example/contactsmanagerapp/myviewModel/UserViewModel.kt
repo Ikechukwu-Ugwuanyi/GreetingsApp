@@ -63,7 +63,6 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
             clearAll()
         }
 
-
     }
 
     private fun insert(user: User) = viewModelScope.launch{
@@ -98,10 +97,10 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
 
     fun initUpdateAndDelete(user: User) {
 
-        //Resetting the buttons and fields
         inputName.value = user.name
         inputEmail.value = user.email
         isUpdateOrDelete = true
+        userToUpdateOrDelete = user
         saveOrUpdateButtonText.value = "Update"
         clearAllOrDeleteButtonText.value = "Delete"
 

@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
 
         initRecyclerView()
 
-
-
     }
 
     private fun initRecyclerView() {
@@ -44,7 +42,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun DisplayUsersList() {
-        userViewModel.users.observe(this, {
+        userViewModel.users
+            .observe(this, {
             binding.recyclerView.adapter = MyRecyclerViewAdapter(
                 it, {selectedItem: User -> listItemClicked(selectedItem)}
             )
