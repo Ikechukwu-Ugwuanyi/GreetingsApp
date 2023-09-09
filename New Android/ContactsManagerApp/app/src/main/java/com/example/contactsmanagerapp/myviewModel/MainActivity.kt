@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             val repository = UserRepository(dao)
             val factory = UserViewModelFactory(repository)
 
-            userViewModel = ViewModelProvider(this, factory).get(userViewModel::class.java)
+            userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
             binding.userViewModel = userViewModel
 
             binding.lifecycleOwner = this
