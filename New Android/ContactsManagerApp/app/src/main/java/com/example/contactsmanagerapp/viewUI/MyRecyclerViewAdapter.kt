@@ -8,6 +8,7 @@ import com.example.contactsmanagerapp.R
 import com.example.contactsmanagerapp.databinding.CardItemBinding
 import com.example.contactsmanagerapp.room.User
 
+
 class MyRecyclerViewAdapter(private val userList: List<User>, private val clickListener: (User) -> Unit
 ) : RecyclerView.Adapter<MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {

@@ -27,7 +27,7 @@
                 android:id="@+id/namEdit"
                 android:layout_width="180dp"
                 android:text="@={userViewModel.inputName}"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:hint="Enter Your Name"
@@ -38,7 +38,7 @@
                 android:id="@+id/emailEdit"
                 android:layout_width="180dp"
                 android:text="@={userViewModel.inputEmail}"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:hint="Enter Your Email"
@@ -46,28 +46,30 @@
                 app:layout_constraintTop_toBottomOf="@id/namEdit" />
 
             <Button
-                android:onClick="@{()->userViewModel.saveOrUpdate()}"
                 android:id="@+id/BtnSave"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
+                android:onClick="@{()->userViewModel.saveOrUpdate()}"
                 android:text="@={userViewModel.saveOrUpdateButtonText}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.439"
                 app:layout_constraintStart_toEndOf="@+id/namEdit"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <Button
-                android:onClick="@{()->userViewModel.clearAllOrDelete()}"
                 android:id="@+id/btnDelete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:onClick="@{()->userViewModel.clearAllOrDelete()}"
                 android:text="@={userViewModel.clearAllOrDeleteButtonText}"
                 app:layout_constraintEnd_toEndOf="@+id/BtnSave"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/BtnSave"
-                app:layout_constraintTop_toBottomOf="@+id/BtnSave" />
+                app:layout_constraintTop_toBottomOf="@+id/BtnSave"
+                tools:ignore="SpeakableTextPresentCheck" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

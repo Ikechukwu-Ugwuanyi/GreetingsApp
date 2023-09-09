@@ -1,8 +1,8 @@
 package com.example.contactsmanagerapp.myviewModel
 
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,38 +20,37 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+            binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        //Room Database
-        val dao = UserDatabase.getInstance(application).userDAO
-        val repository = UserRepository(dao)
-        val factory = UserViewModelFactory(repository)
+            //Room Database
+            val dao = UserDatabase.getInstance(application).userDAO
+            val repository = UserRepository(dao)
+            val factory = UserViewModelFactory(repository)
 
-        userViewModel = ViewModelProvider(this, factory).get(userViewModel::class.java)
-        binding.userViewModel = userViewModel
+            userViewModel = ViewModelProvider(this, factory).get(userViewModel::class.java)
+            binding.userViewModel = userViewModel
 
-        binding.lifecycleOwner = this
+            binding.lifecycleOwner = this
 
-        initRecyclerView()
+            initRecyclerView()
 
-    }
+        }
 
-    private fun initRecyclerView() {
-        binding.recyclerView.layoutManager = LinearLayoutManager(this)
-        DisplayUsersList()
-    }
+        private fun initRecyclerView() {
+            binding.recyclerView.layoutManager = LinearLayoutManager(this)
+            DisplayUsersList()
+        }
 
-    private fun DisplayUsersList() {
-        userViewModel.users
-            .observe(this, {
-            binding.recyclerView.adapter = MyRecyclerViewAdapter(
-                it, {selectedItem: User -> listItemClicked(selectedItem)}
-            )
-        })
-    }
+        private fun DisplayUsersList() {
+            userViewModel.users.observe(this) {
+                binding.recyclerView.adapter = MyRecyclerViewAdapter(
+                    it
+                ) { selectedItem: User -> listItemClicked(selectedItem) }
+            }
+        }
 
-    private fun listItemClicked(selectedItem: User) {
-        Toast.makeText(this, "Selected name is ${selectedItem.name}", Toast.LENGTH_LONG).show()
-        userViewModel.initUpdateAndDelete(selectedItem)
-    }
+        private fun listItemClicked(selectedItem: User) {
+            Toast.makeText(this, "Selected name is ${selectedItem.name}", Toast.LENGTH_LONG).show()
+            userViewModel.initUpdateAndDelete(selectedItem)
+        }
 }
