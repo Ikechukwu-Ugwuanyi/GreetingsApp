@@ -106,12 +106,6 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
 
     }
 
-
-
-
-
-
-
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }
@@ -119,6 +113,5 @@ class UserViewModel(private val repository: UserRepository) :ViewModel(), Observ
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
 
     }
-
 
 }
