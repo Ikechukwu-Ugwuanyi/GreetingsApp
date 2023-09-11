@@ -55,7 +55,7 @@ class ItemAdapter(private val context: Context, private val dataset: List<Affirm
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+        return dataset.size
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
