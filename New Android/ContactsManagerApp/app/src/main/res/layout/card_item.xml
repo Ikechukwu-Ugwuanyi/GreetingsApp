@@ -22,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Your Name"
-                android:textSize="28sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:text="Your Email"
-                android:textSize="28sp" />
+                android:textSize="18sp" />
 
         </LinearLayout>
 
