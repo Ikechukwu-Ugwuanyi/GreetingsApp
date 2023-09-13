@@ -60,6 +60,11 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
         repository.insert(user)
     }
 
+    private fun clearAll() = viewModelScope.launch{
+        repository.deleteAll()
+    }
+
+
     private fun update(user: User) = viewModelScope.launch {
         repository.update(user)
 
@@ -78,28 +83,20 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
         //Resetting the fields
         inputName.value = null
         inputEmail.value = null
+        isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
         deleteOrClearAllButtonText.value = "Clear All"
 
     }
 
-    private fun clearAll() = viewModelScope.launch{
-        repository.deleteAll()
 
-        inputName.value = null
-        inputEmail.value = null
-        saveOrUpdateButtonText.value = "Save"
-        deleteOrClearAllButtonText.value = "Clear All"
-
-    }
-
-    fun initUpdateOrDelete() {
-
+    fun initUpdateOrDelete(user: User) {
         inputName.value = userToUpdateOrDelete.name
         inputEmail.value = userToUpdateOrDelete.email
         isUpdateOrDelete = true
         saveOrUpdateButtonText.value = "Update"
         deleteOrClearAllButtonText.value = "Delete"
+        userToUpdateOrDelete = user
 
     }
 
