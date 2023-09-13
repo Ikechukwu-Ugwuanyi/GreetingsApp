@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.myviewModel.model
+package com.example.contactsmanagerpractice.Main.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

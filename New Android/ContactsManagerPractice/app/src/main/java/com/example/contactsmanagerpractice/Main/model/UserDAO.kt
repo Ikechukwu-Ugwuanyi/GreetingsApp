@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.myviewModel.model
+package com.example.contactsmanagerpractice.Main.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -20,7 +20,7 @@ interface UserDAO {
     suspend fun deleteUser(user: User)
 
     @Query("SELECT * FROM user")
-    suspend fun getAllUsersInDb() : LiveData<List<User>>
+    fun getAllUsersInDb() : LiveData<List<User>>
 
     @Query("DELETE FROM user")
     suspend fun deleteAll()

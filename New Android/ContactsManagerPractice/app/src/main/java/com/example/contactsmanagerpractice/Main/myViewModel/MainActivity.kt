@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.myviewModel
+package com.example.contactsmanagerpractice.Main.myViewModel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
