@@ -6,7 +6,7 @@
     <data>
         <variable
             name="userViewModel"
-            type="com.example.contactsmanagerapp.myviewModel.UserViewModel" />
+            type="com.example.contactsmanagerapp.myviewModel.UserViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

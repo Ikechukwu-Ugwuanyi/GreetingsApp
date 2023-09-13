@@ -11,7 +11,7 @@ import com.example.contactsmanagerapp.room.UserRepository
 import kotlinx.coroutines.launch
 import java.nio.file.Files.delete
 
-class UserViewModel(private val repository: UserRepository) :ViewModel(), Observable {
+class UserViewModel(private val repository: UserRepository) : ViewModel(), Observable {
 
     val users = repository.users
     var isUpdateOrDelete = false
