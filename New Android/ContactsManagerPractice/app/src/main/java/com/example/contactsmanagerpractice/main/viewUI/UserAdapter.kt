@@ -1,10 +1,10 @@
-package com.example.contactsmanagerpractice.Main.viewUI
+package com.example.contactsmanagerpractice.main.viewUI
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.contactsmanagerpractice.Main.model.User
+import com.example.contactsmanagerpractice.main.model.User
 import com.example.contactsmanagerpractice.R
 import com.example.contactsmanagerpractice.databinding.CardItemBinding
 

@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.Main.myViewModel
+package com.example.contactsmanagerpractice.main.myViewModel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,17 +6,16 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.contactsmanagerpractice.Main.model.User
-import com.example.contactsmanagerpractice.Main.model.UserDb
-import com.example.contactsmanagerpractice.Main.model.UserRepository
-import com.example.contactsmanagerpractice.Main.viewUI.UserAdapter
+import com.example.contactsmanagerpractice.main.model.User
+import com.example.contactsmanagerpractice.main.model.UserDb
+import com.example.contactsmanagerpractice.main.model.UserRepository
+import com.example.contactsmanagerpractice.main.viewUI.UserAdapter
 import com.example.contactsmanagerpractice.R
 import com.example.contactsmanagerpractice.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var userViewModel: UserViewModel
-    //private  lateinit var adapter :UserAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,9 +48,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun listItemClicked(selectedItem: User) {
-        Toast.makeText(this, "The seleceted Item is ${selectedItem.name}", Toast.LENGTH_LONG)
+        Toast.makeText(this, "The selected Item is ${selectedItem.name}", Toast.LENGTH_LONG)
             .show()
-        binding.userViewModel.initUpdateOrDelete(selectedItem)
+        userViewModel.initUpdateOrDelete(selectedItem)
     }
 
 

@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.Main.myViewModel
+package com.example.contactsmanagerpractice.main.myViewModel
 
 
 import androidx.databinding.Bindable
@@ -6,8 +6,8 @@ import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.contactsmanagerpractice.Main.model.User
-import com.example.contactsmanagerpractice.Main.model.UserRepository
+import com.example.contactsmanagerpractice.main.model.User
+import com.example.contactsmanagerpractice.main.model.UserRepository
 import kotlinx.coroutines.launch
 
 

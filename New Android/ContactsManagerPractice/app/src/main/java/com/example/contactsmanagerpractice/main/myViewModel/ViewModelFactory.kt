@@ -1,8 +1,8 @@
-package com.example.contactsmanagerpractice.Main.myViewModel
+package com.example.contactsmanagerpractice.main.myViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.contactsmanagerpractice.Main.model.UserRepository
+import com.example.contactsmanagerpractice.main.model.UserRepository
 
 class ViewModelFactory(private val repository: UserRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

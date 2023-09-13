@@ -6,13 +6,13 @@
     <data>
         <variable
             name="userViewModel"
-            type="com.example.contactsmanagerpractice.Main.myViewModel.UserViewModel" />
+            type="com.example.contactsmanagerpractice.main.myViewModel.UserViewModel" />
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main.myViewModel.MainActivity">
+    tools:context=".main.myViewModel.MainActivity">
 
     <EditText
         android:text="@={userViewModel.inputName}"

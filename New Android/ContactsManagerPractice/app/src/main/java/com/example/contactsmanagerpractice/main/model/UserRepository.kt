@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.Main.model
+package com.example.contactsmanagerpractice.main.model
 
 class UserRepository(private val dao: UserDAO) {
 

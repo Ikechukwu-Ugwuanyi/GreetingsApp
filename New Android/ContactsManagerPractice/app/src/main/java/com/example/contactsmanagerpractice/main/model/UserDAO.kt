@@ -1,4 +1,4 @@
-package com.example.contactsmanagerpractice.Main.model
+package com.example.contactsmanagerpractice.main.model
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -24,5 +24,4 @@ interface UserDAO {
 
     @Query("DELETE FROM user")
     suspend fun deleteAll()
-
 }
