@@ -15,7 +15,7 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
 
     val users = repository.users
     var isUpdateOrDelete = false
-    lateinit var userToUpdateOrDelete: User
+    private lateinit var userToUpdateOrDelete: User
 
 
     @Bindable
@@ -37,12 +37,16 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
 
     fun updateOrSave() {
         if (isUpdateOrDelete) {
+            userToUpdateOrDelete.name = inputName.value!!
+            userToUpdateOrDelete.email = inputEmail.value!!
+
             update(userToUpdateOrDelete)
         } else {
 
             val name = inputName.value!!
             val email = inputEmail.value!!
             insert(User(0, name, email))
+
             inputName.value = null
             inputEmail.value = null
         }
@@ -91,8 +95,8 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
 
 
     fun initUpdateOrDelete(user: User) {
-        inputName.value = userToUpdateOrDelete.name
-        inputEmail.value = userToUpdateOrDelete.email
+        inputName.value = user.name
+        inputEmail.value = user.email
         isUpdateOrDelete = true
         saveOrUpdateButtonText.value = "Update"
         deleteOrClearAllButtonText.value = "Delete"
@@ -101,13 +105,11 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
     }
 
 
-
-
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-        TODO("Not yet implemented")
+
     }
 }
