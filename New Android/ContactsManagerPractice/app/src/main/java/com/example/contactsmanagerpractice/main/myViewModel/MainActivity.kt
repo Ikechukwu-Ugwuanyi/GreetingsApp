@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.contactsmanagerpractice.main.model.User
 import com.example.contactsmanagerpractice.main.model.UserDb
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         val dao = UserDb.getInstance(application).userDAO
         val repository = UserRepository(dao)
         val factory = ViewModelFactory(repository)
+
+        userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
 
         binding.userViewModel = userViewModel
 
