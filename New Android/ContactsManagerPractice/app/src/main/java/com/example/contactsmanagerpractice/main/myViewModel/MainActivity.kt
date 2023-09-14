@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var userViewModel: UserViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,9 +27,8 @@ class MainActivity : AppCompatActivity() {
         val repository = UserRepository(dao)
         val factory = ViewModelFactory(repository)
 
-        userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
+        userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
         binding.userViewModel = userViewModel
-
         binding.lifecycleOwner = this
 
         initRecyclerView()
@@ -42,18 +40,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun displayUsersList() {
-        userViewModel.users.observe(this, Observer {
+        userViewModel.users.observe(this) {
             binding.recyclerView.adapter = UserAdapter(it) {
                 selectedItem : User -> listItemClicked(selectedItem)
             }
-        })
+        }
     }
 
-    private fun listItemClicked(selectedItem: User) {
-        Toast.makeText(this, "The selected Item is ${selectedItem.name}", Toast.LENGTH_LONG)
-            .show()
+    fun listItemClicked(selectedItem: User) {
+        Toast.makeText(this, "The selected Item is ${selectedItem.name}", Toast.LENGTH_LONG).show()
         userViewModel.initUpdateOrDelete(selectedItem)
     }
-
-
 }

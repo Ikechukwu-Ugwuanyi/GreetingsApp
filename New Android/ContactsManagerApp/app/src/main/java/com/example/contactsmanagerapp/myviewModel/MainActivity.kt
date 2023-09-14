@@ -27,9 +27,8 @@ class MainActivity : AppCompatActivity() {
             val repository = UserRepository(dao)
             val factory = UserViewModelFactory(repository)
 
-            userViewModel = ViewModelProvider(this, factory).get(UserViewModel::class.java)
+            userViewModel = ViewModelProvider(this, factory)[UserViewModel::class.java]
             binding.userViewModel = userViewModel
-
             binding.lifecycleOwner = this
 
             initRecyclerView()
@@ -38,10 +37,10 @@ class MainActivity : AppCompatActivity() {
 
         private fun initRecyclerView() {
             binding.recyclerView.layoutManager = LinearLayoutManager(this)
-            DisplayUsersList()
+            displayUsersList()
         }
 
-        private fun DisplayUsersList() {
+        private fun displayUsersList() {
             userViewModel.users.observe(this) {
                 binding.recyclerView.adapter = MyRecyclerViewAdapter(it) {
                         selectedItem: User -> listItemClicked(selectedItem)

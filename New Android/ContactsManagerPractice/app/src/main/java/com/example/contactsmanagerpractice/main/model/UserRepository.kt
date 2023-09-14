@@ -1,5 +1,6 @@
 package com.example.contactsmanagerpractice.main.model
 
+
 class UserRepository(private val dao: UserDAO) {
 
     val users = dao.getAllUsersInDb()

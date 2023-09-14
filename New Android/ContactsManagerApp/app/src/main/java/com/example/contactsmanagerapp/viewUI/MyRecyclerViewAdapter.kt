@@ -10,7 +10,7 @@ import com.example.contactsmanagerapp.room.User
 
 
 class MyRecyclerViewAdapter(private val userList: List<User>, private val clickListener: (User) -> Unit
-) : RecyclerView.Adapter<MyViewHolder>() {
+) : RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -27,16 +27,17 @@ class MyRecyclerViewAdapter(private val userList: List<User>, private val clickL
         holder.bind(userList[position], clickListener)
     }
 
-}
 
-class MyViewHolder(private val binding: CardItemBinding) : RecyclerView.ViewHolder(binding.root){
+
+class MyViewHolder(private val binding: CardItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(user: User, clickListener: (User) -> Unit) {
         binding.textView.text = user.name
         binding.textView2.text = user.email
 
-        binding.listItemLayout.setOnClickListener{
+        binding.listItemLayout.setOnClickListener {
             clickListener(user)
         }
     }
+}
 }
