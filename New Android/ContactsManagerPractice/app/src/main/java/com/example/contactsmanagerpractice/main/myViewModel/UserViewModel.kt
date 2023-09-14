@@ -13,133 +13,35 @@ import kotlinx.coroutines.launch
 
 class UserViewModel(private  val repository: UserRepository) : ViewModel(), Observable {
 
-//    val users = repository.users
-//    var isUpdateOrDelete = false
-//    private lateinit var userToUpdateOrDelete: User
-//
-//    @Bindable
-//    var inputName = MutableLiveData<String?>()
-//
-//    @Bindable
-//    var inputEmail = MutableLiveData<String?>()
-//
-//    @Bindable
-//    var saveOrUpdateButtonText = MutableLiveData<String>()
-//
-//    @Bindable
-//    var deleteOrClearAllButtonText = MutableLiveData<String>()
-//
-//    init {
-//        saveOrUpdateButtonText.value = "Save"
-//        deleteOrClearAllButtonText.value = "Clear All"
-//    }
-//
-//    fun updateOrSave() {
-//        if (isUpdateOrDelete) {
-//            userToUpdateOrDelete.name = inputName.value!!
-//            userToUpdateOrDelete.email = inputEmail.value!!
-//
-//            update(userToUpdateOrDelete)
-//        } else {
-//
-//            val name = inputName.value!!
-//            val email = inputEmail.value!!
-//            insert(User(0, name, email))
-//
-//            inputName.value = null
-//            inputEmail.value = null
-//        }
-//    }
-//
-//    fun deleteOrClearAll() {
-//        if (isUpdateOrDelete) {
-//            delete(userToUpdateOrDelete)
-//        } else {
-//            clearAll()
-//        }
-//    }
-//
-//    private fun insert(user: User) = viewModelScope.launch {
-//        repository.insert(user)
-//    }
-//
-//    private fun clearAll() = viewModelScope.launch{
-//        repository.deleteAll()
-//    }
-//
-//    private fun update(user: User) = viewModelScope.launch {
-//        repository.update(user)
-//
-//        //FResetting the fields
-//        inputName.value = null
-//        inputEmail.value = null
-//        isUpdateOrDelete = false
-//        saveOrUpdateButtonText.value = "Save"
-//        deleteOrClearAllButtonText.value = "Clear All"
-//
-//    }
-//
-//    private fun delete(user: User) = viewModelScope.launch{
-//        repository.deleteUser(user)
-//
-//        //Resetting the fields
-//        inputName.value = null
-//        inputEmail.value = null
-//        isUpdateOrDelete = false
-//        saveOrUpdateButtonText.value = "Save"
-//        deleteOrClearAllButtonText.value = "Clear All"
-//
-//    }
-//
-//    fun initUpdateOrDelete(user: User) {
-//        inputName.value = user.name
-//        inputEmail.value = user.email
-//        isUpdateOrDelete = true
-//        saveOrUpdateButtonText.value = "Update"
-//        deleteOrClearAllButtonText.value = "Delete"
-//        userToUpdateOrDelete = user
-//
-//    }
-//
-//    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-//
-//    }
-//
-//    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-//
-//    }
-
     val users = repository.users
     var isUpdateOrDelete = false
     private lateinit var userToUpdateOrDelete: User
 
     @Bindable
-    val  inputName = MutableLiveData<String?>()
+    var inputName = MutableLiveData<String?>()
 
     @Bindable
-    val inputEmail = MutableLiveData<String?>()
+    var inputEmail = MutableLiveData<String?>()
 
     @Bindable
-    val saveOrUpdateButtonText = MutableLiveData<String>()
+    var saveOrUpdateButtonText = MutableLiveData<String>()
 
     @Bindable
-    val clearAllOrDeleteButtonText = MutableLiveData<String>()
+    var deleteOrClearAllButtonText = MutableLiveData<String>()
 
     init {
         saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear All"
+        deleteOrClearAllButtonText.value = "Clear All"
     }
 
     fun updateOrSave() {
         if (isUpdateOrDelete) {
-            //Make Update
             userToUpdateOrDelete.name = inputName.value!!
             userToUpdateOrDelete.email = inputEmail.value!!
 
             update(userToUpdateOrDelete)
+        } else {
 
-        } else{
-            //Insert Functionality
             val name = inputName.value!!
             val email = inputEmail.value!!
 
@@ -147,57 +49,56 @@ class UserViewModel(private  val repository: UserRepository) : ViewModel(), Obse
 
             inputName.value = null
             inputEmail.value = null
-
         }
     }
 
-    fun clearAllOrDelete() {
+    fun deleteOrClearAll() {
         if (isUpdateOrDelete) {
             delete(userToUpdateOrDelete)
         } else {
             clearAll()
         }
-
     }
 
-    private fun insert(user: User) = viewModelScope.launch{
+    private fun insert(user: User) = viewModelScope.launch {
         repository.insert(user)
     }
 
-    private fun clearAll() = viewModelScope.launch {
+    private fun clearAll() = viewModelScope.launch{
         repository.deleteAll()
     }
 
     private fun update(user: User) = viewModelScope.launch {
         repository.update(user)
 
-        //Resetting the buttons and fields
+        //FResetting the fields
         inputName.value = null
         inputEmail.value = null
         isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear All"
+        deleteOrClearAllButtonText.value = "Clear All"
+
     }
 
-    private fun delete(user: User) = viewModelScope.launch {
+    private fun delete(user: User) = viewModelScope.launch{
         repository.deleteUser(user)
 
-        //Resetting the buttons and fields
+        //Resetting the fields
         inputName.value = null
         inputEmail.value = null
         isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
-        clearAllOrDeleteButtonText.value = "Clear All"
+        deleteOrClearAllButtonText.value = "Clear All"
+
     }
 
     fun initUpdateOrDelete(user: User) {
-
         inputName.value = user.name
         inputEmail.value = user.email
         isUpdateOrDelete = true
-        userToUpdateOrDelete = user
         saveOrUpdateButtonText.value = "Update"
-        clearAllOrDeleteButtonText.value = "Delete"
+        deleteOrClearAllButtonText.value = "Delete"
+        userToUpdateOrDelete = user
 
     }
 

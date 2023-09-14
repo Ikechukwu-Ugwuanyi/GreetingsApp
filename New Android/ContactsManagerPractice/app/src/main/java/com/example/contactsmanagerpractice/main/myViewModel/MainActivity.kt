@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun listItemClicked(selectedItem: User) {
+    private fun listItemClicked(selectedItem: User) {
         Toast.makeText(this, "The selected Item is ${selectedItem.name}", Toast.LENGTH_LONG).show()
         userViewModel.initUpdateOrDelete(selectedItem)
     }

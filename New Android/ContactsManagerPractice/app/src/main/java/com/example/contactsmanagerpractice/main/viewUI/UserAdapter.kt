@@ -8,10 +8,8 @@ import com.example.contactsmanagerpractice.main.model.User
 import com.example.contactsmanagerpractice.R
 import com.example.contactsmanagerpractice.databinding.CardItemBinding
 
-class UserAdapter(private var userList: List<User>, private val clickListener: (User) -> Unit) :
+class UserAdapter(private val userList: List<User>, private val clickListener: (User) -> Unit) :
 RecyclerView.Adapter<UserAdapter.MyViewHolder>(){
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val layout = LayoutInflater.from(parent.context)
@@ -33,7 +31,10 @@ RecyclerView.Adapter<UserAdapter.MyViewHolder>(){
         fun bind(user: User, clickListener: (User) -> Unit) {
             binding.nameTxt.text = user.name
             binding.emailTxt.text = user.email
-            clickListener(user)
+
+            binding.listItem.setOnClickListener{
+                clickListener(user)
+            }
         }
     }
 
