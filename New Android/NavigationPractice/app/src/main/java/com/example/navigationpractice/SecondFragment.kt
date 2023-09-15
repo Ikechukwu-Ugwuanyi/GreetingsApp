@@ -21,6 +21,10 @@ class SecondFragment : Fragment() {
 
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_second, container, false)
+
+        val args = arguments?.getString("name")
+        binding.secondFrag.text = args
+
         return binding.root
     }
 

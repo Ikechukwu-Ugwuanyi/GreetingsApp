@@ -1,10 +1,12 @@
 package com.example.navigationpractice
 
 import android.os.Bundle
+import android.text.TextUtils
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
@@ -25,11 +27,19 @@ class HomeFragment : Fragment() {
 
 
 
+
         binding.btnSubmit.setOnClickListener {
-            it.findNavController().navigate(R.id.action_homeFragment_to_secondFragment)
+
+            if(!TextUtils.isEmpty(binding.editTxt.text.toString())){
+                val bundle = bundleOf("name" to binding.editTxt.text.toString())
+                it.findNavController().navigate(R.id.action_homeFragment_to_secondFragment, bundle)
+            } else{
+                Toast.makeText(activity, "The Edit field must not be empty!", Toast.LENGTH_LONG).show()
+            }
+
         }
 
-        val bundle = bundleOf("name", binding.editTxt.text.toString() )
+
 
         return  binding.root
     }
