@@ -16,7 +16,7 @@
             android:layout_marginBottom="32dp"
             android:backgroundTint="@color/primary"
             android:clickable="true"
-            android:contentDescription="image"
+            android:contentDescription="@string/image"
             android:tintMode="@color/white"
             app:borderWidth="0dp"
             app:fabSize="normal"
