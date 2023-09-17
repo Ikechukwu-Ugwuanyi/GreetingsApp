@@ -25,9 +25,6 @@ class HomeFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
 
-
-
-
         binding.btnSubmit.setOnClickListener {
 
             if(!TextUtils.isEmpty(binding.editTxt.text.toString())){
