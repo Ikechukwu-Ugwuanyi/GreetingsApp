@@ -10,7 +10,6 @@ import com.example.contactsmanagerpractice.main.model.User
 import com.example.contactsmanagerpractice.main.model.UserRepository
 import kotlinx.coroutines.launch
 
-
 class UserViewModel(private  val repository: UserRepository) : ViewModel(), Observable {
 
     val users = repository.users
