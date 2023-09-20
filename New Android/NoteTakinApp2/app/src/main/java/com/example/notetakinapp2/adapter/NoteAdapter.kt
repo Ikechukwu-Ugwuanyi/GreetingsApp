@@ -1,5 +1,8 @@
 package com.example.notetakinapp2.adapter
 
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notetakinapp2.databinding.NoteLayoutBinding
@@ -18,11 +21,28 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         }
 
         override fun areContentsTheSame(oldItem: Note, newItem: Note): Boolean {
-            TODO("Not yet implemented")
+            return oldItem == newItem
         }
 
     }
 
+    val differ = AsyncListDiffer(this, differCallback)
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NoteViewHolder {
+        return NoteViewHolder(
+            NoteLayoutBinding.inflate(
+                LayoutInflater.from(parent.context), parent, false
+            )
+        )
+    }
+
+    override fun getItemCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
+        TODO("Not yet implemented")
+    }
 
 
 }
