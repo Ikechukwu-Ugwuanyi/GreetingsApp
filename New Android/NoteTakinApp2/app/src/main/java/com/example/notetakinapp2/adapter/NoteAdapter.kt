@@ -41,7 +41,9 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val currentNote = differ.currentList[position]
+
+        holder.itemBinding.
     }
 
 
