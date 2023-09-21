@@ -1,16 +1,19 @@
 package com.example.notetakinapp2.adapter
 
+import android.graphics.Color.argb
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notetakinapp2.databinding.NoteLayoutBinding
+import com.example.notetakinapp2.fragments.HomeFragment
 import com.example.notetakinapp2.model.Note
+import kotlin.random.Random
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
-    class NoteViewHolder(itemBinding: NoteLayoutBinding) :
+    class NoteViewHolder(val itemBinding: NoteLayoutBinding) :
         RecyclerView.ViewHolder(itemBinding.root)
 
     private val differCallback = object : DiffUtil.ItemCallback<Note>() {
@@ -36,15 +39,31 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         )
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
-
     override fun onBindViewHolder(holder: NoteViewHolder, position: Int) {
         val currentNote = differ.currentList[position]
 
-        holder.itemBinding.
+        holder.itemBinding.tvNoteTitle.text = currentNote.noteTitle
+        holder.itemBinding.tvNoteBody.text = currentNote.noteBody
+
+        val random = Random()
+        val color = argb(255,
+            random.nextInt(256),
+            random.nextInt(256),
+            random.nextInt(256))
+
+        holder.itemBinding.ibColor.setBackgroundColor(color)
+
+        holder.itemView.setOnClickListener {
+            val direction = HomeFragmentDirections
+        }
+
     }
+
+    override fun getItemCount(): Int {
+        return differ.currentList.size
+    }
+
+
 
 
 }
