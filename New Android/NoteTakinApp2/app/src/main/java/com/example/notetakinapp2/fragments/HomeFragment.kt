@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.example.notetakinapp2.R
 import com.example.notetakinapp2.adapter.NoteAdapter
 import com.example.notetakinapp2.databinding.FragmentHomeBinding
@@ -34,6 +35,21 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         return  binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        notesViewModel = (activity as MainActivity).notesViewModel
+
+        setUpRecyclerView()
+        binding.fabAddNote.setOnClickListener {
+            it.findNavController().navigate(
+                R.id.action_homeFragment_to_newNoteFragment
+            )
+        }
+    }
+
+    private fun setUpRecyclerView() {
+        TODO("Not yet implemented")
     }
 
 }
