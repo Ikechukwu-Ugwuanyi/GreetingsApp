@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.notetakinapp2.databinding.NoteLayoutBinding
 import com.example.notetakinapp2.fragments.HomeFragment
+import com.example.notetakinapp2.fragments.HomeFragmentDirections
 import com.example.notetakinapp2.model.Note
-import kotlin.random.Random
+import java.util.Random
 
 class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
 
@@ -54,7 +55,7 @@ class NoteAdapter : RecyclerView.Adapter<NoteAdapter.NoteViewHolder>() {
         holder.itemBinding.ibColor.setBackgroundColor(color)
 
         holder.itemView.setOnClickListener {
-            val direction = HomeFragmentDirections
+            val direction = HomeFragmentDirections.actionHomeFragmentToUpdateNoteFragment(currentNote)
         }
 
     }
