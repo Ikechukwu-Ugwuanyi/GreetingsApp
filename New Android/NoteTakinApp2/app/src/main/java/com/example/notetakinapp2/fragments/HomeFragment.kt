@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notetakinapp2.R
 import com.example.notetakinapp2.adapter.NoteAdapter
 import com.example.notetakinapp2.databinding.FragmentHomeBinding
@@ -19,7 +20,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     private val binding get() = _binding!!
 
     private lateinit var notesViewModel : NoteViewModel
-    private lateinit var adapter : NoteAdapter
+    private lateinit var noteAdapter : NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,7 +39,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        notesViewModel = (activity as MainActivity).notesViewModel
+        notesViewModel = (activity as MainActivity).noteViewModel
 
         setUpRecyclerView()
         binding.fabAddNote.setOnClickListener {
@@ -49,7 +50,31 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun setUpRecyclerView() {
-        TODO("Not yet implemented")
+        noteAdapter = NoteAdapter()
+
+        binding.recyclerView.apply {
+            layoutManager = StaggeredGridLayoutManager(
+                2,
+                StaggeredGridLayoutManager.VERTICAL
+            )
+            setHasFixedSize(true)
+            adapter = noteAdapter
+        }
+
+        activity?.let {
+            notesViewModel.getNotes(note).observe(
+                viewLifecycleOwner, {
+                    note -> noteAdapter.differ.submitList(note)
+                    updateUI(note)
+                }
+            )
+        }
+
+
+    }
+
+    private fun updateUI(note: List<Note>?) {
+
     }
 
 }
