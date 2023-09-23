@@ -2,6 +2,8 @@ package com.example.notetakinapp2.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
@@ -11,6 +13,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.notetakinapp2.R
 import com.example.notetakinapp2.adapter.NoteAdapter
 import com.example.notetakinapp2.databinding.FragmentHomeBinding
+import com.example.notetakinapp2.model.Note
 import com.example.notetakinapp2.viewModel.NoteViewModel
 
 
@@ -62,7 +65,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         }
 
         activity?.let {
-            notesViewModel.getNotes(note).observe(
+            notesViewModel.getNotes().observe(
                 viewLifecycleOwner, {
                     note -> noteAdapter.differ.submitList(note)
                     updateUI(note)
@@ -74,7 +77,23 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun updateUI(note: List<Note>?) {
+        if(note.isNotEmpty()) {
+            binding.cardView.visibility = View.GONE
+            binding.recyclerView.visibility = View.VISIBLE
+        } else{
+            binding.cardView.visibility = View.VISIBLE
+            binding.recyclerView.visibility = View.GONE
+        }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu.clear()
+        inflater.inflate(R.menu.home_menu, menu)
+
+        val mMenuSearch = menu.findItem(R.id.menu_search)
     }
 
 }
