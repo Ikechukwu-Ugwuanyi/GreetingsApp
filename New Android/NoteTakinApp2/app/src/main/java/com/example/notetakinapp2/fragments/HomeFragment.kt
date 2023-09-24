@@ -93,7 +93,35 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
         menu.clear()
         inflater.inflate(R.menu.home_menu, menu)
 
-        val mMenuSearch = menu.findItem(R.id.menu_search)
+        val mMenuSearch = menu.findItem(R.id.menu_search).actionView as SearchView
+        mMenuSearch.isSubmitButtonEnabled = false
+        mMenuSearch.setOnQueryTextListener(this)
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        //searchNote(query)
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        if (newText != null) {
+            searchNote(newText)
+        }
+        return true
+
+    }
+
+    private fun searchNote(query: String?){
+        val searchQuery = "%$query"
+        notesViewModel.searchNote(searchQuery).observe(
+            this,
+            {list -> noteAdapter.differ.submitList(list)}
+        )
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 }
