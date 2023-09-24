@@ -72,8 +72,6 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
                 }
             )
         }
-
-
     }
 
     private fun updateUI(note: List<Note>?) {
