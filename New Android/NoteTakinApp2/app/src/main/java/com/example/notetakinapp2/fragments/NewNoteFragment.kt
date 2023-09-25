@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
@@ -55,12 +56,12 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
 
             notesViewModel.addNote(note)
 
-            Toast.makeText(this, "Note Saved Successfully", Toast.LENGTH_LONG).show()
+            Toast.makeText(mView.context, "Note Saved Successfully", Toast.LENGTH_LONG).show()
 
             view.findNavController().navigate(R.id.action_newNoteFragment_to_homeFragment)
 
         } else {
-            Toast.makeText(this, "Please enter note title", Toast.LENGTH_LONG).show()
+            Toast.makeText(mView.context, "Please enter note title", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -75,6 +76,16 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.menu_Save -> {
+                saveNote(mView)
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 
