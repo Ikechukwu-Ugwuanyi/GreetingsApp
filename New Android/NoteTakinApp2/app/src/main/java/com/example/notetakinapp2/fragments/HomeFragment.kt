@@ -75,12 +75,14 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun updateUI(note: List<Note>?) {
-        if(note.isNotEmpty()) {
-            binding.cardView.visibility = View.GONE
-            binding.recyclerView.visibility = View.VISIBLE
-        } else{
-            binding.cardView.visibility = View.VISIBLE
-            binding.recyclerView.visibility = View.GONE
+        if (note != null) {
+            if(note.isNotEmpty()) {
+                binding.cardView.visibility = View.GONE
+                binding.recyclerView.visibility = View.VISIBLE
+            } else{
+                binding.cardView.visibility = View.VISIBLE
+                binding.recyclerView.visibility = View.GONE
+            }
         }
 
     }
