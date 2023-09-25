@@ -70,9 +70,6 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         inflater.inflate(R.menu.home_menu, menu)
         super.onCreateOptionsMenu(menu, inflater)
 
-        val mMenuSearch = menu.findItem(R.id.menu_search).actionView as SearchView
-        mMenuSearch.isSubmitButtonEnabled = false
-        mMenuSearch.setOnQueryTextListener(this)
     }
 
     override fun onDestroy() {
