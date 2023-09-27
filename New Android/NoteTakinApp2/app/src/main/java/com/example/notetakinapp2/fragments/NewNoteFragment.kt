@@ -7,7 +7,6 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.SearchView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
@@ -68,7 +67,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
 
         menu.clear()
-        inflater.inflate(R.menu.home_menu, menu)
+        inflater.inflate(R.menu.menu_new_note, menu)
         super.onCreateOptionsMenu(menu, inflater)
 
     }
