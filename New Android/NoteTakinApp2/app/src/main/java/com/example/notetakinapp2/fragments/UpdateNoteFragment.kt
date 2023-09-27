@@ -65,4 +65,9 @@ class UpdateNoteFragment : Fragment(R.layout.fragment_update_note) {
 
     }
 
+    private fun deleteNote() {
+
+
+    }
+
 }
