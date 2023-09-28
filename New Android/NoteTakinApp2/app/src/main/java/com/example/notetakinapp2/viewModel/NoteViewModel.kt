@@ -21,6 +21,6 @@ class NoteViewModel(app: Application, private val repository: NoteRepository) : 
         repository.deleteNote(note)
     }
 
-    fun getNotes(note: Note) = repository.getAllNotes()
+    fun getNotes() = repository.getAllNotes()
     fun searchNote(query: String?) = repository.searchNote(query)
 }

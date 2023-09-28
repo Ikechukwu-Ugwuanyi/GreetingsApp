@@ -66,11 +66,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
 
         activity?.let {
             notesViewModel.getNotes().observe(
-                viewLifecycleOwner, {
-                    note -> noteAdapter.differ.submitList(note)
-                    updateUI(note)
-                }
-            )
+                viewLifecycleOwner
+            ) { note ->
+                noteAdapter.differ.submitList(note)
+                updateUI(note)
+            }
         }
     }
 
