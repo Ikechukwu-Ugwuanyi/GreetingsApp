@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         val noteRepository = NoteRepository(NoteDatabase(this))
         val viewModelProviderFactory = NoteViewModelFactory(application, noteRepository)
 
-        val viewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
+        noteViewModel = ViewModelProvider(this, viewModelProviderFactory)[NoteViewModel::class.java]
 
     }
 }
