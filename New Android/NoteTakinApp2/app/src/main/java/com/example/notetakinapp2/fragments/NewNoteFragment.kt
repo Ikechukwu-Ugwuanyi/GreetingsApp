@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import com.example.notetakinapp2.MainActivity
 import com.example.notetakinapp2.R
 import com.example.notetakinapp2.adapter.NoteAdapter
 import com.example.notetakinapp2.databinding.FragmentNewNoteBinding
@@ -23,7 +24,7 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     private val binding get() = _binding!!
 
     private lateinit var notesViewModel : NoteViewModel
-    private lateinit var noteAdapter : NoteAdapter
+    private lateinit var noteAdapter: NoteAdapter
     private lateinit var mView: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,28 +45,34 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
         super.onViewCreated(view, savedInstanceState)
         notesViewModel = (activity as MainActivity).noteViewModel
         mView = view
+
     }
 
-    private fun saveNote(view: View) {
+    private fun savenote(view: View){
         val noteTitle = binding.editNoteTitle.text.toString().trim()
         val noteBody = binding.editNoteBody.text.toString().trim()
 
-        if(noteTitle.isNotEmpty()) {
-            val note = Note(0, noteTitle, noteBody)
+        if (noteTitle.isNotEmpty()){
+            val note = Note(0,noteTitle, noteBody)
 
             notesViewModel.addNote(note)
 
-            Toast.makeText(mView.context, "Note Saved Successfully", Toast.LENGTH_LONG).show()
+            Toast.makeText(mView.context,
+                "Note Saved Successfully",
+                Toast.LENGTH_LONG).show()
 
             view.findNavController().navigate(R.id.action_newNoteFragment_to_homeFragment)
 
-        } else {
-            Toast.makeText(mView.context, "Please enter note title", Toast.LENGTH_LONG).show()
+        }
+        else{
+            Toast.makeText(
+                mView.context,
+                "Please enter note Title",
+                Toast.LENGTH_LONG).show()
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-
         menu.clear()
         inflater.inflate(R.menu.menu_new_note, menu)
         super.onCreateOptionsMenu(menu, inflater)
@@ -78,14 +85,11 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
+        when(item.itemId){
             R.id.menu_Save -> {
-                saveNote(mView)
+                savenote(mView)
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
-
-
 }

@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.notetakinapp2.model.Note
 
 @Database(entities = [Note::class], version = 1)
-abstract class NoteDatabase : RoomDatabase() {
+abstract class NoteDatabase :RoomDatabase(){
 
     abstract fun getNoteDao() : NoteDAO
 
@@ -17,19 +17,20 @@ abstract class NoteDatabase : RoomDatabase() {
         private val LOCK = Any()
 
         operator fun invoke(context: Context) = instance ?:
-        synchronized(LOCK) {
+        synchronized(LOCK){
             instance ?:
             createDatabase(context).also{
                 instance = it
             }
         }
 
-        private fun createDatabase(context: Context) =
+        private fun createDatabase(context: Context)=
             Room.databaseBuilder(
                 context.applicationContext,
                 NoteDatabase::class.java,
                 "note_db"
             ).build()
+
     }
 
 }

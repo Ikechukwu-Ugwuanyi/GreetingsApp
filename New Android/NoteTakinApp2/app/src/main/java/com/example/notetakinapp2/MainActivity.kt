@@ -1,4 +1,4 @@
-package com.example.notetakinapp2.fragments
+package com.example.notetakinapp2
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

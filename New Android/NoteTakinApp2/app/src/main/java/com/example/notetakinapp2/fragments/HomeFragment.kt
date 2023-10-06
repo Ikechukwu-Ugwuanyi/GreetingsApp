@@ -10,6 +10,7 @@ import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.example.notetakinapp2.MainActivity
 import com.example.notetakinapp2.R
 import com.example.notetakinapp2.adapter.NoteAdapter
 import com.example.notetakinapp2.databinding.FragmentHomeBinding
@@ -19,33 +20,35 @@ import com.example.notetakinapp2.viewModel.NoteViewModel
 
 class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextListener {
 
+
     private var _binding : FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var notesViewModel : NoteViewModel
-    private lateinit var noteAdapter : NoteAdapter
+    private lateinit var noteAdapter: NoteAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-    }
 
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        return  binding.root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         notesViewModel = (activity as MainActivity).noteViewModel
 
         setUpRecyclerView()
-        binding.fabAddNote.setOnClickListener {
+
+        binding.fabAddNote.setOnClickListener{
             it.findNavController().navigate(
                 R.id.action_homeFragment_to_newNoteFragment
             )
@@ -53,7 +56,7 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     private fun setUpRecyclerView() {
-        noteAdapter = NoteAdapter()
+        noteAdapter= NoteAdapter()
 
         binding.recyclerView.apply {
             layoutManager = StaggeredGridLayoutManager(
@@ -62,26 +65,29 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
             )
             setHasFixedSize(true)
             adapter = noteAdapter
+
         }
 
         activity?.let {
             notesViewModel.getNotes().observe(
-                viewLifecycleOwner
-            ) { note ->
-                noteAdapter.differ.submitList(note)
-                updateUI(note)
-            }
+                viewLifecycleOwner, {
+                        note -> noteAdapter.differ.submitList(note)
+                    updateUI(note)
+                }
+            )
         }
+
     }
 
     private fun updateUI(note: List<Note>?) {
         if (note != null) {
-            if(note.isNotEmpty()) {
+            if (note.isNotEmpty()){
                 binding.cardView.visibility = View.GONE
                 binding.recyclerView.visibility = View.VISIBLE
-            } else{
+            }else{
                 binding.cardView.visibility = View.VISIBLE
                 binding.recyclerView.visibility = View.GONE
+
             }
         }
 
@@ -99,16 +105,15 @@ class HomeFragment : Fragment(R.layout.fragment_home), SearchView.OnQueryTextLis
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {
-        //searchNote(query)
+        //  searchNote(query)
         return false
     }
 
     override fun onQueryTextChange(newText: String?): Boolean {
-        if (newText != null) {
+        if (newText != null){
             searchNote(newText)
         }
         return true
-
     }
 
     private fun searchNote(query: String?){

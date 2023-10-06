@@ -3,16 +3,14 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs'
-    id 'kotlin-parcelize'
 }
 
-
 android {
-    namespace 'com.example.notetakingapp'
+    namespace 'com.example.noteapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.notetakingapp"
+        applicationId "com.example.noteapp"
         minSdk 24
         targetSdk 33
         versionCode 1
@@ -28,21 +26,21 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = '17'
+        jvmTarget = '1.8'
     }
 
-    buildFeatures {
+    buildFeatures{
         dataBinding = true
     }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -51,28 +49,29 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     //Room
-    def room_version = "2.5.1"
+    def room_version = "2.5.2"
 
-    implementation "androidx.room:room-runtime:$room_version"
-
+    implementation("androidx.room:room-runtime:$room_version")
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // To use Kotlin annotation processing tool (kapt)
     kapt("androidx.room:room-compiler:$room_version")
 
-    //Coroutines
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation("androidx.room:room-ktx:$room_version")
 
-    //Navigation
-    def nav_version = "2.5.3"
+    //Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
 
+    //Navigation
+    def nav_version = "2.7.4"
+    // Kotlin
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
 
     //Lifecycle
-    def lifecycle_version = "2.6.1"
-    def arch_version = "2.2.0"
+    def lifecycle_version = "2.6.2"
+
 
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -81,5 +80,7 @@ dependencies {
 
     // Annotation processor
     kapt("androidx.lifecycle:lifecycle-compiler:$lifecycle_version")
+
+
 
 }

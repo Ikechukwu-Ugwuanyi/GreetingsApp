@@ -37,7 +37,7 @@
 
         <argument
             android:name="note"
-            app:argType="com.mastercoding.notetakinapp2.model.Note"
+            app:argType="com.example.notetakinapp2.model.Note"
             app:nullable="true"/>
 
     </fragment>
