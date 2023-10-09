@@ -2,12 +2,16 @@ package com.example.noteapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.noteapp.databinding.ActivityMainBinding
+import com.example.noteapp.model.NoteDatabase
+import com.example.noteapp.repository.NoteRepository
 import com.example.noteapp.viewmodel.NoteViewModel
+import com.example.noteapp.viewmodel.NoteViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
+    private lateinit var binding : ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setUpVieModel() {
-        TODO("Not yet implemented")
+        val noteRepository = NoteRepository(NoteDatabase(this))
+        val vieModelFactory = NoteViewModelFactory(application, noteRepository)
+        val noteViewModel = ViewModelProvider(this, vieModelFactory).get(NoteViewModel::class.java)
     }
 }
