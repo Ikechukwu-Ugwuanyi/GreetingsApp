@@ -2,14 +2,24 @@ package com.example.noteapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.noteapp.databinding.ActivityMainBinding
 import com.example.noteapp.viewmodel.NoteViewModel
 
 class MainActivity : AppCompatActivity() {
 
+    lateinit var binding : ActivityMainBinding
     lateinit var noteViewModel: NoteViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setUpVieModel()
+    }
+
+    private fun setUpVieModel() {
+        TODO("Not yet implemented")
     }
 }
