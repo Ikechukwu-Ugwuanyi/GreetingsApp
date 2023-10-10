@@ -34,9 +34,13 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun downloadBigFile() {
+    //Only the original thread that created a view hierarchy can touch its views.
+
+    private suspend fun downloadBigFile() {
         for (i in 0..1000000) {
-            Log.i("TAG", "$i downloading in ${Thread.currentThread().name}" )
+            withContext(Dispatchers.Main) {
+                binding.context.text = "$i downloading on ${Thread.currentThread().name}"
+            }
         }
     }
 
