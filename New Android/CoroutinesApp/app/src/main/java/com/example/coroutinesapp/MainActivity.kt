@@ -12,36 +12,25 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainActivity : AppCompatActivity() {
+    private  lateinit var binding:ActivityMainBinding
+    private var counter : Int = 0
 
-    lateinit var binding: ActivityMainBinding
-    var counter = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.btnCount.setOnClickListener {
+        binding.btnCount.setOnClickListener{
             binding.textView.text = counter++.toString()
-        }
-
-
-        binding.btnDownload.setOnClickListener {
-
-            CoroutineScope(Dispatchers.IO).launch{
-                downloadBigFile()
-            }
-
+            downloadBigFile()
         }
 
     }
 
-    private suspend fun downloadBigFile() {
-        for (i in 1..100000) {
-            //Log.i("TAG", "Downloading $i on ${Thread.currentThread().name}")
-            withContext(Dispatchers.Main){
-                binding.textView2.text = "$i in ${Thread.currentThread().name}"
-            }
+    private fun downloadBigFile() {
+        for (i in 0..1000000) {
+            Log.i("TAG", "$i downloading in ${Thread.currentThread().name}" )
         }
     }
 

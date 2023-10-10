@@ -31,6 +31,4 @@ abstract class NoteDatabase : RoomDatabase() {
             ).build()
     }
 
-
-
 }

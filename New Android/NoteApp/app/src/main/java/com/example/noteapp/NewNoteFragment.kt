@@ -49,11 +49,11 @@ class NewNoteFragment : Fragment(R.layout.fragment_new_note) {
     }
 
     private fun saveNote(view: View) {
-        val noteTitle = binding.editNoteTitle.text.toString().trim()
-        val noteBody = binding.editNoteBody.text.toString().trim()
+        val title = binding.editNoteTitle.text.toString().trim()
+        val body = binding.editNoteBody.text.toString().trim()
 
-        if(noteTitle.isNotEmpty()) {
-            val note = Note(0, noteTitle, noteBody)
+        if(title.isNotEmpty()) {
+            val note = Note(0, title, body)
             notesViewModel.addNote(note)
 
             Toast.makeText(mView.context, "Note Saved Successfully!", Toast.LENGTH_LONG).show()

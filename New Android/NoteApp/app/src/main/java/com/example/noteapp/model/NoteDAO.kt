@@ -11,8 +11,8 @@ import androidx.room.Update
 @Dao
 interface NoteDAO {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertNote(note: Note)
+    @Insert(entity = Note::class, onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertNote(note: Note) : Long
 
     @Update
     suspend fun updateNote(note: Note)

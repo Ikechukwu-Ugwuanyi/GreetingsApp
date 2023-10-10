@@ -9,13 +9,13 @@ import kotlinx.coroutines.launch
 
 class NoteViewModel(app : Application, private val noteRepository: NoteRepository) : AndroidViewModel(app) {
 
-     fun addNote(note: Note) {
-         viewModelScope.launch {
-             noteRepository.insertNote(note)
-         }
-     }
+    fun addNote(note: Note) {
+        viewModelScope.launch {
+            noteRepository.insertNote(note)
+        }
+    }
 
-    fun updateNote(note: Note){
+    fun updateNote(note: Note) {
         viewModelScope.launch {
             noteRepository.updateNote(note)
         }
@@ -29,8 +29,5 @@ class NoteViewModel(app : Application, private val noteRepository: NoteRepositor
 
     fun getAllNote() = noteRepository.getAllNote()
     fun searchNote(query: String?) = noteRepository.searchNote(query)
-
-
-
 
 }
