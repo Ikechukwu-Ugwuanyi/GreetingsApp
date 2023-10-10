@@ -23,7 +23,13 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCount.setOnClickListener{
             binding.textView.text = counter++.toString()
-            downloadBigFile()
+
+        }
+
+        binding.btnDownload.setOnClickListener {
+            CoroutineScope(Dispatchers.IO).launch {
+                downloadBigFile()
+            }
         }
 
     }
