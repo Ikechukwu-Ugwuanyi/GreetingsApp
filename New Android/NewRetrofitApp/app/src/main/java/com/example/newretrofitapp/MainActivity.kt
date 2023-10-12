@@ -2,6 +2,7 @@ package com.example.newretrofitapp
 
 import android.os.Bundle
 import android.util.Log
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
@@ -12,6 +13,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val textView: TextView = findViewById(R.id.textView)
 
         val retrofitService = RetrofitInstance
             .getRetrofitInstance()
@@ -30,6 +33,11 @@ class MainActivity : AppCompatActivity() {
                 while (albumList.hasNext()) {
                     val albumItem = albumList.next()
                     Log.i("TAG", albumItem.title)
+
+                    val result = "Album Title: ${albumItem.title}"
+                    textView.append(result)
+
+
                 }
             }
         })
