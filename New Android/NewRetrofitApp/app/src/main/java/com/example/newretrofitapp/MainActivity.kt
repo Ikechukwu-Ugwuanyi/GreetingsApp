@@ -22,8 +22,11 @@ class MainActivity : AppCompatActivity() {
 
         val responseLiveData : LiveData<Response<Albums>> =
             liveData {
-                val response = retrofitService.getAlbums()
-                emit(response)
+               // val response = retrofitService.getAlbums()
+
+                val response2 = retrofitService.getSpecificAlbums(6)
+
+                emit(response2)
             }
 
         responseLiveData.observe(this, Observer {
@@ -34,9 +37,8 @@ class MainActivity : AppCompatActivity() {
                     val albumItem = albumList.next()
                     Log.i("TAG", albumItem.title)
 
-                    val result = "Album Title: ${albumItem.title}"
+                    val result = "Album Title: ${albumItem.title} \n"
                     textView.append(result)
-
 
                 }
             }
