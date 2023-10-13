@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() {
 
                     val result = "Album Title: ${albumItem.title} \n"
                     textView.append(result)
-
                 }
             }
         })
