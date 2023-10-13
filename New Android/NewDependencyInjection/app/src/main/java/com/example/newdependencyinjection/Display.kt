@@ -1,13 +1,6 @@
 package com.example.newdependencyinjection
 
-import android.util.Log
+interface Display {
 
-class Display {
-    init {
-        Log.i("TAG", "Screen Created")
-    }
-
-    fun turnOnScreen(){
-        Log.i("TAG", "Turning ON the Screen")
-    }
+    fun turnOnScreen()
 }
