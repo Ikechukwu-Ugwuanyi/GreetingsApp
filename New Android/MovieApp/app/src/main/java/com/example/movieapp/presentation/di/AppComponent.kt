@@ -11,7 +11,6 @@ import javax.inject.Singleton
         DatabaseModule::class,
         CacheDataModule::class,
         LocalDataModule::class,
-        MovieModule::class,
         NetModule::class,
         RemoteDataModule::class,
         RepositoryModule::class,
