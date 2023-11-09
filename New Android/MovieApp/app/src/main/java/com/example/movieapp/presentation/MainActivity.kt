@@ -49,22 +49,23 @@ class MainActivity : AppCompatActivity() {
         binding.progressBar.visibility = View.VISIBLE
         val responseLiveData = movieViewModel.getMovie()
 
-        responseLiveData.observe(this, Observer{
+        responseLiveData.observe(this, Observer {
 
-            if (it != null){
+            if (it != null) {
                 adapter.setList(it)
                 adapter.notifyDataSetChanged()
                 binding.progressBar.visibility = View.GONE
             } else {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(applicationContext, "There is no data available", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "There is no data available", Toast.LENGTH_LONG)
+                    .show()
             }
         })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
-        val inflater : MenuInflater = menuInflater
+        val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.update_menu, menu)
 
         return true
@@ -72,27 +73,29 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        return when(item.itemId){
+        return when (item.itemId) {
             R.id.action_update -> {
                 updateMovies()
                 true
-            } else -> super.onOptionsItemSelected(item)
+            }
+
+            else -> super.onOptionsItemSelected(item)
         }
 
     }
 
-    fun updateMovies(){
+    fun updateMovies() {
         binding.progressBar.visibility = View.VISIBLE
         val response = movieViewModel.updateMovie()
 
-                response.observe(this, Observer{
-                    if(it != null) {
-                        adapter.setList(it)
-                        adapter.notifyDataSetChanged()
-                        binding.progressBar.visibility = View.GONE
-                    }else {
-                        binding.progressBar.visibility = View.GONE
-                    }
+        response.observe(this, Observer {
+            if (it != null) {
+                adapter.setList(it)
+                adapter.notifyDataSetChanged()
+                binding.progressBar.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+            }
         }
 
         )
