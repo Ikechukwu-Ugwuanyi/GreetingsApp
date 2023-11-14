@@ -8,7 +8,8 @@ class RetrofitInstance {
     val baseUrl = "http://192.168.0.149/quiz/"
 
     fun getRetrofitInstance() : Retrofit {
-        return Retrofit.Builder().baseUrl(baseUrl)
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
