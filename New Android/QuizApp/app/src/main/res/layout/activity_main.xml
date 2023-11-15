@@ -21,7 +21,7 @@
             app:layout_constraintVertical_bias="0.092" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ready for the challenge"
@@ -37,8 +37,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            app:layout_constraintStart_toStartOf="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/textView2">
+            app:layout_constraintStart_toStartOf="@+id/textQuestion"
+            app:layout_constraintTop_toBottomOf="@+id/textQuestion">
 
             <RadioButton
                 android:id="@+id/radio1"

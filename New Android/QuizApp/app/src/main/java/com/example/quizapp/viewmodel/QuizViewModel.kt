@@ -15,7 +15,7 @@ class QuizViewModel : ViewModel() {
         questionsLiveData = repository.getQuestionsFromAPI()
     }
 
-    fun getQuestionsFromLiveDat() : LiveData<QuestionsList> {
+    fun getQuestionsFromLiveData() : LiveData<QuestionsList> {
         return questionsLiveData
     }
 
