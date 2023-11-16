@@ -2,6 +2,8 @@ package com.example.quizapp.view
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -54,6 +56,46 @@ class MainActivity : AppCompatActivity() {
                 }
             })
         }
+
+
+        //Adding functionality to the NEXT button
+        var i = 1
+        binding.apply{
+            nextButton.setOnClickListener(View.OnClickListener {
+                val selectedOption = radioGroup?.checkedRadioButtonId
+
+                if(selectedOption != -1){
+                    val radButton = findViewById<View>(selectedOption!!) as RadioButton
+
+                    questionsList.let{
+                        if(i < it.size) {
+
+                            //Getting thr number of questions
+                            totalQuestions = it.size
+                            //Check if it is correct or not
+                            if(radButton.text.toString().equals(it[i-1].correct_option)){
+                                result++
+                                textResult?.text = "Correct Answer : $result"
+                            }
+
+                            //Displaying the next questions
+                            textQuestion.text = "Question ${i+1}: " + it[i].question
+                            radio1.text = it[i].option1.toString()
+                            radio2.text = it[i].option2.toString()
+                            radio3.text = it[i].option3.toString()
+                            radio4.text = it[i].option4.toString()
+
+                            //Checking if it is the last question
+                            if (i == it.size!!.minus(1)) {
+
+                            }
+                        }
+                    }
+                }
+            })
+        }
+
+
     }
 
 
