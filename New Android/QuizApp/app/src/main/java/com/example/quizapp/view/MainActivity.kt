@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.RadioButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         //Getting the first question
         GlobalScope.launch(Dispatchers.Main) {
             quizViewModel.getQuestionsFromLiveData().observe(this@MainActivity, Observer {
-                if(it.size > 0) {
+                if (it.size > 0) {
                     questionsList = it
                     Log.i("TAG", "This is the first question: ${questionsList[0]}")
 
@@ -62,26 +61,26 @@ class MainActivity : AppCompatActivity() {
 
         //Adding functionality to the NEXT button
         var i = 1
-        binding.apply{
+        binding.apply {
             nextButton.setOnClickListener(View.OnClickListener {
                 val selectedOption = radioGroup?.checkedRadioButtonId
 
-                if(selectedOption != -1){
+                if (selectedOption != -1) {
                     val radButton = findViewById<View>(selectedOption!!) as RadioButton
 
-                    questionsList.let{
-                        if(i < it.size) {
+                    questionsList.let {
+                        if (i < it.size) {
 
-                            //Getting thr number of questions
+                            //Getting the number of questions
                             totalQuestions = it.size
                             //Check if it is correct or not
-                            if(radButton.text.toString().equals(it[i-1].correct_option)){
+                            if (radButton.text.toString().equals(it[i - 1].correct_option)) {
                                 result++
                                 textResult?.text = "Correct Answer : $result"
                             }
 
                             //Displaying the next questions
-                            textQuestion.text = "Question ${i+1}: " + it[i].question
+                            textQuestion.text = "Question ${i + 1}: " + it[i].question
                             radio1.text = it[i].option1.toString()
                             radio2.text = it[i].option2.toString()
                             radio3.text = it[i].option3.toString()
@@ -95,7 +94,7 @@ class MainActivity : AppCompatActivity() {
                                 i++
 
                             } else {
-                                if (radButton.text.toString().equals(it[i-1].correct_option)){
+                                if (radButton.text.toString().equals(it[i - 1].correct_option)) {
                                     result++
                                     textResult?.text = "Correct Answer : $result"
                                 } else {
@@ -108,13 +107,9 @@ class MainActivity : AppCompatActivity() {
                             }
                         }
                     }
-                } else {
-                    Toast.makeText(this@MainActivity, "Please select an option", Toast.LENGTH_LONG)
-                        .show()
                 }
             })
         }
-
 
     }
 
