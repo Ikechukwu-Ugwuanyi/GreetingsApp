@@ -1,9 +1,11 @@
 package com.example.newquizzapp.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.RadioButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -84,8 +86,29 @@ class MainActivity : AppCompatActivity() {
                         radio3.text = it[i].option3
                         radio4.text = it[i].option4
 
-                        //
+                        //Checking if it is the last question
+                        if (i == it.size!!.minus(1)){
+                            nextButton.text = "FINISH"
+
+                            radioGroup?.clearCheck()
+                            i++
+
+                        } else {
+                            if (radButton.text.toString().equals(it[1-1].correct_option)){
+                                result++
+                                correctText.text= "Correct Answer: $result"
+                            } else {
+
+                            }
+
+                            val intent = Intent(this@MainActivity, ResultActivity::class.java)
+                            startActivity(intent)
+                            finish()
+
+                        }
                     }
+                } else {
+                    Toast.makeText(this@MainActivity, "Please select an option", Toast.LENGTH_LONG).show()
                 }
             })
 
