@@ -13,8 +13,8 @@ import com.example.quizapp.R
 import com.example.quizapp.databinding.ActivityMainBinding
 import com.example.quizapp.model.Questions
 import com.example.quizapp.viewmodel.QuizViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             .get(QuizViewModel::class.java)
 
         //Getting the first question
-        GlobalScope.launch(Dispatchers.Main) {
+        CoroutineScope(Dispatchers.Main).launch {
             quizViewModel.getQuestionsFromLiveData().observe(this@MainActivity, Observer {
                 if (it.size > 0) {
                     questionsList = it
