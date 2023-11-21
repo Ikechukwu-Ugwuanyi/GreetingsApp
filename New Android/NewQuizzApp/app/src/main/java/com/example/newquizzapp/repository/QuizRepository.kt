@@ -19,21 +19,21 @@ class QuizRepository {
             .create(QuestionsAPI::class.java)
     }
 
-    fun getQuestionsFomAPI(): LiveData<QuestionsList>{
+    fun getQuestionsFomAPI(): LiveData<QuestionsList> {
         var data = MutableLiveData<QuestionsList>()
-        var questionsList : QuestionsList
+        var questionsList: QuestionsList
 
         GlobalScope.launch(Dispatchers.IO) {
             //Returning a response
             val response = questionsAPI.getQuestions()
 
-            if (response != null){
+            if (response != null) {
 
                 //Saving the data to List
                 questionsList = response.body()!!
 
                 data.postValue(questionsList)
-                Log.i("TAG", ""+data.value)
+                Log.i("TAG", "" + data.value)
             }
         }
 
