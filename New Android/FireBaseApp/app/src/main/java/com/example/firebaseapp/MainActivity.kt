@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         database = Firebase.database.reference
 
         //Write data to firebase
-        database.child("price").setValue("$1920")
+        database.child("price").setValue("$1890")
 
     }
 }
