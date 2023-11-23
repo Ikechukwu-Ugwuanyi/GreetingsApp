@@ -87,10 +87,10 @@ class MainActivity : AppCompatActivity() {
                         radio4.text = it[i].option4
 
                         //Checking if it is the last question
-                        if (i == it.size!!.minus(1)){
+                        if (i == it.size.minus(1)){
                             nextButton.text = "FINISH"
 
-                            radioGroup?.clearCheck()
+                            radioGroup.clearCheck()
                             i++
 
                         } else {
