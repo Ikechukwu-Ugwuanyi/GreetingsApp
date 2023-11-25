@@ -7,7 +7,6 @@ import com.google.firebase.ktx.Firebase
 
 class FireStore : AppCompatActivity() {
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_fire_store)
@@ -31,8 +30,7 @@ class FireStore : AppCompatActivity() {
         )
 
         db_collection.document("User1").set(user1)
-        db_collection.document("User1").set(user2)
-
+        db_collection.document("User2").set(user2)
 
     }
 }
