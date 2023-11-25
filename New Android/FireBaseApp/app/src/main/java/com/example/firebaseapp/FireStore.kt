@@ -1,7 +1,6 @@
 package com.example.firebaseapp
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
@@ -18,7 +17,7 @@ class FireStore : AppCompatActivity() {
         val textView = findViewById<TextView>(R.id.textView2)
 
         //Creating a collection of Users
-        val db_collection = db.collection("Users")
+        var db_collection = db.collection("Users")
 
         //Creating a user
         val user1 = hashMapOf(
@@ -34,27 +33,36 @@ class FireStore : AppCompatActivity() {
         )
 
         //Receiving documents from Firestore
-        db_collection.document("User1").set(user1)
-        db_collection.document("User2").set(user2)
-
-        val docRef = db.collection("Users").document("User1")
-
-        docRef.get().addOnSuccessListener { document ->
-            if (document != null){
-                //textView.text = document.data?.get("name").toString()
-            }
-        }
+//        db_collection.document("User1").set(user1)
+//        db_collection.document("User2").set(user2)
+//
+//        val docRef = db.collection("Users").document("User1")
+//
+//        docRef.get().addOnSuccessListener { document ->
+//            if (document != null){
+//                //textView.text = document.data?.get("name").toString()
+//            }
+//        }
 
         //Getting all documents from collection
-        var allDocuments = ""
+//        var allDocuments = ""
+//
+//        db.collection("Users").get().addOnSuccessListener { result ->
+//            for (document in result){
+//                Log.i("TAG", "${document.data}")
+//                allDocuments += "${document.data} \n"
+//            }
+//            textView.text = allDocuments
+//        }
 
-        db.collection("Users").get().addOnSuccessListener { result ->
-            for (document in result){
-                Log.i("TAG", "${document.data}")
-                allDocuments += "${document.data} \n"
-            }
-            textView.text = allDocuments
-        }
+        //Updating data in documents
+        db_collection.document("User1")
+            .update("country", "Hungary")
+
+
+        //Deleting a document
+        db_collection.document("User2")
+            .delete()
 
 
     }
