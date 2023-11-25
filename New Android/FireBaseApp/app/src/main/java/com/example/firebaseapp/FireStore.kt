@@ -1,6 +1,7 @@
 package com.example.firebaseapp
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.ktx.firestore
@@ -32,7 +33,7 @@ class FireStore : AppCompatActivity() {
             "country" to "France"
         )
 
-        //Recieving documents from Firestore
+        //Receiving documents from Firestore
         db_collection.document("User1").set(user1)
         db_collection.document("User2").set(user2)
 
@@ -40,9 +41,21 @@ class FireStore : AppCompatActivity() {
 
         docRef.get().addOnSuccessListener { document ->
             if (document != null){
-                textView.text = document.data?.get("name").toString()
+                //textView.text = document.data?.get("name").toString()
             }
         }
+
+        //Getting all documents from collection
+        var allDocuments = ""
+
+        db.collection("Users").get().addOnSuccessListener { result ->
+            for (document in result){
+                Log.i("TAG", "${document.data}")
+                allDocuments += "${document.data} \n"
+            }
+            textView.text = allDocuments
+        }
+
 
     }
 }
