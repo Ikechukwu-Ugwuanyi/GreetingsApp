@@ -28,9 +28,6 @@ class SignUpActivity : AppCompatActivity() {
         binding.loginBtn.setOnClickListener {
             createUser()
         }
-
-
-
     }
 
     private fun createUser() {
@@ -57,7 +54,6 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun updateUI(user: FirebaseUser?) {
-
 
     }
 
