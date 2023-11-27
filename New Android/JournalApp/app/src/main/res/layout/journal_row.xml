@@ -4,6 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <data>
+
+        <variable
+            name="journal"
+            type="com.example.journalapp.Journal" />
+    </data>
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -34,7 +41,8 @@
                 android:id="@+id/journal_row_share_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/transparent" />
+                android:background="@android:color/transparent"
+                android:src="@drawable/share" />
         </LinearLayout>
 
         <LinearLayout
