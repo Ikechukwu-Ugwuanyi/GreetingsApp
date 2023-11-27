@@ -8,6 +8,7 @@ import com.example.journalapp.databinding.ActivityJournalListBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.StorageReference
 
@@ -17,7 +18,7 @@ class JournalList : AppCompatActivity() {
     //Firebase Reference
     lateinit var firebaseAuth: FirebaseAuth
     lateinit var user:FirebaseUser
-    lateinit var db : FirebaseFireStore.getInstance()
+    var db = FirebaseFirestore.getInstance()
     lateinit var storageReference: StorageReference
     var collectionReference = db.collection("Journal")
 
