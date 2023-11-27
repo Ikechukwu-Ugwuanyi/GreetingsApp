@@ -10,7 +10,7 @@ import com.example.journalapp.databinding.JournalRowBinding
 class JournalAdapter(val context : Context, var journalList: List<Journal>) :
     RecyclerView.Adapter<JournalAdapter.MyViewHolder>() {
 
-    val binding: JournalRowBinding =
+    lateinit var binding: JournalRowBinding
 
     //ViewHolder class
     public class MyViewHolder(itemView: View, context:Context) : RecyclerView.ViewHolder(itemView) {
