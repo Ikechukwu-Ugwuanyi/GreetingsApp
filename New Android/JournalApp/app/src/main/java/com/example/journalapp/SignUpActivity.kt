@@ -25,7 +25,7 @@ class SignUpActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        binding.loginBtn.setOnClickListener {
+        binding.signUpBtn.setOnClickListener {
             createUser()
         }
     }
