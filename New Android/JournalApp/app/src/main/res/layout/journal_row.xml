@@ -35,7 +35,7 @@
                 android:layout_weight="1"
                 android:gravity="start"
                 android:padding="3dp"
-                android:text="Text" />
+                android:text="@{journal.username}" />
 
             <ImageButton
                 android:id="@+id/journal_row_share_btn"
@@ -51,6 +51,7 @@
             android:orientation="vertical">
 
             <ImageView
+                android:background="@{journal.imageUrl}"
                 android:id="@+id/journal_image_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,7 +63,7 @@
                 android:id="@+id/journalTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Title"
+                android:text="@{journal.title}"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -72,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:paddingTop="15dp"
-                android:text="Description..."
+                android:text="@{journal.thoughts}"
                 android:textSize="18dp"
                 android:textStyle="normal" />
 
@@ -81,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:text="Date Created"
+                android:text="@{journal.timeAdded}"
                 android:textStyle="italic" />
 
         </LinearLayout>
