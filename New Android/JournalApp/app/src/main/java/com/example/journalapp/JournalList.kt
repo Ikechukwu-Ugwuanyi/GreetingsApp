@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.journalapp.databinding.ActivityJournalListBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -36,5 +37,11 @@ class JournalList : AppCompatActivity() {
         user = firebaseAuth.currentUser!!
 
         //Recycler View Initialization
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+
+        //Posts arrayList
+        journalList = arrayListOf<Journal>()
+
     }
 }
