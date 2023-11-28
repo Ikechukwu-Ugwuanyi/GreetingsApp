@@ -26,7 +26,7 @@ class JournalList : AppCompatActivity() {
     lateinit var storageReference: StorageReference
     var collectionReference = db.collection("Journal")
 
-    lateinit var journalList: List<Journal>
+    lateinit var journalList: MutableList<Journal>
     lateinit var adapter: JournalAdapter
 
     lateinit var noPostsText: TextView
@@ -70,6 +70,26 @@ class JournalList : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    //Getting all posts
+    override fun onStart() {
+        super.onStart()
+
+        collectionReference.whereEqualTo("userId",
+            JournalUser.instance?.userId)
+            .get()
+            .addOnSuccessListener {
+                if (!it.isEmpty){
+                    it.forEach {
+
+                    //convert snapshots to journal objects
+                    var journal = it.toObject(Journal::class.java)
+                    journalList.add(journal)
+                    }
+                }
+
+            }
     }
 
 
