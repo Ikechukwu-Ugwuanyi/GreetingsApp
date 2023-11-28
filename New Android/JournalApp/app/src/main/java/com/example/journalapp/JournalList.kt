@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -87,9 +89,20 @@ class JournalList : AppCompatActivity() {
                     var journal = it.toObject(Journal::class.java)
                     journalList.add(journal)
                     }
+
+                    //RecyclerView
+                    adapter = JournalAdapter(this, journalList)
+                    binding.recyclerView.setAdapter(adapter)
+                    adapter.notifyDataSetChanged()
+                } else {
+                    binding.noPostText.visibility = View.VISIBLE
                 }
 
             }
+            .addOnFailureListener {
+                Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
+            }
+
     }
 
 
