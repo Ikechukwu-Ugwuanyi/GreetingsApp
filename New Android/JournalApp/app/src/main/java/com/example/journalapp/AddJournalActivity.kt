@@ -107,6 +107,11 @@ class AddJournalActivity : AppCompatActivity() {
 
                     }
                 }
+                .addOnFailureListener {
+                    binding.postProgressBar.visibility = View.INVISIBLE
+                }
+        } else {
+            binding.postProgressBar.visibility = View.INVISIBLE
         }
     }
 }
