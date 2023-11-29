@@ -126,4 +126,16 @@ class AddJournalActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        user = auth.currentUser!!
+    }
+
+    override fun onStop() {
+        super.onStop()
+        if (auth != null){
+
+        }
+    }
 }
