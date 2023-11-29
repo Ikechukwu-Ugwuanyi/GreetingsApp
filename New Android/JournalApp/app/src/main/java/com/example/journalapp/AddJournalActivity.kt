@@ -113,5 +113,17 @@ class AddJournalActivity : AppCompatActivity() {
         } else {
             binding.postProgressBar.visibility = View.INVISIBLE
         }
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1 && resultCode == RESULT_OK){
+            if (data != null){
+                imageUri = data.data!!  //getting actual image path
+                binding.imageView.setImageURI(imageUri) //SShowing the image
+            }
+        }
     }
 }
