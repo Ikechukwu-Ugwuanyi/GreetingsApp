@@ -1,5 +1,6 @@
 package com.example.journalapp
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.TextUtils
@@ -95,6 +96,13 @@ class AddJournalActivity : AppCompatActivity() {
                         )
 
                         //Adding the new journal
+                        collectionReference.add(journal)
+                            .addOnSuccessListener {
+                                binding.postProgressBar.visibility = View.INVISIBLE
+                                var intent = Intent(this, JournalList::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
 
 
                     }
