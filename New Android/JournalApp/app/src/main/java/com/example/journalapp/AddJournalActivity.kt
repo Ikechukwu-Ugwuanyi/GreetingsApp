@@ -14,6 +14,7 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.util.Date
 
 
 class AddJournalActivity : AppCompatActivity() {
@@ -81,7 +82,21 @@ class AddJournalActivity : AppCompatActivity() {
                     filePath.downloadUrl.addOnSuccessListener {
                         var imageUri: String = it.toString()
 
+                        var timeStamp:Timestamp = Timestamp(Date())
+
                         //Creating the object of the journal
+                        var journal : Journal = Journal(
+                            title,
+                            thoughts,
+                            imageUri,
+                            currentUserId,
+                            timeStamp,
+                            currentUsername
+                        )
+
+                        //Adding the new journal
+
+
                     }
                 }
         }
