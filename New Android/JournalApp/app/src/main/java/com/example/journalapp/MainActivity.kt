@@ -2,6 +2,7 @@ package com.example.journalapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.journalapp.databinding.ActivityMainBinding
@@ -24,9 +25,31 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        binding.loginBtn.setOnClickListener() {
+            loginWithEmailPassword(
+                binding.email.text.toString().trim(),
+                binding.password.text.toString().trim()
+            )
+        }
+
         //Auth Ref
         auth = Firebase.auth
 
+    }
+
+    private fun loginWithEmailPassword(email:String, password: String) {
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this){task ->
+
+                //Sign in success
+                if (task.isSuccessful){
+                    val user = auth.currentUser
+                    goToJournalList()
+                } else{
+                    Toast.makeText(this, "Authentication failed", Toast.LENGTH_LONG).show()
+                }
+
+            }
     }
 
     override fun onStart() {
