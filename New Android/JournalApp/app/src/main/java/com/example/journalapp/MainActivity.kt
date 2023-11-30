@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loginWithEmailPassword(email:String, password: String) {
         auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this){task ->
+            .addOnCompleteListener(this){task ->    
 
                 //Sign in success
                 if (task.isSuccessful){
@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
                 } else{
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_LONG).show()
                 }
-
             }
     }
 
