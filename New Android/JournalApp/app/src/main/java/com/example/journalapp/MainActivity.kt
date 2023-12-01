@@ -43,7 +43,11 @@ class MainActivity : AppCompatActivity() {
 
                 //Sign in success
                 if (task.isSuccessful){
-                    val user = auth.currentUser
+
+                    var journal : JournalUser = JournalUser.instance!!
+                    journal.userId  = auth.currentUser?.uid
+                    journal.username = auth.currentUser?.displayName
+
                     goToJournalList()
                 } else{
                     Toast.makeText(this, "Authentication failed", Toast.LENGTH_LONG).show()
