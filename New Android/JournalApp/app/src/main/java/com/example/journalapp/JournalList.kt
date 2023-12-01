@@ -42,7 +42,7 @@ class JournalList : AppCompatActivity() {
         user = firebaseAuth.currentUser!!
 
         //Recycler View Initialization
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.setHasFixedSize(true)
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
 
         //Posts arrayList
@@ -104,8 +104,5 @@ class JournalList : AppCompatActivity() {
             }
 
     }
-
-
-
 
 }
