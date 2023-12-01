@@ -2,15 +2,16 @@ package com.example.journalapp
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.journalapp.databinding.ActivityJournalListBinding
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -82,22 +83,26 @@ class JournalList : AppCompatActivity() {
             JournalUser.instance?.userId)
             .get()
             .addOnSuccessListener {
-                if (!it.isEmpty){
-                    it.forEach {
+                Log.i("TAGY", "sizey: ${it.size()}")
+                if (!it.isEmpty) {
 
-                    //convert snapshots to journal objects
-                    var journal = it.toObject(Journal::class.java)
-                    journalList.add(journal)
+                    Log.i("TAGY", "Elements: ${it}")
+
+                    for (document in it) {
+                        var journal = Journal(
+                            document.data["title"].toString(),
+                            document.data["thoughts"].toString(),
+                            document.data.get("imageUrl").toString(),
+                            document.data.get("userId").toString(),
+                            document.data.get("timeAdded") as Timestamp,
+                            document.data.get("username").toString(),
+                        )
+
+                        journalList.add(journal)
+
                     }
 
-                    //RecyclerView
-                    adapter = JournalAdapter(this, journalList)
-                    binding.recyclerView.setAdapter(adapter)
-                    adapter.notifyDataSetChanged()
-                } else {
-                    binding.noPostText.visibility = View.VISIBLE
                 }
-
             }
             .addOnFailureListener {
                 Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG).show()
