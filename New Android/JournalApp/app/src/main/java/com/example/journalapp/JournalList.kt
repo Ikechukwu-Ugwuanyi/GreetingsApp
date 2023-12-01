@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -101,7 +102,15 @@ class JournalList : AppCompatActivity() {
                         journalList.add(journal)
 
                     }
+                    // RecyclerView
+                    adapter = JournalAdapter(
+                        this, journalList
+                    )
+                    binding.recyclerView.setAdapter(adapter)
+                    adapter.notifyDataSetChanged()
 
+                } else{
+                    binding.noPostText.visibility = View.VISIBLE
                 }
             }
             .addOnFailureListener {
