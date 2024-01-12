@@ -13,24 +13,27 @@
         android:theme="@style/Theme.ComposeCodingChallenge"
         tools:targetApi="31">
         <activity
-            android:name=".ColumnsAndRows"
+            android:name=".BoxLayout"
             android:exported="true"
-            android:label="@string/title_activity_columns_and_rows"
+            android:label="@string/title_activity_box_layout"
             android:theme="@style/Theme.ComposeCodingChallenge">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
+        <activity
+            android:name=".ColumnsAndRows"
+            android:exported="false"
+            android:label="@string/title_activity_columns_and_rows"
+            android:theme="@style/Theme.ComposeCodingChallenge"/>
+
         <activity
             android:name=".ScrollableText"
             android:exported="false"
             android:label="@string/scroll_text"
-            android:theme="@style/Theme.ComposeCodingChallenge"/>
-
+            android:theme="@style/Theme.ComposeCodingChallenge" />
         <activity
             android:name=".ModifierActivity"
             android:exported="true"
