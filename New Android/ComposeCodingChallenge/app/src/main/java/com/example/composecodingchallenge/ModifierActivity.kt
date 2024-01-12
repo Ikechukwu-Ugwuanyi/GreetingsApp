@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -37,12 +36,15 @@ class ModifierActivity : ComponentActivity() {
 
 @Composable
 fun Greeting2(name: String, modifier: Modifier = Modifier) {
-    val onclick = {}
+    val reusable = modifier.fillMaxSize().background(Color.Magenta).padding(12.dp)
+
+    val onclick  = {}
     Column(
-        modifier.background(Color.Green).clickable(onClick = onclick)) {
+        modifier = reusable
+    ) {
         Text(
             text = "Hello $name!",
-            modifier = modifier.padding(10.dp).background(Color.DarkGray).fillMaxSize()
+            modifier = reusable
         )
     }
 }
