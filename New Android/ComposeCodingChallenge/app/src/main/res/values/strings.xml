@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">ComposeCodingChallenge</string>
     <string name="title_activity_modifier">ModifierActivity</string>
+    <string name="scroll_text">This text is scrollable, scroll and see for yourself! This text is scrollable, scroll and see for yourself!
+    This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself! This text is scrollable, scroll and see for yourself!
+    This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!
+    This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!This text is scrollable, scroll and see for yourself!
+    </string>
 </resources>
