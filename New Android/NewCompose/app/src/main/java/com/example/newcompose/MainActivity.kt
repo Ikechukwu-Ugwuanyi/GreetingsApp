@@ -58,7 +58,7 @@ fun DisplayOurText(){
                 color = Color.Blue,
                 fontSize = 30.sp,
                 maxLines = 1,
-                overflow = TextOverflow.Ellipsis,
+                overflow           = TextOverflow.Ellipsis,
 
                 style = TextStyle(textDecoration = TextDecoration.LineThrough,
                     fontStyle = FontStyle.Italic,

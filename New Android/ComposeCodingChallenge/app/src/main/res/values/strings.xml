@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ComposeCodingChallenge</string>
+    <string name="title_activity_modifier">ModifierActivity</string>
+</resources>
