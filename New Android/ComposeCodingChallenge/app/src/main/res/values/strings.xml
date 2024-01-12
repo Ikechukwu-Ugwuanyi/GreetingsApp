@@ -8,4 +8,5 @@
     </string>
     <string name="title_activity_columns_and_rows">ColumnsAndRows</string>
     <string name="title_activity_box_layout">BoxLayout</string>
+    <string name="title_activity_button_composable">ButtonComposable</string>
 </resources>

@@ -13,22 +13,26 @@
         android:theme="@style/Theme.ComposeCodingChallenge"
         tools:targetApi="31">
         <activity
-            android:name=".BoxLayout"
+            android:name=".ButtonComposable"
             android:exported="true"
-            android:label="@string/title_activity_box_layout"
+            android:label="@string/title_activity_button_composable"
             android:theme="@style/Theme.ComposeCodingChallenge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".BoxLayout"
+            android:exported="false"
+            android:label="@string/title_activity_box_layout"
+            android:theme="@style/Theme.ComposeCodingChallenge"/>
+
+        <activity
             android:name=".ColumnsAndRows"
             android:exported="false"
             android:label="@string/title_activity_columns_and_rows"
-            android:theme="@style/Theme.ComposeCodingChallenge"/>
-
+            android:theme="@style/Theme.ComposeCodingChallenge" />
         <activity
             android:name=".ScrollableText"
             android:exported="false"
@@ -38,7 +42,7 @@
             android:name=".ModifierActivity"
             android:exported="true"
             android:label="@string/title_activity_modifier"
-            android:theme="@style/Theme.ComposeCodingChallenge"/>
+            android:theme="@style/Theme.ComposeCodingChallenge" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
