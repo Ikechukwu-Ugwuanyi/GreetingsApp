@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,6 +36,7 @@ class ScrollableText : ComponentActivity() {
 @Composable
 fun Greeting3(name: String) {
     Text(
+        modifier = Modifier.verticalScroll(state = rememberScrollState()),
         text = stringResource(id = R.string.scroll_text),
         fontSize = 32.sp
 
