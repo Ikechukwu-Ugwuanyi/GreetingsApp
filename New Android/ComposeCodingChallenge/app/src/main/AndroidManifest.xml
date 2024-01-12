@@ -13,9 +13,9 @@
         android:theme="@style/Theme.ComposeCodingChallenge"
         tools:targetApi="31">
         <activity
-            android:name=".ScrollableText"
+            android:name=".ColumnsAndRows"
             android:exported="true"
-            android:label="@string/scroll_text"
+            android:label="@string/title_activity_columns_and_rows"
             android:theme="@style/Theme.ComposeCodingChallenge">
 
             <intent-filter>
@@ -26,17 +26,21 @@
 
         </activity>
         <activity
+            android:name=".ScrollableText"
+            android:exported="false"
+            android:label="@string/scroll_text"
+            android:theme="@style/Theme.ComposeCodingChallenge"/>
+
+        <activity
             android:name=".ModifierActivity"
             android:exported="true"
             android:label="@string/title_activity_modifier"
-            android:theme="@style/Theme.ComposeCodingChallenge">
-
-        </activity>
+            android:theme="@style/Theme.ComposeCodingChallenge"/>
         <activity
             android:name=".MainActivity"
             android:exported="false"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ComposeCodingChallenge"/>
+            android:theme="@style/Theme.ComposeCodingChallenge" />
     </application>
 
 </manifest>
