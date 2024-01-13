@@ -49,7 +49,7 @@ fun Greeting6() {
                 Toast.LENGTH_LONG).show()},
             shape = RoundedCornerShape(size = 50.dp),
             colors = ButtonDefaults.buttonColors(
-                containerColor = Color.Cyan
+                containerColor = Color.Red
             ),
             elevation = ButtonDefaults.buttonElevation(
                 defaultElevation = 20.dp
