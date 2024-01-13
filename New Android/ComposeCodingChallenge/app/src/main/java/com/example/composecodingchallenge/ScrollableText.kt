@@ -36,7 +36,7 @@ class ScrollableText : ComponentActivity() {
 @Composable
 fun Greeting3(name: String) {
     Text(
-        modifier = Modifier.verticalScroll(state = rememberScrollState()),
+        modifier = Modifier.verticalScroll(rememberScrollState()),
         text = stringResource(id = R.string.scroll_text),
         fontSize = 32.sp
 
