@@ -3,6 +3,7 @@ package com.example.morecomposepractice
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -33,11 +34,17 @@ class MainActivity : ComponentActivity() {
 var count = 0
 @Composable
 fun Greeting() {
-    
-    Button(onClick = {  }) {
-        Text(text = "Click Me")
-        
+
+    Column {
+        Button(onClick = {
+            count++
+        }) {
+            Text(text = "Click Me $count")
+
+        }
     }
+    
+
 }
 
 @Preview(showBackground = true)
