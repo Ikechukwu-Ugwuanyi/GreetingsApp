@@ -13,6 +13,24 @@
         android:theme="@style/Theme.MoreComposePractice"
         tools:targetApi="31">
         <activity
+            android:name=".TextFieldCustomization"
+            android:exported="false"
+            android:label="@string/title_activity_text_field_customization"
+            android:theme="@style/Theme.MoreComposePractice">
+
+        </activity>
+        <activity
+            android:name=".TextFieldComposable"
+            android:exported="true"
+            android:label="@string/title_activity_text_field_composable"
+            android:theme="@style/Theme.MoreComposePractice">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".PropertyDelegation"
             android:exported="true"
             android:label="@string/title_activity_property_delegation"
