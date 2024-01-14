@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoreComposePractice</string>
+    <string name="title_activity_property_delegation">PropertyDelegation</string>
 </resources>
