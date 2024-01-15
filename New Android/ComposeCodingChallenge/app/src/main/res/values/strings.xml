@@ -10,4 +10,5 @@
     <string name="title_activity_box_layout">BoxLayout</string>
     <string name="title_activity_button_composable">ButtonComposable</string>
     <string name="title_activity_image_composable">ImageComposable</string>
+    <string name="title_activity_radio_button_composable">RadioButtonComposable</string>
 </resources>
