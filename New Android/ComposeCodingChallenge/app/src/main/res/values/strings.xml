@@ -14,4 +14,5 @@
     <string name="title_activity_switch_composable">SwitchComposable</string>
     <string name="title_activity_check_box_composable">CheckBoxComposable</string>
     <string name="title_activity_check_box_group">CheckBoxGroup</string>
+    <string name="title_activity_circular_progress_indicator">CircularProgressIndicator</string>
 </resources>
