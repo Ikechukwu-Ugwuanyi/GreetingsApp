@@ -36,11 +36,21 @@ class CircularProgressIndicator : ComponentActivity() {
 @Composable
 fun Greeting10() {
    Column {
+       //Indeterminate Indicator -> runs forever
        CircularProgressIndicator(
            Modifier.width(30.dp),
            color = Color.Green,
            strokeWidth = 10.dp
        )
+
+       //Determinate
+       CircularProgressIndicator(
+           progress = 0.6f,
+           Modifier.width(60.dp),
+           Color.Red,
+           strokeWidth = 10.dp
+       )
+
    }
 }
 
