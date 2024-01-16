@@ -1,22 +1,32 @@
 package com.example.composecodingchallenge
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.composecodingchallenge.ui.theme.ComposeCodingChallengeTheme
 
-class CircularProgressIndicator : ComponentActivity() {
+class ProgressIndicatorChallenge : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,7 +36,7 @@ class CircularProgressIndicator : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting10()
+                    Greeting11()
                 }
             }
         }
@@ -34,30 +44,36 @@ class CircularProgressIndicator : ComponentActivity() {
 }
 
 @Composable
-fun Greeting10() {
-   Row() {
-       //Indeterminate Indicator -> runs forever
-       CircularProgressIndicator(
-           Modifier.width(60.dp),
-           color = Color.Green,
-           strokeWidth = 10.dp
-       )
+fun Greeting11() {
 
-       //Determinate
-       CircularProgressIndicator(
-           progress = 0.6f,
-           Modifier.width(60.dp),
-           Color.Red,
-           strokeWidth = 10.dp
-       )
+    var count by remember{
+        mutableStateOf(0.1f)
+    }
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center) {
+        CircularProgressIndicator(
+            progress = count,
+            Modifier.width(60.dp),
+            color = Color.Blue,
+            strokeWidth = 10.dp
+        )
 
-   }
+
+        Button(onClick = {
+            count += 0.1f
+            Log.i("TAG", "this is $count")
+        },
+            modifier = Modifier.padding(40.dp),) {
+            Text(text = "Click Me")
+
+        }
+    }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview12() {
+fun GreetingPreview13() {
     ComposeCodingChallengeTheme {
-        Greeting10()
+        Greeting11()
     }
 }

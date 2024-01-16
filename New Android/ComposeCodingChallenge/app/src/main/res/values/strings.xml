@@ -15,4 +15,5 @@
     <string name="title_activity_check_box_composable">CheckBoxComposable</string>
     <string name="title_activity_check_box_group">CheckBoxGroup</string>
     <string name="title_activity_circular_progress_indicator">CircularProgressIndicator</string>
+    <string name="title_activity_progress_indicator_challenge">ProgressIndicatorChallenge</string>
 </resources>
