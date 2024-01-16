@@ -12,4 +12,6 @@
     <string name="title_activity_image_composable">ImageComposable</string>
     <string name="title_activity_radio_button_composable">RadioButtonComposable</string>
     <string name="title_activity_switch_composable">SwitchComposable</string>
+    <string name="title_activity_check_box_composable">CheckBoxComposable</string>
+    <string name="title_activity_check_box_group">CheckBoxGroup</string>
 </resources>
