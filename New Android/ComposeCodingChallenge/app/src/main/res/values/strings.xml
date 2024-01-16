@@ -11,4 +11,5 @@
     <string name="title_activity_button_composable">ButtonComposable</string>
     <string name="title_activity_image_composable">ImageComposable</string>
     <string name="title_activity_radio_button_composable">RadioButtonComposable</string>
+    <string name="title_activity_switch_composable">SwitchComposable</string>
 </resources>
