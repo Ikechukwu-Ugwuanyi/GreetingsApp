@@ -5,6 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -41,6 +46,18 @@ fun Greeting13() {
         }
     }
 
+}
+
+fun prepareBottomMenu():List<BottomMenuItems>{
+
+    val bottomMenuListItem = arrayListOf<BottomMenuItems>()
+
+    bottomMenuListItem.add(BottomMenuItems("Home", Icons.Filled.Home))
+    bottomMenuListItem.add(BottomMenuItems("Profile", Icons.Filled.AccountCircle))
+    bottomMenuListItem.add(BottomMenuItems("Cart", Icons.Filled.ShoppingCart))
+    bottomMenuListItem.add(BottomMenuItems("Settings", Icons.Filled.Settings))
+
+    return bottomMenuListItem
 }
 
 @Preview(showBackground = true)
