@@ -13,6 +13,28 @@
         android:theme="@style/Theme.ComposeCodingChallenge"
         tools:targetApi="31">
         <activity
+            android:name=".BottomNav"
+            android:exported="true"
+            android:label="@string/title_activity_bottom_nav"
+            android:theme="@style/Theme.ComposeCodingChallenge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BottomNavigation"
+            android:exported="true"
+            android:label="@string/title_activity_bottom_navigation"
+            android:theme="@style/Theme.ComposeCodingChallenge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".Scafolds"
             android:exported="true"
             android:label="@string/title_activity_scafolds"
