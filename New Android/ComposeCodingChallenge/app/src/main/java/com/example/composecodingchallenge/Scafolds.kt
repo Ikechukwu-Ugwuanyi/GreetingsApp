@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -43,8 +44,10 @@ class Scafolds : ComponentActivity() {
 fun Greeting12() {
     var ctx = LocalContext.current.applicationContext
     TopAppBar(title = {
-        Text(text = "Our Courses",
-            color = Color.White)
+        Text(
+            text = "Our Courses",
+            color = Color.White
+        )
     },
         navigationIcon = {
             IconButton(onClick = {
@@ -58,13 +61,19 @@ fun Greeting12() {
                     imageVector = Icons.Outlined.Menu,
                     contentDescription = "Menu Icon",
 
-                )
+                    )
 
             }
         },
-         colors = TopAppBarDefaults.topAppBarColors(
-             Color.Red
-         )
+        colors = TopAppBarDefaults.topAppBarColors(
+            Color.Red
+        ),
+        actions = {
+            IconButton(onClick = { /*TODO*/ }) {
+                Icon(imageVector = Icons.Filled.Search, contentDescription = "Search")
+            }
+        }
+
     )
 
 }
