@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.outlined.Menu
@@ -43,38 +44,41 @@ class Scafolds : ComponentActivity() {
 @Composable
 fun Greeting12() {
     var ctx = LocalContext.current.applicationContext
-    TopAppBar(title = {
-        Text(
-            text = "Our Courses",
-            color = Color.White
-        )
-    },
-        navigationIcon = {
-            IconButton(onClick = {
-                Toast.makeText(
-                    ctx,
-                    "You clicked Navigation",
-                    Toast.LENGTH_LONG
-                ).show()
-            }) {
-                Icon(
-                    imageVector = Icons.Outlined.Menu,
-                    contentDescription = "Menu Icon",
 
-                    )
-
-            }
+    Box {
+        TopAppBar(title = {
+            Text(
+                text = "Our Courses",
+                color = Color.White
+            )
         },
-        colors = TopAppBarDefaults.topAppBarColors(
-            Color.Red
-        ),
-        actions = {
-            IconButton(onClick = { /*TODO*/ }) {
-                Icon(imageVector = Icons.Filled.Search, contentDescription = "Search")
-            }
-        }
+            navigationIcon = {
+                IconButton(onClick = {
+                    Toast.makeText(
+                        ctx,
+                        "You clicked Navigation",
+                        Toast.LENGTH_LONG
+                    ).show()
+                }) {
+                    Icon(
+                        imageVector = Icons.Outlined.Menu,
+                        contentDescription = "Menu Icon",
 
-    )
+                        )
+
+                }
+            },
+            colors = TopAppBarDefaults.topAppBarColors(
+                Color.Red
+            ),
+            actions = {
+                IconButton(onClick = { /*TODO*/ }) {
+                    Icon(imageVector = Icons.Filled.Search, contentDescription = "Search")
+                }
+            }
+
+        )
+    }
 
 }
 
