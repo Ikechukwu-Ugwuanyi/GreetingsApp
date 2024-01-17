@@ -1,4 +1,4 @@
-package com.example.bottomnav
+package com.example.cardcomposable
 
 import org.junit.Test
 

@@ -1,4 +1,4 @@
-package com.example.bottomnav.ui.theme
+package com.example.cardcomposable.ui.theme
 
 import android.app.Activity
 import android.os.Build
