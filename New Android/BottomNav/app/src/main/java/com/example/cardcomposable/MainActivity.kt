@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.cardcomposable.ui.theme.BottomNavTheme
 
 class MainActivity : ComponentActivity() {
@@ -47,7 +48,9 @@ fun Greeting() {
             border = BorderStroke(width = 4.dp, color = Color.Magenta)
 
             ) {
-            Text(text = "I am inside a card")
+            Text(text = "I am inside a card",
+               fontSize = 20.sp)
+
 
         }
     }
