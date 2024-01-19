@@ -3,6 +3,7 @@ package com.example.cardcomposable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.cardcomposable.ui.theme.CardComposableTheme
 
 class LazyVertGrid : ComponentActivity() {
@@ -39,29 +41,54 @@ class LazyVertGrid : ComponentActivity() {
     }
 }
 
-var osNames = listOf("Windows", "Apple", "Linus", "Ubuntu")
+var osNames = listOf("Windows", "Apple", "Linux", "Ubuntu", "Android", "MacOs")
 
 
 @Composable
 fun OSNames(osNames: List<String>) {
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2), 
-        content = {
-            items(osNames.size){
-                index -> Card(modifier = Modifier
-                .padding(4.dp)
-                .fillMaxWidth(),
+    Column {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(3),
+            content = {
+                items(osNames.size){
+                        index -> Card(modifier = Modifier
+                    .padding(4.dp)
+                    .fillMaxWidth(),
                     elevation = CardDefaults.cardElevation(8.dp),
                     colors = CardDefaults.cardColors(Color.Red)) {
 
-                Text(text = osNames[index],
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-                    color = Color.White
-                )
-            } 
-            }
-        } )   
+                    Text(text = osNames[index],
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color.White
+                    )
+                }
+                }
+            } )
+
+        LazyVerticalGrid(
+            columns = GridCells.Adaptive(100.dp),
+            content = {
+                items(osNames.size){
+                        index -> Card(modifier = Modifier
+                    .padding(4.dp)
+                    .fillMaxWidth(),
+                    elevation = CardDefaults.cardElevation(8.dp),
+                    colors = CardDefaults.cardColors(Color.Blue)) {
+
+                    Text(text = osNames[index],
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 20.sp,
+                        textAlign = TextAlign.Center,
+                        color = Color.White
+                    )
+                }
+                }
+            } )
+
+
+    }
 }
 
 @Preview(showBackground = true)
