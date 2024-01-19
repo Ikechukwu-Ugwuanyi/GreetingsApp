@@ -27,7 +27,8 @@ class LazyColumnComposable : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PopulateItems2(osList2)
+                    //LazyCol(osList2)
+                    LazyRow(osList2)
                 }
             }
         }
@@ -39,16 +40,32 @@ var osList2 = listOf("Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS
     "Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",
     "Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",)
 
+//@Composable
+//fun LazyCol(osList: List<String>) {
+//    LazyColumn(){
+//        item {
+//            Text(text = "item one")
+//        }
+//        items(10){index ->
+//            Text(text = "item $index")
+//        }
+//
+//        items(osList2){
+//            Text(text = "OS Name $it")
+//        }
+//    }
+//}
+
 @Composable
-fun PopulateItems2(osList: List<String>) {
+fun LazyRow(osList: List<String>) {
     LazyColumn(){
         item {
             Text(text = "item one")
         }
         items(10){index ->
-            Text(text = "item $index")            
+            Text(text = "item $index")
         }
-        
+
         items(osList2){
             Text(text = "OS Name $it")
         }
@@ -65,6 +82,6 @@ fun RowItem2(osName: String) {
 @Composable
 fun GreetingPreview3() {
     CardComposableTheme {
-        PopulateItems2(osList2)
+        //LazyCol(osList2)
     }
 }
