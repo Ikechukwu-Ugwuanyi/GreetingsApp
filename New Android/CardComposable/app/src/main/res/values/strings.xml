@@ -4,4 +4,5 @@
     <string name="title_activity_into_to_lists">IntoToLists</string>
     <string name="title_activity_lazy_column">LazyColumn</string>
     <string name="title_activity_lazy_column_composable">LazyColumnComposable</string>
+    <string name="title_activity_lazy_vert_grid">LazyVertGrid</string>
 </resources>
