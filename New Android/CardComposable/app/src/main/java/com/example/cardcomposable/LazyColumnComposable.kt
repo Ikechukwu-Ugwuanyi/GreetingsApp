@@ -3,9 +3,9 @@ package com.example.cardcomposable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.example.cardcomposable.ui.theme.CardComposableTheme
 
-class IntoToLists : ComponentActivity() {
+class LazyColumnComposable : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -26,41 +26,40 @@ class IntoToLists : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    PopulateItems(osList)
+                    PopulateItems2(osList2)
                 }
             }
         }
     }
 }
 
-
-
-var osList = listOf("Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",
+var osList2 = listOf("Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",
     "Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",
     "Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",
     "Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS", "Apple",)
 
 @Composable
-fun PopulateItems(osList: List<String>) {
-    Column {
-        osList.forEach {
-            RowItem(osName = it)
+fun PopulateItems2(osList: List<String>) {
+    LazyColumn(){
+        item {
+            Text(text = "item one")
+        }
+        items(10){index ->
+            Text(text = "item $index")            
         }
     }
 }
 
 @Composable
-fun RowItem(osName: String) {
+fun RowItem2(osName: String) {
     Row {
         Text(text = osName, fontSize = 20.sp, color = Color.Black)
     }
 }
-
-
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+fun GreetingPreview3() {
     CardComposableTheme {
-        PopulateItems(osList)
+        PopulateItems2(osList2)
     }
 }

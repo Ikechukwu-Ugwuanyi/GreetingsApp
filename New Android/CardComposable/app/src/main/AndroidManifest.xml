@@ -13,6 +13,28 @@
         android:theme="@style/Theme.CardComposable"
         tools:targetApi="31">
         <activity
+            android:name=".LazyColumnComposable"
+            android:exported="true"
+            android:label="@string/title_activity_lazy_column_composable"
+            android:theme="@style/Theme.CardComposable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LazyColumn"
+            android:exported="true"
+            android:label="@string/title_activity_lazy_column"
+            android:theme="@style/Theme.CardComposable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".IntoToLists"
             android:exported="true"
             android:label="@string/title_activity_into_to_lists"

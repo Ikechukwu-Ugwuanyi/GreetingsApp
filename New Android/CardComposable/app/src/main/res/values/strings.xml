@@ -2,4 +2,6 @@
     <string name="app_name">CardComposable</string>
     <string name="title_activity_main2">MainActivity2</string>
     <string name="title_activity_into_to_lists">IntoToLists</string>
+    <string name="title_activity_lazy_column">LazyColumn</string>
+    <string name="title_activity_lazy_column_composable">LazyColumnComposable</string>
 </resources>
