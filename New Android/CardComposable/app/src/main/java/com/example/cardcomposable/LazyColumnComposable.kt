@@ -5,7 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -28,7 +28,7 @@ class LazyColumnComposable : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     //LazyCol(osList2)
-                    LazyRow(osList2)
+                    LazyRows(osList2)
                 }
             }
         }
@@ -57,8 +57,8 @@ var osList2 = listOf("Windows", "Linux", "IOS", "Apple","Windows", "Linux", "IOS
 //}
 
 @Composable
-fun LazyRow(osList: List<String>) {
-    LazyColumn(){
+fun LazyRows(osList: List<String>) {
+    LazyRow(){
         item {
             Text(text = "item one")
         }
