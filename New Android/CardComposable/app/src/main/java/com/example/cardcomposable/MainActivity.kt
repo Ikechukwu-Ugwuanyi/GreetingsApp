@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -19,13 +20,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.cardcomposable.ui.theme.BottomNavTheme
+import com.example.cardcomposable.ui.theme.CardComposableTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BottomNavTheme {
+            CardComposableTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -40,25 +41,27 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting() {
-    Column(Modifier.fillMaxSize()) {
+    Column(
+        Modifier
+            .fillMaxSize()
+            .background(Color.Cyan)) {
         Card(
-            modifier = Modifier.padding(16.dp),
-            elevation = CardDefaults.cardElevation(20.dp),
-            shape = RoundedCornerShape(4.dp),
+            modifier = Modifier.padding(all = 20.dp),
+            elevation = CardDefaults.cardElevation(10.dp),
+            shape = RoundedCornerShape(2.dp),
+            colors = CardDefaults.cardColors(Color.Blue),
             border = BorderStroke(width = 4.dp, color = Color.Magenta)
-
-            ) {
+        ) {
             Text(text = "I am inside a card",
-               fontSize = 20.sp)
+                fontSize = 40.sp)
         }
     }
-
 }
 
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    BottomNavTheme {
+    CardComposableTheme {
         Greeting()
     }
 }
