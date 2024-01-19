@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -46,6 +47,10 @@ fun PopulateItems2(osList: List<String>) {
         }
         items(10){index ->
             Text(text = "item $index")            
+        }
+        
+        items(osList2){
+            Text(text = "OS Name $it")
         }
     }
 }
