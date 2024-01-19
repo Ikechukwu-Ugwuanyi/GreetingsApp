@@ -13,6 +13,22 @@
         android:theme="@style/Theme.CardComposable"
         tools:targetApi="31">
         <activity
+            android:name=".IntoToLists"
+            android:exported="true"
+            android:label="@string/title_activity_into_to_lists"
+            android:theme="@style/Theme.CardComposable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false"
+            android:label="@string/title_activity_main2"
+            android:theme="@style/Theme.CardComposable" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
