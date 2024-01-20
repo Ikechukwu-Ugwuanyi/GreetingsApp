@@ -5,4 +5,5 @@
     <string name="title_activity_lazy_column">LazyColumn</string>
     <string name="title_activity_lazy_column_composable">LazyColumnComposable</string>
     <string name="title_activity_lazy_vert_grid">LazyVertGrid</string>
+    <string name="title_activity_constraint_layout_composable">ConstraintLayoutComposable</string>
 </resources>
