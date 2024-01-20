@@ -15,6 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.example.cardcomposable.ui.theme.CardComposableTheme
 
 class ConstraintLayoutComposable : ComponentActivity() {
@@ -41,8 +42,10 @@ fun  ConstraintScreen(){
 
         Box(modifier = Modifier.size(50.dp).background(Color.Yellow)
             .constrainAs(yellowBox){
-                top.linkTo(parent.top)
                 end.linkTo(parent.end)
+                start.linkTo(parent.start)
+                height = Dimension.value(100.dp)
+                width = Dimension.matchParent
             })
 
         Box(modifier = Modifier.size(50.dp).background(Color.Red).constrainAs(redBox){
