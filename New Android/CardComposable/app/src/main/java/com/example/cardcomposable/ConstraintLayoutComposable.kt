@@ -39,7 +39,10 @@ class ConstraintLayoutComposable : ComponentActivity() {
 @Composable
 fun  ConstraintScreen(){
     ConstraintLayout {
-        val(yellowBox, redBox,greenBox, blackBox, magentaBox) = createRefs()
+        val(yellowBox, redBox,greenBox, blackBox, magentaBox, cyanBox, darkGrayBox) = createRefs()
+
+        //Guide lines
+        val guideline = createGuidelineFromBottom(0.5f)
 
         Box(modifier = Modifier.size(50.dp).background(Color.Yellow)
             .constrainAs(yellowBox){
@@ -66,6 +69,25 @@ fun  ConstraintScreen(){
         Box(modifier = Modifier.size(50.dp).background(Color.Magenta).constrainAs(magentaBox){
             top.linkTo(greenBox.bottom)
         })
+
+        Box(modifier = Modifier.size(50.dp)
+            .background(Color.Cyan)
+            .constrainAs(cyanBox){
+            bottom.linkTo(guideline)
+        })
+
+        Box(modifier = Modifier.size(50.dp)
+            .background(Color.DarkGray)
+            .constrainAs(darkGrayBox){
+                end.linkTo(parent.end)
+                bottom.linkTo(guideline)
+
+        })
+
+
+
+
+
 
         createHorizontalChain(blackBox, magentaBox, chainStyle = ChainStyle.Packed)
     }
