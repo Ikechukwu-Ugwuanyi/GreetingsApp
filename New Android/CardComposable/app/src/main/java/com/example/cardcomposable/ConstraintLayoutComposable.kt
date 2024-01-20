@@ -42,14 +42,17 @@ fun  ConstraintScreen(){
         Box(modifier = Modifier.size(50.dp).background(Color.Yellow)
             .constrainAs(yellowBox){
                 top.linkTo(parent.top)
+                end.linkTo(parent.end)
             })
 
         Box(modifier = Modifier.size(50.dp).background(Color.Red).constrainAs(redBox){
             top.linkTo(yellowBox.bottom)
+            end.linkTo(yellowBox.end)
         })
 
         Box(modifier = Modifier.size(50.dp).background(Color.Green).constrainAs(greenBox){
             top.linkTo(redBox.bottom)
+            end.linkTo(redBox.end)
         })
     }
 
