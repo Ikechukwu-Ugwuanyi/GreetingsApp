@@ -39,11 +39,18 @@ fun  ConstraintScreen(){
     ConstraintLayout {
         val(yellowBox, redBox,greenBox) = createRefs()
 
-        Box(modifier = Modifier.size(50.dp).background(Color.Yellow))
+        Box(modifier = Modifier.size(50.dp).background(Color.Yellow)
+            .constrainAs(yellowBox){
+                top.linkTo(parent.top)
+            })
 
-        Box(modifier = Modifier.size(50.dp).background(Color.Yellow))
+        Box(modifier = Modifier.size(50.dp).background(Color.Yellow).constrainAs(redBox){
+            top.linkTo(yellowBox.bottom)
+        })
 
-        Box(modifier = Modifier.size(50.dp).background(Color.Yellow))
+        Box(modifier = Modifier.size(50.dp).background(Color.Yellow).constrainAs(greenBox){
+            top.linkTo(redBox.bottom)
+        })
     }
 
 }
