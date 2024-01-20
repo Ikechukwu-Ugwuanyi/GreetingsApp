@@ -44,11 +44,11 @@ fun  ConstraintScreen(){
                 top.linkTo(parent.top)
             })
 
-        Box(modifier = Modifier.size(50.dp).background(Color.Yellow).constrainAs(redBox){
+        Box(modifier = Modifier.size(50.dp).background(Color.Red).constrainAs(redBox){
             top.linkTo(yellowBox.bottom)
         })
 
-        Box(modifier = Modifier.size(50.dp).background(Color.Yellow).constrainAs(greenBox){
+        Box(modifier = Modifier.size(50.dp).background(Color.Green).constrainAs(greenBox){
             top.linkTo(redBox.bottom)
         })
     }
