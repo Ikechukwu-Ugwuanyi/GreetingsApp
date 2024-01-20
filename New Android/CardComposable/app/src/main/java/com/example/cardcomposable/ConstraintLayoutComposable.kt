@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.cardcomposable.ui.theme.CardComposableTheme
@@ -38,7 +39,7 @@ class ConstraintLayoutComposable : ComponentActivity() {
 @Composable
 fun  ConstraintScreen(){
     ConstraintLayout {
-        val(yellowBox, redBox,greenBox) = createRefs()
+        val(yellowBox, redBox,greenBox, blackBox, magentaBox) = createRefs()
 
         Box(modifier = Modifier.size(50.dp).background(Color.Yellow)
             .constrainAs(yellowBox){
@@ -57,6 +58,16 @@ fun  ConstraintScreen(){
             top.linkTo(redBox.bottom)
             end.linkTo(redBox.end)
         })
+
+        Box(modifier = Modifier.size(50.dp).background(Color.Black).constrainAs(blackBox){
+            top.linkTo(greenBox.bottom)
+        })
+
+        Box(modifier = Modifier.size(50.dp).background(Color.Magenta).constrainAs(magentaBox){
+            top.linkTo(greenBox.bottom)
+        })
+
+        createHorizontalChain(blackBox, magentaBox, chainStyle = ChainStyle.Packed)
     }
 
 }
