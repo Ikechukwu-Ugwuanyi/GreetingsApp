@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
@@ -52,5 +53,16 @@ fun CreditCard(cardInfo: CardInfo){
         }
 
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun CreditCardPreview(){
+    val cardDemo = CardInfo("1234 5678 1235 0987",
+        "IKECHUKWU UGWUANYI",
+        R.drawable.background_1,
+        R.drawable.master_card)
+
+    CreditCard(cardDemo)
 }
 
