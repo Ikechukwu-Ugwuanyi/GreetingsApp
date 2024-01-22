@@ -13,6 +13,17 @@
         android:theme="@style/Theme.CardComposable"
         tools:targetApi="31">
         <activity
+            android:name=".CreditCardApp"
+            android:exported="true"
+            android:label="@string/title_activity_credit_card_app"
+            android:theme="@style/Theme.CardComposable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ConstraintLayoutComposable"
             android:exported="true"
             android:label="@string/title_activity_constraint_layout_composable"
