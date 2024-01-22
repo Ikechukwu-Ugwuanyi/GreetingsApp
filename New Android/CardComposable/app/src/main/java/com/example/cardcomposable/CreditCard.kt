@@ -31,8 +31,9 @@ fun CreditCard(cardInfo: CardInfo){
         ) {
         Image(painter = painterResource(id = cardInfo.backgroundImage),
             contentDescription = "Background Image",
+            modifier = Modifier.fillMaxSize(),
             contentScale = ContentScale.FillBounds,
-            modifier = Modifier.fillMaxSize())
+            )
     }
 
     Box(modifier = Modifier.padding(16.dp)) {
