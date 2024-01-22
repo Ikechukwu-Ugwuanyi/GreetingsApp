@@ -3,6 +3,7 @@ package com.example.cardcomposable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -56,7 +57,8 @@ fun DisplayCards() {
 
     LazyColumn(modifier = Modifier
         .fillMaxSize()
-        .padding(16.dp)){
+        .padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)){
 
         items(cardList){
                 cardList -> CreditCard(cardInfo = cardList)

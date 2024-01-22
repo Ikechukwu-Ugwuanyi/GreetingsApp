@@ -23,37 +23,42 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun CreditCard(cardInfo: CardInfo){
+    Box{
 
-    Card(
-        modifier = Modifier.height(200.dp),
-        elevation = CardDefaults.cardElevation(8.dp),
-        shape = RoundedCornerShape(8.dp)
+        Card(
+            modifier = Modifier.height(200.dp),
+            elevation = CardDefaults.cardElevation(8.dp),
+            shape = RoundedCornerShape(8.dp)
         ) {
-        Image(painter = painterResource(id = cardInfo.backgroundImage),
-            contentDescription = "Background Image",
-            modifier = Modifier.fillMaxSize(),
-            contentScale = ContentScale.FillBounds,
+            Image(painter = painterResource(id = cardInfo.backgroundImage),
+                contentDescription = "Background Image",
+                modifier = Modifier.fillMaxSize(),
+                contentScale = ContentScale.FillBounds,
             )
-    }
+        }
 
-    Box(modifier = Modifier.padding(16.dp)) {
-        Image(painter = painterResource(id = cardInfo.providerImage),
-            contentDescription = "Provider Logo",
-            modifier = Modifier
-                .width(86.dp)
-                .align(Alignment.TopStart))
+        Box(modifier = Modifier.padding(16.dp)) {
+            Image(painter = painterResource(id = cardInfo.providerImage),
+                contentDescription = "Provider Logo",
+                modifier = Modifier
+                    .width(86.dp)
+                    .align(Alignment.TopStart))
 
-        Column(modifier = Modifier.align(Alignment.BottomStart)) {
-            Text(text = cardInfo.cardHolder,
-                fontSize = 20.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 1.2.sp)
-            Text(text = cardInfo.cardNumber,
-                fontSize = 16.sp,
-                letterSpacing = 1.1.sp)
+            Column(modifier = Modifier.align(Alignment.BottomStart)) {
+                Text(text = cardInfo.cardHolder,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Bold,
+                    letterSpacing = 1.2.sp)
+                Text(text = cardInfo.cardNumber,
+                    fontSize = 16.sp,
+                    letterSpacing = 1.1.sp)
+            }
+
         }
 
     }
+
+
 }
 
 @Composable
