@@ -45,7 +45,7 @@ fun DisplayNav(){
             startDestination = Destinations.FirstScreen.toString()
     ) {
 
-        composable(route = Destinations.SecondScreen.toString()){
+        composable(route = Destinations.FirstScreen.toString()){
             FirstScreen(navController)
         }
 
@@ -58,7 +58,7 @@ fun DisplayNav(){
 
 @Composable
 fun FirstScreen(navController: NavController){
-   Column(){
+   Column{
        Button(onClick = { navController.navigate(Destinations.SecondScreen.toString()) }) {
            Text(text = "Go to Second Screen")
        }
