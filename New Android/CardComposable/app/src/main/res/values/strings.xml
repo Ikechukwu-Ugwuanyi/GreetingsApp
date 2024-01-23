@@ -7,4 +7,6 @@
     <string name="title_activity_lazy_vert_grid">LazyVertGrid</string>
     <string name="title_activity_constraint_layout_composable">ConstraintLayoutComposable</string>
     <string name="title_activity_credit_card_app">CreditCardApp</string>
+    <string name="title_activity_main3">MainActivity3</string>
+    <string name="title_activity_compose_navigation">ComposeNavigation</string>
 </resources>

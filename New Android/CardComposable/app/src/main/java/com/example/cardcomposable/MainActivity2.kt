@@ -47,12 +47,12 @@ fun DisplayCards() {
 
         CardInfo("EBUKA CHINEDU",
             "6789 5689 0975 7765",
-            R.drawable.visa,
+            R.drawable.master_card,
             R.drawable.background_3),
 
         CardInfo("CHINAZA PHILIP",
             "8890 2345 4322 7765",
-            R.drawable.master_card,
+            R.drawable.visa,
             R.drawable.background_4))
 
     LazyColumn(modifier = Modifier

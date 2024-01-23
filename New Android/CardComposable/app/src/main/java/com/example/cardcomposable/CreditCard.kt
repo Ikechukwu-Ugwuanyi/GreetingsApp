@@ -78,7 +78,6 @@ fun CreditCard(cardInfo: CardInfo) {
 
     }
 
-
 }
 
 @Composable
@@ -88,7 +87,7 @@ fun CreditCardPreview() {
         "1234 5678 1235 0987",
         "IKECHUKWU UGWUANYI",
         R.drawable.background_1,
-        R.drawable.mastercard
+        R.drawable.master_card
     )
 
     CreditCard(cardDemo)
