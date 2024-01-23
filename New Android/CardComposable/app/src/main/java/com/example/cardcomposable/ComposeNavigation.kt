@@ -3,6 +3,7 @@ package com.example.cardcomposable
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
@@ -56,15 +57,19 @@ fun DisplayNav(){
 
 @Composable
 fun FirstScreen(navController: NavController){
-    Button(onClick = { navController.navigate("Second Screen") }) {
-        Text(text = "Go to Second Screen")
-    }
+   Column(){
+       Button(onClick = { navController.navigate("Second Screen") }) {
+           Text(text = "Go to Second Screen")
+       }
+   }
 }
 
 
 @Composable
 fun SecondScreen(navController: NavController){
-    Button(onClick = { navController.navigate("First Screen") }) {
-        Text(text = "Go to Second Screen")
+    Column {
+        Button(onClick = { navController.navigate("First Screen") }) {
+            Text(text = "Go to First Screen")
+        }
     }
 }
