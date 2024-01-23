@@ -42,13 +42,14 @@ fun DisplayNav(){
 
     //NavHost
     NavHost(navController = navController,
-            startDestination = "First Screen") {
+            startDestination = Destinations.FirstScreen.toString()
+    ) {
 
-        composable(route = "First Screen"){
+        composable(route = Destinations.SecondScreen.toString()){
             FirstScreen(navController)
         }
 
-        composable(route = "Second Screen"){
+        composable(route = Destinations.SecondScreen.toString()){
             SecondScreen(navController)
         }
 
@@ -58,7 +59,7 @@ fun DisplayNav(){
 @Composable
 fun FirstScreen(navController: NavController){
    Column(){
-       Button(onClick = { navController.navigate("Second Screen") }) {
+       Button(onClick = { navController.navigate(Destinations.SecondScreen.toString()) }) {
            Text(text = "Go to Second Screen")
        }
    }
@@ -68,7 +69,7 @@ fun FirstScreen(navController: NavController){
 @Composable
 fun SecondScreen(navController: NavController){
     Column {
-        Button(onClick = { navController.navigate("First Screen") }) {
+        Button(onClick = { navController.navigate(Destinations.FirstScreen.toString()) }) {
             Text(text = "Go to First Screen")
         }
     }
