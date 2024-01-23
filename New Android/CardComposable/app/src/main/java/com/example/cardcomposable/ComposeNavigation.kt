@@ -10,6 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -43,27 +44,27 @@ fun DisplayNav(){
             startDestination = "First Screen") {
 
         composable(route = "First Screen"){
-            FirstScreen()
+            FirstScreen(navController)
         }
 
         composable(route = "Second Screen"){
-            SecondScreen()
+            SecondScreen(navController)
         }
 
     }
 }
 
 @Composable
-fun FirstScreen(){
-    Button(onClick = {  }) {
-        Text(text = "Welcome to First Screen")
+fun FirstScreen(navController: NavController){
+    Button(onClick = { navController.navigate("Second Screen") }) {
+        Text(text = "Go to Second Screen")
     }
 }
 
 
 @Composable
-fun SecondScreen(){
-    Button(onClick = {  }) {
-        Text(text = "Welcome to Second Screen")
+fun SecondScreen(navController: NavController){
+    Button(onClick = { navController.navigate("First Screen") }) {
+        Text(text = "Go to Second Screen")
     }
 }
