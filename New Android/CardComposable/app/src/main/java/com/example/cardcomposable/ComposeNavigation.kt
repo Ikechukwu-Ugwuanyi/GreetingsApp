@@ -15,11 +15,14 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.cardcomposable.ui.theme.CardComposableTheme
 
 class ComposeNavigation : ComponentActivity() {
@@ -59,12 +62,22 @@ fun DisplayNav(){
             SecondScreen(user, navController)
         }
 
+        composable(route = "profile/{userID}",
+            arguments = listOf(navArgument("userID"){
+                type = NavType.StringType
+                defaultValue = "0"
+            })
+        ){
+            val user = it.arguments?.getString("userID", "0")!!
+            ThirdScreen(userId = user ,navController)
+        }
+
     }
 }
 
 @Composable
 fun FirstScreen(navController: NavController){
-   Column{
+   Column(horizontalAlignment = Alignment.CenterHorizontally){
        Text(text = "Welcome to first screen")
 
        var username by remember{
@@ -87,8 +100,14 @@ fun FirstScreen(navController: NavController){
 fun SecondScreen(user: String?, navController: NavController){
     Column {
         Text(text = "Welcome $user to Second screen")
-        Button(onClick = { navController.popBackStack(Destinations.FirstScreen.toString(), inclusive = true) }) {
+        Button(onClick = { navController.navigate("profile/77") }) {
             Text(text = "Go to First Screen")
         }
     }
+}
+
+@Composable
+fun ThirdScreen(userId: String, navController: NavController){
+    Text(text = "User ID is $userId")
+
 }
