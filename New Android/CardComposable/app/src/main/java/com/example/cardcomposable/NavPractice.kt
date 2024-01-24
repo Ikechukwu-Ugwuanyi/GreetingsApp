@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -33,7 +35,8 @@ class NavPractice : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    NavDisplay()
+                    DisplayNav2()
+
                 }
             }
         }
@@ -41,55 +44,60 @@ class NavPractice : ComponentActivity() {
 }
 
 @Composable
-fun NavDisplay() {
+fun DisplayNav2(){
+
     val navController = rememberNavController()
 
-    NavHost(
-        navController = navController,
-        startDestination = "First Screen"
-    ) {
+    NavHost(navController = navController,
+        startDestination = Dest.FirstShow.toString()){
 
-        composable(route = "First Screen") {
-            FirstScreen2(navController)
+        composable(route = Dest.FirstShow.toString()){
+            Screen1(navController = navController)
         }
 
-        composable(route = "Second Screen" + "/{username}") {
-            val user = it.arguments?.getString("username")
-            SecondScreen2(user, navController)
-
+        composable(route = Dest.SecondShow.toString()+"/{user}"){
+            val arg = it.arguments?.getString("user")
+            Screen2(arg, navController = navController)
         }
 
     }
 
 }
 
-
 @Composable
-fun FirstScreen2(navController: NavController) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        var username by remember {
+fun Screen1(navController: NavController){
+
+    Column(modifier = Modifier
+                .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+
+        var user by remember{
             mutableStateOf("")
         }
-
-        Text(text = "Welcome to First Screen. \n Please, enter your name")
-
-        TextField(value = username, onValueChange = { newname ->
-            username = newname
+        Text(text = "Welcome to screen one. \n Please enter your name.")
+        TextField(value = user, onValueChange = { username ->
+            user = username
         })
 
-        Button(onClick = { navController.navigate("Second Screen" + "/$username") }) {
-            Text(text = "Go to Second Screen")
+        Button(onClick = { navController.navigate(Dest.SecondShow.toString()+"/$user") }) {
+            Text(text = "Go to second screen")
         }
     }
+
 }
 
 
 @Composable
-fun SecondScreen2(user: String?, navController: NavController) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(text = "Hi $user, Welcome to Second Screen")
-        Button(onClick = { navController.navigate("First Screen") }) {
-            Text(text = "Go to First Screen")
+fun Screen2(arg:String?, navController: NavController){
+
+    Column(modifier = Modifier
+        .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally) {
+
+        Text(text = "Hello $arg, welcome to screen two")
+        Button(onClick = { navController.navigate(Dest.FirstShow.toString()) }) {
+            Text(text = "Go to first screen")
         }
     }
+
 }
