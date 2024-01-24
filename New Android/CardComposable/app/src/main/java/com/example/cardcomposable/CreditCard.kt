@@ -33,7 +33,7 @@ fun CreditCard(cardInfo: CardInfo) {
     ) {
         Box() {
             Image(
-                painter = painterResource(id = cardInfo.backgroundImage),
+                painter = painterResource(cardInfo.backgroundImage),
                 contentDescription = "Background Image",
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.FillBounds,
