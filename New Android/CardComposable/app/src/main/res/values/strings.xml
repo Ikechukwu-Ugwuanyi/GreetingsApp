@@ -9,4 +9,5 @@
     <string name="title_activity_credit_card_app">CreditCardApp</string>
     <string name="title_activity_main3">MainActivity3</string>
     <string name="title_activity_compose_navigation">ComposeNavigation</string>
+    <string name="title_activity_nav_practice">NavPractice</string>
 </resources>

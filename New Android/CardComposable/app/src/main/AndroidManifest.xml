@@ -13,6 +13,17 @@
         android:theme="@style/Theme.CardComposable"
         tools:targetApi="31">
         <activity
+            android:name=".NavPractice"
+            android:exported="true"
+            android:label="@string/title_activity_nav_practice"
+            android:theme="@style/Theme.CardComposable">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".ComposeNavigation"
             android:exported="true"
             android:label="@string/title_activity_compose_navigation"
