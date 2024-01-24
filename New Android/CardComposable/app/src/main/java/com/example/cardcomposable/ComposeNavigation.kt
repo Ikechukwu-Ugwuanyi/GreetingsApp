@@ -9,7 +9,12 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
@@ -49,8 +54,9 @@ fun DisplayNav(){
             FirstScreen(navController)
         }
 
-        composable(route = Destinations.SecondScreen.toString()){
-            SecondScreen(navController)
+        composable(route = Destinations.SecondScreen.toString()+"/{username}"){
+            val user = it.arguments?.getString("username")
+            SecondScreen(user, navController)
         }
 
     }
@@ -59,7 +65,17 @@ fun DisplayNav(){
 @Composable
 fun FirstScreen(navController: NavController){
    Column{
-       Button(onClick = { navController.navigate(Destinations.SecondScreen.toString()) }) {
+
+       var username by remember{
+           mutableStateOf("")
+       }
+
+       TextField(value = username,
+           onValueChange = { newName ->
+               username = newName
+           })
+
+       Button(onClick = { navController.navigate(Destinations.SecondScreen.toString()+"/$username") }) {
            Text(text = "Go to Second Screen")
        }
    }
@@ -67,9 +83,10 @@ fun FirstScreen(navController: NavController){
 
 
 @Composable
-fun SecondScreen(navController: NavController){
+fun SecondScreen(user: String?, navController: NavController){
     Column {
-        Button(onClick = { navController.navigate(Destinations.FirstScreen.toString()) }) {
+        Text(text = "Welcome $user to Second screen")
+        Button(onClick = { navController.popBackStack(Destinations.FirstScreen.toString(), inclusive = true) }) {
             Text(text = "Go to First Screen")
         }
     }
