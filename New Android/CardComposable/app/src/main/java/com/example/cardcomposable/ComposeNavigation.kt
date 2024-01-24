@@ -65,6 +65,7 @@ fun DisplayNav(){
 @Composable
 fun FirstScreen(navController: NavController){
    Column{
+       Text(text = "Welcome to first screen")
 
        var username by remember{
            mutableStateOf("")
