@@ -48,8 +48,9 @@ fun  ConstraintScreen(){
             .constrainAs(yellowBox){
                 end.linkTo(parent.end)
                 start.linkTo(parent.start)
-                height = Dimension.value(100.dp)
-                width = Dimension.matchParent
+                width = Dimension.fillToConstraints
+                //height = Dimension.value(100.dp)
+                //width = Dimension.matchParent
             })
 
         Box(modifier = Modifier.size(50.dp).background(Color.Red).constrainAs(redBox){
