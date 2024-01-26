@@ -73,7 +73,7 @@ fun Greeting3() {
             leadingIcon = { Icon(imageVector = Icons.Default.Email, contentDescription = "Email")},
             isError = isUserBelow18,
             keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Number,
+                keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Done
             ),
             keyboardActions = KeyboardActions(
