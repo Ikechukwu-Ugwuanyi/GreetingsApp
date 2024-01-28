@@ -22,5 +22,5 @@ fun main(){
     println({a:Int, b:Int -> a * b}(4,5))
 
     //ANONYMOUS FUNCTIONS
-    val a = fun(c:Int, d:Int) :Int  { return 60 + 30}
+    val a = fun(c:Int, d:Int) :Int  { return 60 + 30 }
 }
