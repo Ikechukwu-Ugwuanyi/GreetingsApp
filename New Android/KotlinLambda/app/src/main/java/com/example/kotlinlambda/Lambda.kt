@@ -29,4 +29,28 @@ fun main() {
     }
     println(anon.invoke(9, 90))
 
+    //V.I Note
+    //If the method body has only one statement, we can omit the return keyword and the braces
+
+    val omit = fun(a: Int, b: Int): Int = a + b
+    println(omit(99, 1))
+
+    //Types of Anonymous Functions
+
+    //With Parameters and Return value
+    val multiply = fun(a: Int, b: Int): Int { return a * b }
+    println(multiply(5, 5))
+
+    //With Parameters and No Return Value
+    val multiply2 = fun(a: Int, b: Int): Unit { println(a * b) }
+    multiply2.invoke(6, 6)
+
+    //No parameter but a return value
+    val msg = fun(): String { return "I am with you for real" }
+    println(msg())
+
+    //No parameters and No Return value
+    val multiply3 = fun(): Unit { println("I have no parameters and return value") }
+    multiply3.invoke()
+
 }
