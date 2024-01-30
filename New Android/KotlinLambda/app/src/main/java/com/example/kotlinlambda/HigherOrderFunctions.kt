@@ -2,7 +2,6 @@ package com.example.kotlinlambda
 
 fun main(){
 
-
     //LAMBDA NOTES: There are two cases where parenthesis can be omitted from Lambdas.
     // Case 1: If the lambda is the only argument, you can omit the parenthesis
     //val add = {a:Int, b:Int -> a + b}
@@ -22,6 +21,12 @@ fun main(){
     println(numbers.filter {
         it > 5
     })
+
+    //NB: When there is only one argument in the lambda expression, "it" can be used!
+    reverseString("Hello") { it.reversed() }
+
+    val minus = fun(a : Int, b : Int):Int {return   a - b}
+    hof4(minus)
 }
 
 //Higher Order Function
@@ -38,4 +43,15 @@ fun hof2(name: String, addition: (Int, Int) -> Int){
 
 fun hof3(name : (String) -> Unit){
     name("John")
+}
+
+fun reverseString(str : String, myLambda: (String) -> (String)){
+    val result = myLambda(str)
+    println(result)
+}
+
+
+fun hof4(subtract:(Int, Int) -> Int){
+    val result = subtract(90, 40)
+    println(result)
 }
