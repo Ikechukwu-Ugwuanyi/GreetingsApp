@@ -71,5 +71,14 @@ val course6 = Courses(
 
 )
 
+val allCourses = listOf(
+    course1,
+    course2,
+    course3,
+    course4,
+    course5,
+    course6
+)
+
 
 
