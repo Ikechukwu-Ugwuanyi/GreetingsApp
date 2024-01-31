@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 data class Courses(
     val rating: Float,
     val title : String,
-    @DrawableRes val img: Int,
+    @DrawableRes val thumbnail: Int,
     val body: String
 )
 
