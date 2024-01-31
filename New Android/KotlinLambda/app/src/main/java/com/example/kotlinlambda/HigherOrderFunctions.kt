@@ -38,8 +38,8 @@ fun main() {
     //Returning a regular function from HOF
     println(hof6()())
 
-
-    //Passing a regular function to HOFA
+    //Passing a regular function to HOF
+    hof7 (::message)
 
 }
 
@@ -82,4 +82,8 @@ fun hof6(): () -> String {
 
 fun message(): String {
     return "Hi from HOF 6"
+}
+
+fun hof7(regFun : () -> String){
+    println(regFun)
 }
