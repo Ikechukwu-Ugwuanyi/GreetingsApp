@@ -8,7 +8,7 @@ fun main(){
     hof{a:Int, b:Int -> a + b}
 
     //Case 2: If the lambda is the last argument
-    hof2("Ikechukwu") { c: Int, b: Int -> c + b }
+    hof2("Chukchi") { c: Int, b: Int -> c + b }
 
     hof3 {
         println("Hi $it")
@@ -25,8 +25,18 @@ fun main(){
     //NB: When there is only one argument in the lambda expression, "it" can be used!
     reverseString("Hello") { it.reversed() }
 
-    val minus = fun(a : Int, b : Int):Int {return   a - b}
-    hof4(minus)
+    //Passing an anonymous function as a Parameter to HOF
+    val mySub = fun(a:Int, b:Int) : Int{
+        return a - b
+    }
+
+    hof4(mySub)
+
+    //Returning a value from an anonymous function.
+    println(hof5()())
+
+
+
 }
 
 //Higher Order Function
@@ -50,8 +60,14 @@ fun reverseString(str : String, myLambda: (String) -> (String)){
     println(result)
 }
 
-
-fun hof4(subtract:(Int, Int) -> Int){
-    val result = subtract(90, 40)
+fun hof4(subtract: (Int, Int) -> Int){
+    val result = subtract(30, 7)
     println(result)
+}
+
+fun hof5() : () -> String {
+    val msg = fun() : String {
+        return  "Hello from HOF5"
+    }
+    return msg
 }
