@@ -74,6 +74,10 @@ class MainActivity : ComponentActivity() {
                                 } )
                         }
 
+                        composable("about"){
+                            AboutScreen(onNavigateUp = {navController.popBackStack()})
+                        }
+
 
                     }
 
