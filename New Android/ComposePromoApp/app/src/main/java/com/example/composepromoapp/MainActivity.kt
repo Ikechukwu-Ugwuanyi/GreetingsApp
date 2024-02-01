@@ -14,7 +14,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -24,7 +26,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.ImeAction.Companion.Go
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -91,6 +96,7 @@ private fun HomeAppBar(onAboutClick: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CourseCard(item: Courses, onClick: () -> Unit) {
     Card(
@@ -129,6 +135,38 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
         }
 
     }
+}
+
+@Composable
+fun AboutScreen(onNavigateUp: () -> Unit) {
+
+    Scaffold { padding ->
+        Column(Modifier.padding(padding)) {
+            Appbar("About", onNavigateUp)
+            Spacer(modifier = Modifier.height(20.dp))
+
+            Column(Modifier.padding(16.dp)) {
+                Text(text = "This app is a demonstration about the navigation component in android Jetpack Compose")
+                Spacer(modifier = Modifier.height(20.dp))
+
+                val udemy_link = LocalUriHandler.current
+                Button(
+                    onClick = {
+                        udemy_link.openUri("https://www.udemy.com/course/the-complete-android-10-developer-course-mastering-android/")
+                    },
+                ) {
+                    Text(text = "Go to our Udemy Link")
+                }
+            }
+
+
+        }
+    }
+}
+
+@Composable
+fun Appbar(title: String, onNavigateUp: () -> Unit) {
+
 }
 
 
