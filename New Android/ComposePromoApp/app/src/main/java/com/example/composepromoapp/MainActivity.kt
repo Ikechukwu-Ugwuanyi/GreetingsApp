@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.composepromoapp.ui.theme.ComposePromoAppTheme
 
@@ -53,7 +54,9 @@ class MainActivity : ComponentActivity() {
 
 
                 //Navigation System
-                Box(modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.background)){
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background)){
 
                     //Nav Controller
                     val navController = rememberNavController()
@@ -62,8 +65,18 @@ class MainActivity : ComponentActivity() {
                     NavHost(navController = navController,
                         startDestination = "home"){
 
+                        //NavGraph
+                        composable("home") {
+                            HomeScreen(onAboutClick =
+                            { navController.navigate("about") },
+                                onDetailsClick = {
+                                        title -> navController.navigate("details/title = $title")
+                                } )
+                        }
+
 
                     }
+
                 }
 
             }
@@ -211,6 +224,8 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
 @Composable
 fun DetailsScreen(title: String, name: String?, onNavigateUp: () -> Unit) {
 
+    //Searching for the correct course
+    //matching the passed course title
     val chosen_course = allCourses.first { it.title == title }
 
     Scaffold { padding ->
