@@ -25,7 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -45,17 +44,21 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePromoAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
 
-                }
+                //Transparent System Bars
+
+
+                //Navigation System
+
             }
         }
     }
 }
 
+
+
+
+//Home Screen
 @Composable
 fun HomeScreen(onAboutClick: () -> Unit, onDetailsClick: (title: String) -> Unit) {
 
@@ -141,6 +144,8 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
     }
 }
 
+
+//About Screen
 @Composable
 fun AboutScreen(onNavigateUp: () -> Unit) {
 
@@ -184,6 +189,8 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
 
 }
 
+
+//Details Screen
 @Composable
 fun DetailsScreen(title: String, name: String?, onNavigateUp: () -> Unit) {
 
