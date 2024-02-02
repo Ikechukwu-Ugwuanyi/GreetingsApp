@@ -85,14 +85,13 @@ class MainActivity : ComponentActivity() {
                         }
 
                         composable("details/title={title",
-                           arguments = listOf(
-                               navArgument("title"){
-                                   type = NavType.StringType
-                                   nullable = true
-                               }
-                           )
-                        ){
-                            backStackEntry ->
+                            arguments = listOf(
+                                navArgument("title") {
+                                    type = NavType.StringType
+                                    nullable = true
+                                }
+                            )
+                        ) { backStackEntry ->
                             val arguments = requireNotNull(backStackEntry.arguments)
 
                             val title = arguments.getString("title")
@@ -102,8 +101,6 @@ class MainActivity : ComponentActivity() {
                                 })
                             }
                         }
-
-
 
 
                     }
@@ -149,13 +146,13 @@ private fun HomeAppBar(onAboutClick: () -> Unit) {
 
         Text(
             text = "My Udemy Courses",
-            style = MaterialTheme.typography.headlineLarge
+            style = MaterialTheme.typography.headlineMedium
         )
         Spacer(modifier = Modifier.weight(1f))
         TextButton(onClick = { onAboutClick }) {
             Text(
                 text = "About",
-                fontSize = 24.sp
+                fontSize = 20.sp
             )
         }
 
@@ -239,7 +236,7 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
         modifier = Modifier.padding(vertical = 10.dp)
     ) {
 
-        IconButton(onClick = { onNavigateUp}) {
+        IconButton(onClick = { onNavigateUp }) {
             Icon(Icons.Filled.ArrowBack, contentDescription = "Go Back")
         }
         Spacer(modifier = Modifier.width(20.dp))
