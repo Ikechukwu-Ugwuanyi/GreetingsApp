@@ -92,7 +92,15 @@ class MainActivity : ComponentActivity() {
                                }
                            )
                         ){
+                            backStackEntry ->
+                            val arguments = requireNotNull(backStackEntry.arguments)
 
+                            val title = arguments.getString("title")
+                            if (title != null) {
+                                DetailsScreen(title = title, onNavigateUp = {
+                                    navController.popBackStack()
+                                })
+                            }
                         }
 
 
