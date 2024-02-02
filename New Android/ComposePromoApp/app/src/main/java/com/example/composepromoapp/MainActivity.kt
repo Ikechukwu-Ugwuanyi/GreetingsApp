@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(onAboutClick =
                             { navController.navigate("about") },
                                 onDetailsClick = { title ->
-                                    navController.navigate("details/title = $title")
+                                    navController.navigate("details/title=$title")
                                 })
                         }
 
