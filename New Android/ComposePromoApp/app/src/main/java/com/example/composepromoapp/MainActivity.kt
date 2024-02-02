@@ -149,7 +149,7 @@ private fun HomeAppBar(onAboutClick: () -> Unit) {
             style = MaterialTheme.typography.headlineMedium
         )
         Spacer(modifier = Modifier.weight(1f))
-        TextButton(onClick = { onAboutClick }) {
+        TextButton(onClick = { onAboutClick() }) {
             Text(
                 text = "About",
                 fontSize = 20.sp
@@ -207,7 +207,7 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
 
     Scaffold { padding ->
         Column(Modifier.padding(padding)) {
-            Appbar("About", onNavigateUp)
+            Appbar("About") { onNavigateUp() }
             Spacer(modifier = Modifier.height(20.dp))
 
             Column(Modifier.padding(16.dp)) {
@@ -236,7 +236,7 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
         modifier = Modifier.padding(vertical = 10.dp)
     ) {
 
-        IconButton(onClick = { onNavigateUp }) {
+        IconButton(onClick = { onNavigateUp() }) {
             Icon(Icons.Filled.ArrowBack, contentDescription = "Go Back")
         }
         Spacer(modifier = Modifier.width(20.dp))
@@ -260,7 +260,7 @@ fun DetailsScreen(title: String, onNavigateUp: () -> Unit) {
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.padding(10.dp)
             ) {
-                IconButton(onClick = { onNavigateUp }) {
+                IconButton(onClick = { onNavigateUp() }) {
                     Icon(imageVector = Icons.Rounded.ArrowBack, contentDescription = "Go Back")
                 }
             }
