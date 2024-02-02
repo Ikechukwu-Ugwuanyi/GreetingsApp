@@ -84,7 +84,7 @@ class MainActivity : ComponentActivity() {
                             AboutScreen(onNavigateUp = { navController.popBackStack() })
                         }
 
-                        composable("details/title={title",
+                        composable("details/title={title}",
                             arguments = listOf(
                                 navArgument("title") {
                                     type = NavType.StringType
