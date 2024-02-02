@@ -38,9 +38,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.composepromoapp.ui.theme.ComposePromoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -54,29 +56,46 @@ class MainActivity : ComponentActivity() {
 
 
                 //Navigation System
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .background(MaterialTheme.colorScheme.background)){
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .background(MaterialTheme.colorScheme.background)
+                ) {
 
                     //Nav Controller
                     val navController = rememberNavController()
 
                     //NavHost
-                    NavHost(navController = navController,
-                        startDestination = "home"){
+                    NavHost(
+                        navController = navController,
+                        startDestination = "home"
+                    ) {
 
                         //NavGraph
                         composable("home") {
                             HomeScreen(onAboutClick =
                             { navController.navigate("about") },
-                                onDetailsClick = {
-                                        title -> navController.navigate("details/title = $title")
-                                } )
+                                onDetailsClick = { title ->
+                                    navController.navigate("details/title = $title")
+                                })
                         }
 
-                        composable("about"){
-                            AboutScreen(onNavigateUp = {navController.popBackStack()})
+                        composable("about") {
+                            AboutScreen(onNavigateUp = { navController.popBackStack() })
                         }
+
+                        composable("details/title={title",
+                           arguments = listOf(
+                               navArgument("title"){
+                                   type = NavType.StringType
+                                   nullable = true
+                               }
+                           )
+                        ){
+
+                        }
+
+
 
 
                     }
@@ -87,8 +106,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
-
 
 
 //Home Screen
@@ -214,7 +231,7 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
         modifier = Modifier.padding(vertical = 10.dp)
     ) {
 
-        IconButton(onClick = { onNavigateUp }) {
+        IconButton(onClick = { onNavigateUp}) {
             Icon(Icons.Filled.ArrowBack, contentDescription = "Go Back")
         }
         Spacer(modifier = Modifier.width(20.dp))
@@ -226,7 +243,7 @@ fun Appbar(title: String, onNavigateUp: () -> Unit) {
 
 //Details Screen
 @Composable
-fun DetailsScreen(title: String, name: String?, onNavigateUp: () -> Unit) {
+fun DetailsScreen(title: String, onNavigateUp: () -> Unit) {
 
     //Searching for the correct course
     //matching the passed course title
