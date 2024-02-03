@@ -103,7 +103,6 @@ class MainActivity : ComponentActivity() {
                             }
                         }
 
-
                     }
 
                 }
@@ -229,6 +228,7 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
         }
     }
 }
+
 
 @Composable
 fun Appbar(title: String, onNavigateUp: () -> Unit) {
