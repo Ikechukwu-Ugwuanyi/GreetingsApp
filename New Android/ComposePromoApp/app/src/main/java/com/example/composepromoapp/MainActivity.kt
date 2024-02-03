@@ -55,9 +55,7 @@ class MainActivity : ComponentActivity() {
             ComposePromoAppTheme {
                 // A surface container using the 'background' color from the theme
 
-                //Transparent System Bars
-
-
+                //Transparent System Bar
                 //Navigation System
                 Box(
                     modifier = Modifier
