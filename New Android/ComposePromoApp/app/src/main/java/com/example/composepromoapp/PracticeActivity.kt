@@ -3,8 +3,6 @@ package com.example.composepromoapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import com.example.composepromoapp.ui.theme.ComposePromoAppTheme
 
 class PracticeActivity : ComponentActivity() {
@@ -17,9 +15,4 @@ class PracticeActivity : ComponentActivity() {
             }
         }
     }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-
 }
