@@ -47,12 +47,18 @@ fun HomeScreen2(onAboutClick: () -> Unit, onDetailsClick: (title: String) -> Uni
             }
 
             items(allCourses) { item ->
-                CourseCard(
+                CourseCard2(
                     item,
                     onClick = { onDetailsClick(item.title) })
             }
         }
     }
+
+}
+
+@Composable
+fun CourseCard2(item: Courses, onClick: () -> Unit) {
+
 
 }
 
@@ -73,3 +79,6 @@ fun HomeAppBar2(onAboutClick: () -> Unit){
         }
     }
 }
+
+@Composable
+
