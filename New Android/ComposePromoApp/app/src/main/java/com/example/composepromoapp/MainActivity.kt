@@ -195,6 +195,8 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
                 )
             }
 
+
+
         }
 
     }
