@@ -64,7 +64,8 @@ class PracticeActivity : ComponentActivity() {
 
                         composable("home") {
                             HomeScreen2(onAboutClick = { navController.navigate("about") },
-                                onDetailsClick = { navController.navigate("details/title=$title") })
+                                onDetailsClick = {title->
+                                    navController.navigate("details/title=$title") })
                         }
 
                         composable("about") {
@@ -179,6 +180,7 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
             Text(
                 text = item.body,
+                maxLines = 1,
                 fontWeight = FontWeight.Normal,
                 fontSize = 15.sp
             )
@@ -224,7 +226,7 @@ fun Appbar2(title: String, onNavigateUp: () -> Unit) {
         IconButton(onClick = { onNavigateUp() }) {
             Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go Back")
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.width(20.dp))
         Text(text = title, fontSize = 24.sp )
     }
 }
