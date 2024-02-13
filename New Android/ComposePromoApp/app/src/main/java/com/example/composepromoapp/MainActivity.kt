@@ -280,7 +280,8 @@ fun DetailsScreen(title: String, onNavigateUp: () -> Unit) {
                     .padding(16.dp)
             ) {
                 Text(
-                    text = title, fontWeight = FontWeight.Bold,
+                    text = title,
+                    fontWeight = FontWeight.Bold,
                     fontSize = 20.sp
                 )
                 Text(

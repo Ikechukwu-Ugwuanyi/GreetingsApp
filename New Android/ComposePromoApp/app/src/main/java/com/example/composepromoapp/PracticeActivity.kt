@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -139,6 +141,7 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
 
 }
 
+//AboutScreen
 @Composable
 fun AboutScreen2(onNavigateUp: () -> Unit) {
 
@@ -147,7 +150,8 @@ fun AboutScreen2(onNavigateUp: () -> Unit) {
             Appbar2("About") { onNavigateUp() }
             Spacer(modifier = Modifier.height(20.dp))
 
-            Column(modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp)
+            Column(
+                modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp)
             ) {
                 Text(text = "This app is a demonstration about the navigation component in android Jetpack Compose")
                 Spacer(modifier = Modifier.height(20.dp))
@@ -175,8 +179,57 @@ fun Appbar2(text: String, onNavigateUp: () -> Unit) {
         }
         Spacer(modifier = Modifier.height(20.dp))
     }
+}
 
+//DetailsScreen
+@Composable
+fun DetailsScreen2(title: String, onNavigateUp: () -> Unit) {
 
+    val chosen_course2 = allCourses.first { it.title == title }
+
+    Scaffold { padding ->
+        Column(Modifier.padding(padding)) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.padding(10.dp)
+            ) {
+                IconButton(onClick = { onNavigateUp() }) {
+                    Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go Back")
+                }
+            }
+
+            Image(
+                painterResource(id = chosen_course2.thumbnail),
+                contentDescription = "Image",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .aspectRatio(16f / 9f),
+                contentScale = ContentScale.Crop
+            )
+
+            Spacer(modifier = Modifier.width(20.dp))
+
+            Column(
+                Modifier
+                    .fillMaxSize()
+                    .padding(20.dp)
+            ) {
+                Text(
+                    text = chosen_course2.title,
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold
+                )
+
+                Text(
+                    text = chosen_course2.body,
+                    fontSize = 18.sp,
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .verticalScroll(state = rememberScrollState())
+                )
+            }
+        }
+    }
 }
 
 
