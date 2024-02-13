@@ -9,12 +9,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -41,7 +43,7 @@ class PracticeActivity : ComponentActivity() {
     }
 }
 
-//Home Screen
+//HomeScreen
 @Composable
 fun HomeScreen2(onAboutClick: () -> Unit, onDetailsClick: (title: String) -> Unit) {
 
@@ -61,48 +63,6 @@ fun HomeScreen2(onAboutClick: () -> Unit, onDetailsClick: (title: String) -> Uni
                     onClick = { onDetailsClick(item.title) })
             }
         }
-    }
-
-}
-
-@Composable
-fun CourseCard2(item: Courses, onClick: () -> Unit) {
-
-    Card(
-
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(vertical = 12.dp, horizontal = 16.dp)
-
-    ) {
-        Column {
-            Image(
-                painterResource(id = item.thumbnail),
-                contentDescription = null,
-                modifier = Modifier
-                    .aspectRatio(16f / 9f)
-                    .fillMaxSize(),
-                contentScale = ContentScale.Crop
-            )
-        }
-
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(20.dp)
-        ) {
-            Text(
-                text = item.title,
-                fontWeight = FontWeight.Bold
-            )
-            Spacer(modifier = Modifier.height(20.dp))
-            Text(
-                text = item.body,
-                fontWeight = FontWeight.Normal,
-                fontSize = 35.sp
-            )
-        }
-
     }
 
 }
@@ -130,5 +90,49 @@ fun HomeAppBar2(onAboutClick: () -> Unit) {
         }
     }
 }
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun CourseCard2(item: Courses, onClick: () -> Unit) {
+
+    Card(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(vertical = 12.dp, horizontal = 16.dp),
+        onClick = onClick
+    ) {
+        Column {
+            Image(
+                painterResource(id = item.thumbnail),
+                contentDescription = null,
+                modifier = Modifier
+                    .aspectRatio(16f / 9f)
+                    .fillMaxSize(),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(20.dp)
+        ) {
+            Text(
+                text = item.title,
+                fontWeight = FontWeight.Bold
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            Text(
+                text = item.body,
+                fontWeight = FontWeight.Normal,
+                fontSize = 35.sp
+            )
+        }
+
+    }
+
+}
+
+
 
 
