@@ -86,9 +86,7 @@ class PracticeActivity : ComponentActivity() {
                             if (title != null) {
                                 DetailsScreen2(
                                     title = title,
-                                    onNavigateUp = { navController.popBackStack() }) {
-
-                                }
+                                    onNavigateUp = { navController.popBackStack() })
                             }
                         }
                     }
@@ -138,7 +136,7 @@ fun HomeAppBar2(onAboutClick: () -> Unit) {
 
         Spacer(modifier = Modifier.weight(1f))
 
-        TextButton(onClick = { onAboutClick }) {
+        TextButton(onClick = { onAboutClick() }) {
             Text(
                 text = "About",
                 fontSize = 20.sp
@@ -154,7 +152,7 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
 
     Card(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
             .padding(vertical = 12.dp, horizontal = 16.dp),
         onClick = onClick
     ) {
@@ -182,7 +180,7 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
             Text(
                 text = item.body,
                 fontWeight = FontWeight.Normal,
-                fontSize = 35.sp
+                fontSize = 15.sp
             )
         }
 
@@ -217,7 +215,7 @@ fun AboutScreen2(onNavigateUp: () -> Unit) {
 }
 
 @Composable
-fun Appbar2(text: String, onNavigateUp: () -> Unit) {
+fun Appbar2(title: String, onNavigateUp: () -> Unit) {
     Row(
         modifier = Modifier
             .padding(vertical = 12.dp, horizontal = 16.dp),
@@ -226,13 +224,14 @@ fun Appbar2(text: String, onNavigateUp: () -> Unit) {
         IconButton(onClick = { onNavigateUp() }) {
             Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go Back")
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.weight(1f))
+        Text(text = title, fontSize = 24.sp )
     }
 }
 
 //DetailsScreen
 @Composable
-fun DetailsScreen2(title: String, onNavigateUp: () -> Unit, function: () -> Unit) {
+fun DetailsScreen2(title: String, onNavigateUp: () -> Unit) {
 
     val chosen_course2 = allCourses.first { it.title == title }
 
@@ -256,7 +255,7 @@ fun DetailsScreen2(title: String, onNavigateUp: () -> Unit, function: () -> Unit
                 contentScale = ContentScale.Crop
             )
 
-            Spacer(modifier = Modifier.width(20.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
             Column(
                 Modifier
@@ -265,13 +264,13 @@ fun DetailsScreen2(title: String, onNavigateUp: () -> Unit, function: () -> Unit
             ) {
                 Text(
                     text = chosen_course2.title,
-                    fontSize = 30.sp,
+                    fontSize = 20.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Text(
                     text = chosen_course2.body,
-                    fontSize = 18.sp,
+                    fontSize = 16.sp,
                     modifier = Modifier
                         .fillMaxSize()
                         .verticalScroll(state = rememberScrollState())

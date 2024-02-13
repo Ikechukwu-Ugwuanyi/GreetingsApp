@@ -185,7 +185,8 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
                     .fillMaxWidth()
                     .padding(20.dp)
             ) {
-                Text(text = item.title)
+                Text(text = item.title,
+                    fontWeight = FontWeight.Bold)
                 Spacer(modifier = Modifier.height(8.dp))
                 Text(
                     text = item.body,
