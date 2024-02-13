@@ -180,7 +180,6 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
                     .aspectRatio(16f / 9f),
                 contentScale = ContentScale.Crop
             )
-
             Column(
                 Modifier
                     .fillMaxWidth()
@@ -194,9 +193,6 @@ fun CourseCard(item: Courses, onClick: () -> Unit) {
                     style = MaterialTheme.typography.bodySmall
                 )
             }
-
-
-
         }
 
     }
@@ -220,7 +216,7 @@ fun AboutScreen(onNavigateUp: () -> Unit) {
                 Button(
                     onClick = {
                         udemy_link.openUri("https://www.udemy.com/course/the-complete-android-10-developer-course-mastering-android/")
-                    },
+                    }
                 ) {
                     Text(text = "Go to our Udemy Link")
                 }

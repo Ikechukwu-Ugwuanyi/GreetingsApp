@@ -141,40 +141,45 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
 
 @Composable
 fun AboutScreen2(onNavigateUp: () -> Unit) {
-    Column {
-        Row(
-            modifier = Modifier
-                .padding(vertical = 12.dp, horizontal = 16.dp),
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            IconButton(onClick = { onNavigateUp }) {
-                Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go Back")
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-        }
 
-        Column(
-            modifier = Modifier
-                .padding(vertical = 12.dp, horizontal = 16.dp)
-        ) {
-
-            Text(
-                text = "This is the collection of",
-                fontSize = 25.sp,
-                fontWeight = FontWeight.Normal
-            )
-
+    Scaffold { padding ->
+        Column(Modifier.padding(padding)) {
+            Appbar2("About") { onNavigateUp() }
             Spacer(modifier = Modifier.height(20.dp))
 
-            val udemyLink = LocalUriHandler.current
+            Column(modifier = Modifier.padding(vertical = 12.dp, horizontal = 16.dp)
+            ) {
+                Text(text = "This app is a demonstration about the navigation component in android Jetpack Compose")
+                Spacer(modifier = Modifier.height(20.dp))
 
-            Button(onClick = { udemyLink.openUri("") }) {
-                Text(text = "Go to our Udemy Link")
+                val udemyLink = LocalUriHandler.current
+
+                Button(onClick = { udemyLink.openUri("https://www.udemy.com/course/the-complete-android-10-developer-course-mastering-android/\"") }) {
+                    Text(text = "Go to our Udemy Link")
+                }
             }
         }
     }
 
 }
+
+@Composable
+fun Appbar2(text: String, onNavigateUp: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .padding(vertical = 12.dp, horizontal = 16.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        IconButton(onClick = { onNavigateUp() }) {
+            Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go Back")
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+    }
+
+
+}
+
+
 
 
 
