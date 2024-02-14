@@ -10,11 +10,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composeviewmodel.ui.theme.ComposeViewmodelTheme
 
 class MainActivity : ComponentActivity() {
@@ -35,20 +32,18 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Counter() {
+fun Counter(myViewModel: MyViewModel = viewModel()) {
 
-    var counter by remember {
-        mutableStateOf(0)
-    }
+
 
     Column {
         Button(onClick = {
-            counter++
+            myViewModel.increaseCounter()
         }) {
             Text(text = "Click Me")
         }
 
-        Text(text = "The counter is $counter")
+        Text(text = "The counter is ${myViewModel.counter}")
     }
 }
 
