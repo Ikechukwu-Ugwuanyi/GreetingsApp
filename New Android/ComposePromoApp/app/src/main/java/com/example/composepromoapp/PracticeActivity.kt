@@ -180,7 +180,7 @@ fun CourseCard2(item: Courses, onClick: () -> Unit) {
             Spacer(modifier = Modifier.height(20.dp))
             Text(
                 text = item.body,
-                maxLines = 1,
+                maxLines = 1   ,
                 fontWeight = FontWeight.Normal,
                 fontSize = 15.sp
             )
