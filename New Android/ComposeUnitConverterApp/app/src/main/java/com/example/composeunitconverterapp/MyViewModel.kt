@@ -10,8 +10,9 @@ class MyViewModel : ViewModel() {
 
     var tempC by mutableStateOf(0)
 
-    fun convertTemp(tempF : Int) {
-        tempC = ((tempF - 32) * 0.5556).roundToInt()
+    fun convertTemp(tempF : String) {
+        val tempFnum = tempF.toInt()
+        tempC = ((tempFnum - 32) * 0.5556).roundToInt()
     }
 
 }
