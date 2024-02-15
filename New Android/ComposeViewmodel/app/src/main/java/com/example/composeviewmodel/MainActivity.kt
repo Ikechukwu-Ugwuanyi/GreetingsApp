@@ -34,15 +34,12 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Counter(myViewModel: MyViewModel = viewModel()) {
 
-
-
     Column {
         Button(onClick = {
             myViewModel.increaseCounter()
         }) {
             Text(text = "Click Me")
         }
-
         Text(text = "The counter is ${myViewModel.counter}")
     }
 }

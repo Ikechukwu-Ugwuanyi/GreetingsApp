@@ -9,7 +9,6 @@ class MyViewModel() : ViewModel(){
     var counter by  mutableStateOf(0)
 
     fun increaseCounter(){
-
         counter++
     }
 
