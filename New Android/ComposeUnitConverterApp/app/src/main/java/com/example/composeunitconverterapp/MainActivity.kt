@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.composeunitconverterapp.ui.theme.ComposeUnitConverterAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,7 +42,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(myViewModel: MyViewModel = viewModel()) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -64,7 +65,9 @@ fun MainScreen() {
             singleLine = true
         )
 
-        Button(onClick = { }) {
+        Button(onClick = {
+            myViewModel.convertTemp(inputTemp)
+        }) {
             Text(text = "Convert to Celsius")
         }
 
