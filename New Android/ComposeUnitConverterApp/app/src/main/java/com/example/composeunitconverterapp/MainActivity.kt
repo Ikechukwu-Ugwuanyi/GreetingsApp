@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.unit.sp
 import com.example.composeunitconverterapp.ui.theme.ComposeUnitConverterAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                   
+
                 }
             }
         }
@@ -35,26 +36,34 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(){
-    
+fun MainScreen() {
+
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        
+
         Text(text = "Unit Converter App")
-        
-        OutlinedTextField(value = "", 
-            onValueChange = { enteredTemp -> 
-                newTemp = enteredTemp},
-            
+
+        OutlinedTextField(
+            value = "",
+            onValueChange = { enteredTemp ->
+                newTemp = enteredTemp
+            },
+
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
-            label = { Text(text = "Enter Temperature")}
+            label = { Text(text = "Enter Temperature") },
+            singleLine = true
         )
-        
+
         Button(onClick = { }) {
             Text(text = "Convert to Celsius")
         }
-        
-        Text(text = "The temperature in Degree Celsius is: $")
+
+        Text(
+            text = "The temperature in Degree Celsius is: $",
+            fontSize = 30.sp
+        )
     }
 }
+
+
