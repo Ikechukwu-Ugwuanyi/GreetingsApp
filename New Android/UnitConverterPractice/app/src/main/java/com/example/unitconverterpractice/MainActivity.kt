@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.unitconverterpractice.ui.theme.UnitConverterPracticeTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,7 +44,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Screen() {
+fun Screen(myViewModel: MyViewModel = viewModel()) {
     Column(
         modifier = Modifier.padding(20.dp),
         horizontalAlignment = Alignment.CenterHorizontally
