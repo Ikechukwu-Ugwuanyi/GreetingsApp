@@ -36,7 +36,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    val myViewModel: MyViewModel = viewModel()
+                    Screen(myViewModel)
                 }
             }
         }
@@ -68,7 +69,7 @@ fun Screen(myViewModel: MyViewModel = viewModel()) {
             )
 
         Button(onClick = {
-
+            myViewModel.convertTemp(enteredValue)
         }) {
             Text(text = "Convert")
         }
