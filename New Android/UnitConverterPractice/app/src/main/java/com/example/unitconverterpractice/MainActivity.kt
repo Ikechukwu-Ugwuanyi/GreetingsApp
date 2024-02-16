@@ -51,29 +51,34 @@ fun Screen(myViewModel: MyViewModel = viewModel()) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        var enteredValue by remember{
+        var enteredValue by remember {
             mutableStateOf("")
         }
 
-        Text(text = "Unit Converter App",
-            fontWeight = FontWeight.Bold)
+        Text(
+            text = "Unit Converter App",
+            fontWeight = FontWeight.Bold
+        )
 
-        OutlinedTextField(value = enteredValue,
+        OutlinedTextField(
+            value = enteredValue,
             onValueChange = { newValue ->
-            enteredValue = newValue
-        },
+                enteredValue = newValue
+            },
+            modifier = Modifier.padding(10.dp),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number
             ),
-            maxLines = 1
-            )
+            maxLines = 1,
+            label = { Text(text = "Enter Fahrenheit Temperature") }
+        )
 
         Button(onClick = {
             myViewModel.convertTemp(enteredValue)
         }) {
             Text(text = "Convert")
         }
-        
+
         Text(text = "The temperature in Celsius is ${myViewModel.tempC}")
 
     }
