@@ -73,6 +73,8 @@ fun Screen(myViewModel: MyViewModel = viewModel()) {
         }) {
             Text(text = "Convert")
         }
+        
+        Text(text = "The temperature in Celsius is ${myViewModel.tempC}")
 
     }
 }
