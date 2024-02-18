@@ -17,8 +17,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.libraryapp.repository.BookRepository
+import com.example.libraryapp.room.BookDatabase
+import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.ui.theme.LibraryAppTheme
+import com.example.libraryapp.viewmodel.BookViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,7 +35,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MainScreen()
+                    val mContext = LocalContext.current
+                    val db = BookDatabase.getInstance(mContext)
+                    val repository = BookRepository(db)
+                    val viewModel = BookViewModel(repository)
+
+                    MainScreen(viewModel)
                 }
             }
         }
@@ -38,7 +48,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(viewModel: BookViewModel) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         var inputText by remember {
@@ -51,7 +61,9 @@ fun MainScreen() {
             label = { Text(text = "Book Name") },
             placeholder = { Text(text = "Enter Your Book Name") })
 
-        Button(onClick = { }) {
+        Button(onClick = {
+            viewModel.addBook(BookEntity(0, inputText))
+        }) {
             Text(text = "Add Book")
         }
 

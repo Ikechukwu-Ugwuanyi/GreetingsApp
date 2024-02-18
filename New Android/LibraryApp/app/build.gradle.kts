@@ -70,9 +70,6 @@ dependencies {
 
     val lifecycle_version = "2.7.0"
 
-    // alternately - if using Java8, use the following instead of lifecycle-compiler
-    implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
-
     val room_version = "2.6.1"
 
     // Annotation processor

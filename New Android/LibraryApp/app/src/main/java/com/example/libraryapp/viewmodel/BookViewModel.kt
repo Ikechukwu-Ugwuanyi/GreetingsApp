@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class BookViewModel(private val bookRepository: BookRepository) : ViewModel() {
 
-    suspend fun addBook(bookEntity: BookEntity){
+    fun addBook(bookEntity: BookEntity){
         viewModelScope.launch {
             bookRepository.addBookToRoom(bookEntity)
         }
