@@ -20,8 +20,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.libraryapp.repository.BookRepository
-import com.example.libraryapp.room.BookDatabase
 import com.example.libraryapp.room.BookEntity
+import com.example.libraryapp.room.BooksDB
 import com.example.libraryapp.ui.theme.LibraryAppTheme
 import com.example.libraryapp.viewmodel.BookViewModel
 
@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val mContext = LocalContext.current
-                    val db = BookDatabase.getInstance(mContext)
+                    val db = BooksDB.getInstance(mContext)
                     val repository = BookRepository(db)
                     val viewModel = BookViewModel(repository)
 

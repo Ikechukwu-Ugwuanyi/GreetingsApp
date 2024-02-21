@@ -6,23 +6,23 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [BookEntity::class], version = 1, exportSchema = false)
-abstract class BookDatabase : RoomDatabase() {
+abstract class BooksDB : RoomDatabase() {
 
     abstract fun bookDao(): BookDAO
 
     companion object {
 
         @Volatile
-        private var INSTANCE: BookDatabase? = null
+        private var INSTANCE: BooksDB? = null
 
-        fun getInstance(context: Context): BookDatabase {
+        fun getInstance(context: Context): BooksDB {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        BookDatabase::class.java,
-                        "book_db"
+                        BooksDB::class.java,
+                        "books_db"
                     ).build()
                     INSTANCE = instance
                 }
@@ -31,4 +31,6 @@ abstract class BookDatabase : RoomDatabase() {
         }
 
     }
+
+
 }
