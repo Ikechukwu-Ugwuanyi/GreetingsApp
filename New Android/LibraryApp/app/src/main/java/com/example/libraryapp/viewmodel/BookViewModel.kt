@@ -14,5 +14,5 @@ class BookViewModel(private val bookRepository: BookRepository) : ViewModel() {
         }
     }
 
-    fun getAllBooks() = bookRepository.getAllBooks()
+    val allBooks = bookRepository.getAllBooks()
 }

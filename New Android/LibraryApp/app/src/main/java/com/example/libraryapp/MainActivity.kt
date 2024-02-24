@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
@@ -15,6 +17,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -77,19 +80,35 @@ fun MainScreen(viewModel: BookViewModel) {
 }
 
 @Composable
-fun BookCard(viewModel: BookViewModel, books: BookEntity){
+fun BookCard(viewModel: BookViewModel, books: BookEntity) {
 
-    Card(modifier = Modifier
-        .fillMaxWidth()
-        .padding(8.dp)) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+    ) {
 
         Row {
-            Text(text = "" + books.id, fontSize = 24.sp,
-                modifier = Modifier.padding(start = 4.dp, end = 4.dp))
+            Text(
+                text = "" + books.id, fontSize = 24.sp,
+                modifier = Modifier.padding(start = 4.dp, end = 4.dp)
+            )
 
             Text(text = books.title, fontSize = 24.sp)
         }
 
+    }
+}
+
+@Composable
+fun BookList(viewModel: BookViewModel) {
+
+    val books by viewModel.allBooks.collectAsState(initial = emptyList())
+
+    LazyColumn {
+        items(books) { item ->
+            BookCard(viewModel = viewModel, books = item)
+        }
     }
 }
 
