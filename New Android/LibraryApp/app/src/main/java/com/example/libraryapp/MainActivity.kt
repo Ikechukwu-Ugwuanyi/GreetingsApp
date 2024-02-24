@@ -97,6 +97,9 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity) {
             Text(text = books.title, fontSize = 24.sp)
         }
 
+        //The Books List
+        BookList(viewModel = viewModel)
+
     }
 }
 
