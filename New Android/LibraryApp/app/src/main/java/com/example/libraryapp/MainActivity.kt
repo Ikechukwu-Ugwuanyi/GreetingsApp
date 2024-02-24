@@ -3,6 +3,7 @@ package com.example.libraryapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -10,8 +11,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
@@ -98,6 +102,15 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity) {
             )
 
             Text(text = books.title, fontSize = 24.sp)
+
+            IconButton(onClick = {
+                viewModel.delete(bookEntity = books)
+            }) {
+                Image(
+                    imageVector = Icons.Filled.Delete,
+                    contentDescription = "Delete"
+                )
+            }
         }
 
     }
