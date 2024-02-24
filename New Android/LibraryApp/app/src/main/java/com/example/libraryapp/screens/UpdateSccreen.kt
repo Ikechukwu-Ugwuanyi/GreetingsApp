@@ -9,10 +9,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.viewmodel.BookViewModel
 
 @Composable
-fun UpdateScreen(viewModel: BookViewModel, book: String){
+fun UpdateScreen(viewModel: BookViewModel, bookId: String){
 
     Column {
 
@@ -27,9 +28,10 @@ fun UpdateScreen(viewModel: BookViewModel, book: String){
             placeholder = { Text(text = "Your Update text")})
 
         Button(onClick = {
-
+            val newBook = BookEntity(bookId!!.toInt(), inputText)
+            viewModel.update(newBook)
         }) {
-
+            Text(text = "Update Book")
         }
     }
 
