@@ -11,4 +11,8 @@ class BookRepository(private val booksDB: BooksDB) {
 
     fun getAllBooks() = booksDB.bookDao().getAllBooks()
 
+    suspend fun deleteBookFromDb(bookEntity: BookEntity){
+        booksDB.bookDao().deleteBook(bookEntity)
+    }
+
 }
