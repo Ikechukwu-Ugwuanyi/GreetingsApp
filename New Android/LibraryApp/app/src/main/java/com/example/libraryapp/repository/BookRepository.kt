@@ -9,4 +9,6 @@ class BookRepository(private val booksDB: BooksDB) {
         booksDB.bookDao().addBook(bookEntity)
     }
 
+    fun getAllBooks() = booksDB.bookDao().getAllBooks()
+
 }
