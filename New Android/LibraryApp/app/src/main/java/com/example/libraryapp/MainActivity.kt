@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -30,6 +32,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -62,14 +65,17 @@ class MainActivity : ComponentActivity() {
 
                     //Navigation
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "MainScreen"){
+                    NavHost(navController = navController, startDestination = "MainScreen") {
 
-                        composable("MainScreen"){
+                        composable("MainScreen") {
                             MainScreen(viewModel = viewModel, navController = navController)
                         }
 
-                        composable("UpdateScreen/{bookId}"){
-                            UpdateScreen(viewModel = viewModel, bookId = it.arguments?.getString("bookId"))
+                        composable("UpdateScreen/{bookId}") {
+                            UpdateScreen(
+                                viewModel = viewModel,
+                                bookId = it.arguments?.getString("bookId")
+                            )
                         }
 
                     }
@@ -83,8 +89,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(top = 22.dp, start = 6.dp, end = 6.dp)) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(top = 22.dp, start = 6.dp, end = 6.dp)
+    ) {
 
         var inputText by remember {
             mutableStateOf("")
@@ -96,9 +104,12 @@ fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
             label = { Text(text = "Book Name", fontSize = 22.sp) },
             placeholder = { Text(text = "Enter Your Book Name") })
 
-        Button(onClick = {
-            viewModel.addBook(BookEntity(0, inputText))
-        }) {
+        Button(
+            onClick = {
+                viewModel.addBook(BookEntity(0, inputText))
+            },
+            colors = ButtonDefaults.buttonColors(Color.Blue)
+        ) {
             Text(text = "Add Book")
         }
 
@@ -117,27 +128,35 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHost
             .padding(8.dp)
     ) {
 
-        Row {
+        Row(verticalAlignment = Alignment.CenterVertically) {
             Text(
                 text = "" + books.id, fontSize = 24.sp,
-                modifier = Modifier.padding(start = 4.dp, end = 4.dp)
+                modifier = Modifier.padding(start = 12.dp, end = 12.dp),
+                color = Color.Blue
             )
 
-            Text(text = books.title, fontSize = 24.sp)
+            Text(
+                text = books.title, fontSize = 24.sp,
+                modifier = Modifier.fillMaxSize(0.7f),
+                color = Color.Black
+            )
 
-            IconButton(onClick = {
-                viewModel.delete(bookEntity = books)
-            }) {
-                Image(
-                    imageVector = Icons.Filled.Delete,
-                    contentDescription = "Delete"
-                )
-            }
+            Row(horizontalArrangement = Arrangement.End) {
+                IconButton(onClick = {
+                    viewModel.delete(bookEntity = books)
+                }) {
+                    Image(
+                        imageVector = Icons.Filled.Delete,
+                        contentDescription = "Delete"
+                    )
+                }
 
-            IconButton(onClick = {
-                navController.navigate("UpdateScreen/${books.id}")
-            }) {
-                Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit")
+                IconButton(onClick = {
+                    navController.navigate("UpdateScreen/${books.id}")
+                }) {
+                    Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit")
+                }
+
             }
         }
 
@@ -149,10 +168,16 @@ fun BookList(viewModel: BookViewModel, navController: NavHostController) {
 
     val books by viewModel.allBooks.collectAsState(initial = emptyList())
 
-    LazyColumn {
-        items(books) { item ->
-            BookCard(viewModel = viewModel, books = item, navController)
+    Column(Modifier.padding(16.dp)) {
+
+        Text(text = "My Library", fontSize = 24.sp, color = Color.Red)
+
+        LazyColumn {
+            items(books) { item ->
+                BookCard(viewModel = viewModel, books = item, navController)
+            }
         }
+
     }
 }
 
