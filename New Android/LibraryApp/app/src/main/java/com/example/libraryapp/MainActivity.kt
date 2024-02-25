@@ -74,7 +74,7 @@ class MainActivity : ComponentActivity() {
 
                     }
 
-                    MainScreen(viewModel, navController)
+                    //MainScreen(viewModel, navController)
                 }
             }
         }
@@ -83,7 +83,8 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(top = 22.dp, start = 6.dp, end = 6.dp)) {
 
         var inputText by remember {
             mutableStateOf("")
@@ -92,7 +93,7 @@ fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
         OutlinedTextField(
             value = inputText,
             onValueChange = { newText -> inputText = newText },
-            label = { Text(text = "Book Name") },
+            label = { Text(text = "Book Name", fontSize = 22.sp) },
             placeholder = { Text(text = "Enter Your Book Name") })
 
         Button(onClick = {

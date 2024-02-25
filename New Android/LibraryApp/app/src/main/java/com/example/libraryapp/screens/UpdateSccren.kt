@@ -14,7 +14,7 @@ import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.viewmodel.BookViewModel
 
 @Composable
-fun UpdateScreen(viewModel: BookViewModel, bookId: String?){
+fun UpdateScreen(viewModel: BookViewModel, bookId: String?) {
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
@@ -23,10 +23,11 @@ fun UpdateScreen(viewModel: BookViewModel, bookId: String?){
         }
 
         OutlinedTextField(value = inputText,
-            onValueChange = {newText ->
-                inputText = newText},
-            label = { Text(text = "Update Text")},
-            placeholder = { Text(text = "Your Update text")})
+            onValueChange = { newText ->
+                inputText = newText
+            },
+            label = { Text(text = "Update Text") },
+            placeholder = { Text(text = "Your Update text") })
 
         Button(onClick = {
             val newBook = BookEntity(bookId!!.toInt(), inputText)
