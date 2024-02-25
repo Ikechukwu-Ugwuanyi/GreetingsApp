@@ -34,7 +34,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(viewModel: BookViewModel, navController: NavController) {
+fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         var inputText by remember {
@@ -102,13 +102,13 @@ fun MainScreen(viewModel: BookViewModel, navController: NavController) {
         }
 
         //The Books List
-        BookList(viewModel = viewModel)
+        BookList(viewModel = viewModel, navController)
 
     }
 }
 
 @Composable
-fun BookCard(viewModel: BookViewModel, books: BookEntity) {
+fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHostController) {
 
     Card(
         modifier = Modifier
@@ -133,7 +133,9 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity) {
                 )
             }
 
-            IconButton(onClick = { }) {
+            IconButton(onClick = {
+                navController.navigate("UpdateScreen/${books.id}")
+            }) {
                 Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit")
             }
         }
@@ -142,13 +144,13 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity) {
 }
 
 @Composable
-fun BookList(viewModel: BookViewModel) {
+fun BookList(viewModel: BookViewModel, navController: NavHostController) {
 
     val books by viewModel.allBooks.collectAsState(initial = emptyList())
 
     LazyColumn {
         items(books) { item ->
-            BookCard(viewModel = viewModel, books = item)
+            BookCard(viewModel = viewModel, books = item, navController)
         }
     }
 }
