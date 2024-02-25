@@ -13,7 +13,7 @@ import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.viewmodel.BookViewModel
 
 @Composable
-fun UpdateScreen(viewModel: BookViewModel, bookId: String){
+fun UpdateScreen(viewModel: BookViewModel, bookId: String?){
 
     Column {
 

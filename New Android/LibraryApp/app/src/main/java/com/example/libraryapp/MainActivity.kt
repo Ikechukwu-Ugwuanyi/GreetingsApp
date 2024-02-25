@@ -13,8 +13,10 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -32,9 +34,14 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.example.libraryapp.repository.BookRepository
 import com.example.libraryapp.room.BookEntity
 import com.example.libraryapp.room.BooksDB
+import com.example.libraryapp.screens.UpdateScreen
 import com.example.libraryapp.ui.theme.LibraryAppTheme
 import com.example.libraryapp.viewmodel.BookViewModel
 
@@ -53,7 +60,21 @@ class MainActivity : ComponentActivity() {
                     val repository = BookRepository(db)
                     val viewModel = BookViewModel(repository)
 
-                    MainScreen(viewModel)
+                    //Navigation
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "MainScreen"){
+
+                        composable("MainScreen"){
+                            MainScreen(viewModel = viewModel, navController = navController)
+                        }
+
+                        composable("UpdateScreen/{bookId}"){
+                            UpdateScreen(viewModel = viewModel, bookId = it.arguments?.getString("bookId"))
+                        }
+
+                    }
+
+                    MainScreen(viewModel, navController)
                 }
             }
         }
@@ -61,7 +82,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(viewModel: BookViewModel) {
+fun MainScreen(viewModel: BookViewModel, navController: NavController) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
         var inputText by remember {
@@ -110,6 +131,10 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity) {
                     imageVector = Icons.Filled.Delete,
                     contentDescription = "Delete"
                 )
+            }
+
+            IconButton(onClick = { }) {
+                Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit")
             }
         }
 
