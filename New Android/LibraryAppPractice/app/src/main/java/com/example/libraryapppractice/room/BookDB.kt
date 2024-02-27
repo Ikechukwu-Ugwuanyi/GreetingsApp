@@ -28,8 +28,6 @@ abstract class BookDB : RoomDatabase() {
                 }
                 return instance
             }
-
         }
-
     }
 }
