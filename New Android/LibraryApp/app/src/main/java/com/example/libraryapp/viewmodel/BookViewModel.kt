@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class BookViewModel(private val bookRepository: BookRepository) : ViewModel() {
 
-    fun addBook(bookEntity: BookEntity){
+    fun addBook(bookEntity: BookEntity) {
         viewModelScope.launch {
             bookRepository.addBookToRoom(bookEntity)
         }
@@ -16,13 +16,13 @@ class BookViewModel(private val bookRepository: BookRepository) : ViewModel() {
 
     val allBooks = bookRepository.getAllBooks()
 
-    fun delete(bookEntity: BookEntity){
+    fun delete(bookEntity: BookEntity) {
         viewModelScope.launch {
             bookRepository.deleteBookFromDb(bookEntity)
         }
     }
 
-    fun update(bookEntity: BookEntity){
+    fun update(bookEntity: BookEntity) {
         viewModelScope.launch {
             bookRepository.updateBook(bookEntity)
         }

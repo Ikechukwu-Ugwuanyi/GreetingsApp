@@ -3,7 +3,6 @@ package com.example.libraryapp
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -115,7 +114,6 @@ fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
 
         //The Books List
         BookList(viewModel = viewModel, navController)
-
     }
 }
 
@@ -145,7 +143,7 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHost
                 IconButton(onClick = {
                     viewModel.delete(bookEntity = books)
                 }) {
-                    Image(
+                    Icon(
                         imageVector = Icons.Filled.Delete,
                         contentDescription = "Delete"
                     )
@@ -180,7 +178,6 @@ fun BookList(viewModel: BookViewModel, navController: NavHostController) {
 
     }
 }
-
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
