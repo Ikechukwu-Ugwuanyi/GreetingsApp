@@ -7,4 +7,5 @@ import androidx.room.PrimaryKey
 data class BooKEntity(
     @PrimaryKey(autoGenerate = true)
     val bookId: Int,
-    val bookTitle: String)
+    val bookTitle: String
+)
