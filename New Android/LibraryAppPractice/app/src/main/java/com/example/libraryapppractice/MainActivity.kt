@@ -67,7 +67,7 @@ class MainActivity : ComponentActivity() {
                             MainScreen(bookViewModel = viewModel, navController = navController)
                         }
 
-                        composable("UpdateScreen{bookId}") {
+                        composable("UpdateScreen/{bookId}") {
                             UpdateScreen(
                                 bookViewModel = viewModel,
                                 bookId = it.arguments?.getString("bookId")
