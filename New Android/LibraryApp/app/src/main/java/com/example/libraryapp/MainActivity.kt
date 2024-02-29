@@ -113,12 +113,12 @@ fun MainScreen(viewModel: BookViewModel, navController: NavHostController) {
         }
 
         //The Books List
-        BookList(viewModel = viewModel, navController)
+        BookList(bookViewModel = viewModel, navController)
     }
 }
 
 @Composable
-fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHostController) {
+fun BookCard(bookViewModel: BookViewModel, books: BookEntity, navController: NavHostController) {
 
     Card(
         modifier = Modifier
@@ -141,7 +141,7 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHost
 
             Row(horizontalArrangement = Arrangement.End) {
                 IconButton(onClick = {
-                    viewModel.delete(bookEntity = books)
+                    bookViewModel.delete(bookEntity = books)
                 }) {
                     Icon(
                         imageVector = Icons.Filled.Delete,
@@ -162,9 +162,9 @@ fun BookCard(viewModel: BookViewModel, books: BookEntity, navController: NavHost
 }
 
 @Composable
-fun BookList(viewModel: BookViewModel, navController: NavHostController) {
+fun BookList(bookViewModel: BookViewModel, navController: NavHostController) {
 
-    val books by viewModel.allBooks.collectAsState(initial = emptyList())
+    val books by bookViewModel.allBooks.collectAsState(initial = emptyList())
 
     Column(Modifier.padding(16.dp)) {
 
@@ -172,7 +172,7 @@ fun BookList(viewModel: BookViewModel, navController: NavHostController) {
 
         LazyColumn {
             items(books) { item ->
-                BookCard(viewModel = viewModel, books = item, navController)
+                BookCard(bookViewModel = bookViewModel, books = item, navController)
             }
         }
 

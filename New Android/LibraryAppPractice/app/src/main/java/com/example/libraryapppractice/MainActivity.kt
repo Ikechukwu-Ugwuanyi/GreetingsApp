@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -33,7 +34,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.libraryapppractice.room.BooKEntity
 import com.example.libraryapppractice.ui.theme.LibraryAppPracticeTheme
@@ -50,6 +50,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+
                 }
             }
         }
@@ -57,7 +58,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(bookViewModel: BookViewModel) {
+fun MainScreen(bookViewModel: BookViewModel, navController: NavHostController) {
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -81,69 +82,74 @@ fun MainScreen(bookViewModel: BookViewModel) {
         }) {
             Text(text = "Add Book to DB")
         }
+        BookList(bookViewModel, navController)
     }
 
-    @Composable
-    fun BookCard(bookViewModel: BookViewModel, booKEntity: BooKEntity, navController: NavHostController) {
+}
 
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
-        ) {
-            Row {
+@Composable
+fun BookCard(
+    bookViewModel: BookViewModel,
+    booK: BooKEntity,
+    navController: NavHostController
+) {
 
-                Text(
-                    text = booKEntity.bookId.toString(),
-                    fontSize = 24.sp,
-                    modifier = Modifier.padding(start = 4.dp, end = 4.dp),
-                    color =  Color.Blue
-                )
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
+        Row {
 
-                Text(
-                    text = booKEntity.bookTitle,
-                    fontSize = 24.sp,
-                    modifier = Modifier.fillMaxSize(0.7f),
-                    color =  Color.Black
-                )
+            Text(
+                text = booK.bookId.toString(),
+                fontSize = 24.sp,
+                modifier = Modifier.padding(start = 4.dp, end = 4.dp),
+                color = Color.Blue
+            )
 
-                Row(
-                    horizontalArrangement = Arrangement.End,
-                ) {
-                    IconButton(onClick = {
-                        bookViewModel.deleteBook(booKEntity)
-                    }) {
-                        Icon(imageVector = Icons.Filled.Delete, contentDescription = "Delete Icon")
-                    }
+            Text(
+                text = booK.bookTitle,
+                fontSize = 24.sp,
+                modifier = Modifier.fillMaxSize(0.7f),
+                color = Color.Black
+            )
 
-                    IconButton(onClick = {
-
-                    }) {
-                        Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit Icon")
-                    }
-
+            Row(
+                horizontalArrangement = Arrangement.End,
+            ) {
+                IconButton(onClick = {
+                    bookViewModel.deleteBook(booKEntity = booK)
+                }) {
+                    Icon(imageVector = Icons.Filled.Delete, contentDescription = "Delete Icon")
                 }
+
+                IconButton(onClick = {
+
+                }) {
+                    Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit Icon")
+                }
+
             }
         }
     }
+}
 
-    @Composable
-    fun BookList(bookViewModel: BookViewModel, navController: NavHostController) {
 
-        val books by bookViewModel.getAllBooks.collectAsState(initial = emptyList())
+@Composable
+fun BookList(bookViewModel: BookViewModel, navController: NavHostController) {
 
-            Column {
-                Text(text = "My Library", fontSize = 24.sp, color = Color.Red)
+    val books by bookViewModel.getAllBooks.collectAsState(initial = emptyList())
 
-                LazyColumn {
-                    items(books){
-                        item -> BookCard(bookViewModel,  )
-                    }
-                }
+    Column(Modifier.padding(16.dp)) {
+        Text(text = "My Library", fontSize = 24.sp, color = Color.Red)
+
+        LazyColumn {
+            items(books) { item ->
+                BookCard(bookViewModel = bookViewModel, booK = item, navController)
             }
-
+        }
     }
-
 
 }
 
