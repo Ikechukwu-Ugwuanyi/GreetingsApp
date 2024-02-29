@@ -18,7 +18,7 @@ import com.example.libraryapppractice.room.BooKEntity
 import com.example.libraryapppractice.viewmodel.BookViewModel
 
 @Composable
-fun UpdateScreen(bookViewModel: BookViewModel, bookId: String){
+fun UpdateScreen(bookViewModel: BookViewModel, bookId: String?){
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Text(text = "Updating the Existing Book", fontSize = 24.sp)
@@ -34,7 +34,7 @@ fun UpdateScreen(bookViewModel: BookViewModel, bookId: String){
             modifier = Modifier.padding(16.dp))
 
         Button(onClick = {
-            val bookRef = bookId.toInt()
+            val bookRef = bookId!!.toInt()
             bookViewModel.updateBook(BooKEntity(bookRef, newText))
         }) {
             Text(text = "Update Book")

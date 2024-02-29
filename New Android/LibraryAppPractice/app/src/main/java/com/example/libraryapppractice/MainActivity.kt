@@ -31,11 +31,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.libraryapppractice.repository.BookRepository
 import com.example.libraryapppractice.room.BooKEntity
+import com.example.libraryapppractice.room.BookDB
 import com.example.libraryapppractice.ui.theme.LibraryAppPracticeTheme
 import com.example.libraryapppractice.viewmodel.BookViewModel
 
@@ -49,7 +55,25 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    val mContext = LocalContext.current
+                    val db = BookDB.getInstance(mContext)
+                    val repository = BookRepository(db)
+                    val viewModel = BookViewModel(repository)
 
+
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "MainScreen") {
+                        composable("MainScreen") {
+                            MainScreen(bookViewModel = viewModel, navController = navController)
+                        }
+
+                        composable("UpdateScreen{bookId}") {
+                            UpdateScreen(
+                                bookViewModel = viewModel,
+                                bookId = it.arguments?.getString("bookId")
+                            )
+                        }
+                    }
 
                 }
             }
@@ -125,7 +149,7 @@ fun BookCard(
                 }
 
                 IconButton(onClick = {
-
+                    navController.navigate("UpdateScreen/${booK.bookId}")
                 }) {
                     Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit Icon")
                 }

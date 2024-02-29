@@ -15,11 +15,11 @@ abstract class BookDB : RoomDatabase() {
         @Volatile
         private var INSTANCE: BookDB? = null
 
-        fun getInstance(context: Context): BookDB? {
+        fun getInstance(context: Context): BookDB {
             synchronized(this) {
-                val instance = INSTANCE
+                var instance = INSTANCE
                 if (instance == null) {
-                    INSTANCE = Room.databaseBuilder(
+                    instance = Room.databaseBuilder(
                         context.applicationContext,
                         BookDB::class.java,
                         "book_db2"
