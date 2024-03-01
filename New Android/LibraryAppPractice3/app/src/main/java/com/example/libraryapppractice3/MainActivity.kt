@@ -101,9 +101,11 @@ fun MainScreen(viewModel: LibraryViewModel, navController: NavHostController) {
             Text(text = "Add Book")
 
         }
+
+        LibraryList(viewModel = viewModel, navController = navController)
     }
 
-    LibraryList(viewModel = viewModel, navController = navController)
+
 
 }
 
