@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
@@ -21,6 +23,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -82,20 +85,26 @@ fun MainScreen(viewModel: LibraryViewModel, book: LibraryEntity) {
 @Composable
 fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel) {
 
-    Card(modifier = Modifier
-        .padding(8.dp)
-        .fillMaxWidth()) {
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+    ) {
 
         Row {
-            Text(text = "" + book.bookId,
+            Text(
+                text = "" + book.bookId,
                 fontSize = 24.sp,
-                color = Color.Blue)
+                color = Color.Blue
+            )
 
-            Text(text = "" + book.bookName,
+            Text(
+                text = "" + book.bookName,
                 fontSize = 24.sp,
-                color = Color.Black)
+                color = Color.Black
+            )
 
-            Row (horizontalArrangement = Arrangement.End){
+            Row(horizontalArrangement = Arrangement.End) {
 
                 IconButton(onClick = {
                     viewModel.deleteBook(book)
@@ -106,14 +115,33 @@ fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel) {
                 IconButton(onClick = {
 
                 }) {
-                    Icon(imageVector = Icons.Filled.Edit, contentDescription = "Edit Book/${book.bookId}")
+                    Icon(
+                        imageVector = Icons.Filled.Edit,
+                        contentDescription = "Edit Book/${book.bookId}"
+                    )
                 }
             }
 
         }
-
     }
 
+}
+
+@Composable
+fun LibraryList(viewModel: LibraryViewModel){
+
+    val books by viewModel.allBooks.collectAsState(initial = emptyList())
+
+    Column(modifier = Modifier.padding(8.dp)) {
+
+        Text(text = "My Library Books")
+
+        LazyColumn{
+            items(books){
+                item -> LibraryCard(book = item, viewModel = viewModel)
+            }
+        }
+    }
 }
 
 
