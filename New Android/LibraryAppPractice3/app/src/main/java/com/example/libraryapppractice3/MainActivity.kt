@@ -31,9 +31,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.libraryapppractice3.repository.LibraryRepository
+import com.example.libraryapppractice3.room.LibraryDatabase
 import com.example.libraryapppractice3.room.LibraryEntity
 import com.example.libraryapppractice3.ui.theme.LibraryAppPractice3Theme
 import com.example.libraryapppractice3.viewmodel.LibraryViewModel
@@ -49,6 +56,22 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+                    val mContext = LocalContext.current
+                    val db = LibraryDatabase.getInstance(mContext)
+                    val repository = LibraryRepository(db)
+                    val viewModel = LibraryViewModel(repository)
+
+                    val navController = rememberNavController()
+                    NavHost(navController = navController, startDestination = "MainScreen"){
+                        composable("MainScreen"){
+                            MainScreen(viewModel = viewModel, navController = navController)
+                        }
+
+                        composable("UpdateScreen/{bookId}"){
+                            UpdateScreen(viewModel = viewModel, bookId = it.arguments?.getString("bookId"))
+                        }
+                    }
+
                 }
             }
         }
@@ -56,7 +79,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(viewModel: LibraryViewModel, book: LibraryEntity) {
+fun MainScreen(viewModel: LibraryViewModel, navController: NavHostController) {
 
     var inputText by remember {
         mutableStateOf("")

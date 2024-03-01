@@ -27,7 +27,7 @@ fun UpdateScreen(viewModel: LibraryViewModel, bookId: String?){
 
         OutlinedTextField(value = updateText,
             onValueChange = {newText -> updateText = newText},
-            label = { Text(text = "Enter Updsate Text")},
+            label = { Text(text = "Enter Update Text")},
             placeholder = { Text(text = "Your Text")})
 
         Button(onClick = {
