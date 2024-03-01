@@ -62,13 +62,16 @@ class MainActivity : ComponentActivity() {
                     val viewModel = LibraryViewModel(repository)
 
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = "MainScreen"){
-                        composable("MainScreen"){
+                    NavHost(navController = navController, startDestination = "MainScreen") {
+                        composable("MainScreen") {
                             MainScreen(viewModel = viewModel, navController = navController)
                         }
 
-                        composable("UpdateScreen/{bookId}"){
-                            UpdateScreen(viewModel = viewModel, bookId = it.arguments?.getString("bookId"))
+                        composable("UpdateScreen/{bookId}") {
+                            UpdateScreen(
+                                viewModel = viewModel,
+                                bookId = it.arguments?.getString("bookId")
+                            )
                         }
                     }
 
@@ -85,7 +88,10 @@ fun MainScreen(viewModel: LibraryViewModel, navController: NavHostController) {
         mutableStateOf("")
     }
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = Modifier.padding(10.dp)
+    ) {
         OutlinedTextField(
             value = inputText,
             onValueChange = { newText ->
@@ -106,11 +112,14 @@ fun MainScreen(viewModel: LibraryViewModel, navController: NavHostController) {
     }
 
 
-
 }
 
 @Composable
-fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel, navController: NavHostController) {
+fun LibraryCard(
+    book: LibraryEntity,
+    viewModel: LibraryViewModel,
+    navController: NavHostController
+) {
 
     Card(
         modifier = Modifier
@@ -155,17 +164,17 @@ fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel, navController:
 }
 
 @Composable
-fun LibraryList(viewModel: LibraryViewModel, navController: NavHostController){
+fun LibraryList(viewModel: LibraryViewModel, navController: NavHostController) {
 
     val books by viewModel.allBooks.collectAsState(initial = emptyList())
 
     Column(modifier = Modifier.padding(8.dp)) {
 
-        Text(text = "My Library Books")
+        Text(text = "My Library Books", fontSize = 24.sp, color = Color.Red)
 
-        LazyColumn{
-            items(books){
-                item -> LibraryCard(book = item, viewModel = viewModel, navController = navController)
+        LazyColumn {
+            items(books) { item ->
+                LibraryCard(book = item, viewModel = viewModel, navController = navController)
             }
         }
     }
