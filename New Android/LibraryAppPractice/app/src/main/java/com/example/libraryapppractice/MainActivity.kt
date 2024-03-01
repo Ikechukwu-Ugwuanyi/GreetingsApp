@@ -106,6 +106,8 @@ fun MainScreen(bookViewModel: BookViewModel, navController: NavHostController) {
         }) {
             Text(text = "Add Book to DB")
         }
+
+        //The BookList
         BookList(bookViewModel, navController)
     }
 
@@ -158,7 +160,6 @@ fun BookCard(
         }
     }
 }
-
 
 @Composable
 fun BookList(bookViewModel: BookViewModel, navController: NavHostController) {
