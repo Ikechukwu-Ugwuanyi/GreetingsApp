@@ -103,10 +103,12 @@ fun MainScreen(viewModel: LibraryViewModel, navController: NavHostController) {
         }
     }
 
+    LibraryList(viewModel = viewModel, navController = navController)
+
 }
 
 @Composable
-fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel) {
+fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel, navController: NavHostController) {
 
     Card(
         modifier = Modifier
@@ -136,11 +138,11 @@ fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel) {
                 }
 
                 IconButton(onClick = {
-
+                    navController.navigate("UpdateScreen/${book.bookId}")
                 }) {
                     Icon(
                         imageVector = Icons.Filled.Edit,
-                        contentDescription = "Edit Book/${book.bookId}"
+                        contentDescription = "Edit Icon"
                     )
                 }
             }
@@ -151,7 +153,7 @@ fun LibraryCard(book: LibraryEntity, viewModel: LibraryViewModel) {
 }
 
 @Composable
-fun LibraryList(viewModel: LibraryViewModel){
+fun LibraryList(viewModel: LibraryViewModel, navController: NavHostController){
 
     val books by viewModel.allBooks.collectAsState(initial = emptyList())
 
@@ -161,7 +163,7 @@ fun LibraryList(viewModel: LibraryViewModel){
 
         LazyColumn{
             items(books){
-                item -> LibraryCard(book = item, viewModel = viewModel)
+                item -> LibraryCard(book = item, viewModel = viewModel, navController = navController)
             }
         }
     }
