@@ -127,7 +127,7 @@ fun LibraryCard(
             .fillMaxWidth()
     ) {
 
-        Row {
+        Row(modifier = Modifier.padding(8.dp)) {
             Text(
                 text = "" + book.bookId,
                 fontSize = 24.sp,
