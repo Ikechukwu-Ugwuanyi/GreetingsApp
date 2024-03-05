@@ -1,7 +1,7 @@
 package com.example.actorsapp.retrofit
 
-import com.squareup.moshi.Moshi
 import retrofit2.Retrofit
+import retrofit2.converter.moshi.MoshiConverterFactory
 
 object RetrofitInstance {
 
@@ -11,9 +11,10 @@ object RetrofitInstance {
             .create(CharacterApi::class.java)
     }
 
-    fun provideRetrofit(): Retrofit.Builder{
+    fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://hp-api.onrender.com/api/")
             .addConverterFactory(MoshiConverterFactory.create())
+            .build()
     }
 }
