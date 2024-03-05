@@ -1,4 +1,4 @@
-package com.example.actorsapp.model
+package com.example.actorsapp.retrofit
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

@@ -1,6 +1,5 @@
-package com.example.actorsapp.api
+package com.example.actorsapp.retrofit
 
-import com.example.actorsapp.model.Characters
 import retrofit2.http.GET
 
 interface CharacterApi {
