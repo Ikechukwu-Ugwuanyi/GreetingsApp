@@ -8,11 +8,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class CharacterViewModel( val charepo: CharacterRepo) : ViewModel(){
+class CharacterViewModel(private val charepo: CharacterRepo) : ViewModel(){
 
     private val _state = MutableStateFlow(emptyList<Characters>())
     val state: StateFlow<List<Characters>>
-        get() = state
+        get() = _state
 
     init {
         viewModelScope.launch {
