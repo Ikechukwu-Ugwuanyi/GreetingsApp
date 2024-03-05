@@ -11,10 +11,9 @@ object RetrofitInstance {
             .create(CharacterApi::class.java)
     }
 
-    fun provideRetrofit(): Retrofit {
+    fun provideRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .baseUrl("https://hp-api.onrender.com/api/")
             .addConverterFactory(MoshiConverterFactory.create())
-            .build()
     }
 }
