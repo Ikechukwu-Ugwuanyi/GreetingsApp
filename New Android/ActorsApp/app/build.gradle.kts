@@ -81,4 +81,15 @@ dependencies {
     ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
 
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.14.2")
+
+    ksp("com.github.bumptech.glide:ksp:4.14.2")
+
+    kapt("kapt 'com.github.bumptech.glide:compiler:4.14.2'")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.6.0")
+
 }
