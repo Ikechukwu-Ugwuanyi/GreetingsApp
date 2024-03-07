@@ -23,9 +23,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.rememberImagePainter
+import coil.compose.rememberAsyncImagePainter
 import com.example.actorsapp.repository.CharacterRepo
-import com.example.actorsapp.retrofit.Characters
+import com.example.actorsapp.retrofit.Character
 import com.example.actorsapp.retrofit.RetrofitInstance
 import com.example.actorsapp.ui.theme.ActorsAppTheme
 import com.example.actorsapp.viewmodel.CharacterViewModel
@@ -64,7 +64,7 @@ fun MainScreen(viewModel: CharacterViewModel) {
 }
 
 @Composable
-fun ActorsList(characterList: List<Characters>) {
+fun ActorsList(characterList: List<Character>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.padding(8.dp)) {
@@ -77,7 +77,7 @@ fun ActorsList(characterList: List<Characters>) {
 
 
 @Composable
-fun CardItem(characterList: Characters){
+fun CardItem(characterList: Character){
     Column {
 
         Box(modifier =
@@ -85,11 +85,10 @@ fun CardItem(characterList: Characters){
             .padding(4.dp)
             .size(width = 140.dp, height = 180.dp),
             contentAlignment = Alignment.Center) {
-            val painter = rememberImagePainter(data = characterList.image)
+            val painter = rememberAsyncImagePainter(model = characterList.image)
 
             Image(painter = painter, contentDescription = "Actors Image")
         }
-
 
         Text(text = characterList.actor, fontSize = 20.sp)
     }

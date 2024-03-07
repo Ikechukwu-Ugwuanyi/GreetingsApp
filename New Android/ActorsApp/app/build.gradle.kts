@@ -74,20 +74,21 @@ dependencies {
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
 
+    //GSON
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.code.gson:gson:2.10.1")
+
     //Moshi
-    implementation("com.squareup.moshi:moshi:1.15.0")
+    //implementation("com.squareup.moshi:moshi:2.9.0")
 
     //Kapt
-    ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
+    //ksp("com.squareup.moshi:moshi-kotlin-codegen:1.15.0")
 
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
-
-    //Glide
-    implementation ("com.github.bumptech.glide:glide:4.14.2")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 
     ksp("com.github.bumptech.glide:ksp:4.14.2")
 
-    kapt("kapt 'com.github.bumptech.glide:compiler:4.14.2'")
+    ksp("com.github.bumptech.glide:ksp:4.14.2")
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.6.0")

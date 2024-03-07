@@ -1,7 +1,7 @@
 package com.example.actorsapp.retrofit
 
 import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitInstance {
 
@@ -14,6 +14,6 @@ object RetrofitInstance {
     fun provideRetrofit(): Retrofit.Builder {
         return Retrofit.Builder()
             .baseUrl("https://hp-api.onrender.com/api/")
-            .addConverterFactory(MoshiConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
     }
 }
