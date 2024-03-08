@@ -5,7 +5,7 @@ import com.example.actorsapp.retrofit.CharacterApi
 
 class CharacterRepo(private val characterApi: CharacterApi) {
 
-    suspend fun getCharacters() : List<Character>{
+    suspend fun getCharacters() : List<Character> {
         return characterApi.getCharacters()
     }
 }

@@ -20,5 +20,4 @@ class CharacterViewModel(private val charepo: CharacterRepo) : ViewModel(){
             _state.value = characters
         }
     }
-
 }

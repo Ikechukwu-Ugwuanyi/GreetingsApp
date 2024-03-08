@@ -72,7 +72,6 @@ fun ActorsList(characterList: List<Character>) {
             item -> CardItem(characterList = item)
         }
     }
-
 }
 
 
