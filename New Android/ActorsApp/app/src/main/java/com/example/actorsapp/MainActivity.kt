@@ -60,7 +60,6 @@ fun MainScreen(viewModel: CharacterViewModel) {
 
     ActorsList(characterList = characterz)
 
-
 }
 
 @Composable
