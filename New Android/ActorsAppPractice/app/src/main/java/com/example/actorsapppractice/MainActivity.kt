@@ -86,10 +86,10 @@ fun CardItem(characters: Characters) {
         )
         {
             val painter = rememberAsyncImagePainter(model = characters.image)
-            Image(painter = painter, contentDescription = null)
+            Image(painter = painter, contentDescription = "Actor Image")
         }
 
-        Text(text = characters.character, fontSize = 20.sp)
+        Text(text = characters.actor, fontSize = 20.sp)
     }
 }
 
