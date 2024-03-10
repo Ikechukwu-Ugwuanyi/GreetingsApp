@@ -77,9 +77,9 @@ fun CardItem(characters: Characters) {
         Box(
             modifier = Modifier
                 .padding(8.dp)
-                .size(width = 4.dp, height = 8.dp)
+                .size(width = 140.dp, height = 180.dp)
         ) {
-            val painter = rememberAsyncImagePainter(model = characters)
+            val painter = rememberAsyncImagePainter(model = characters.image)
 
             Image(painter = painter, contentDescription = "Actor Image")
         }
