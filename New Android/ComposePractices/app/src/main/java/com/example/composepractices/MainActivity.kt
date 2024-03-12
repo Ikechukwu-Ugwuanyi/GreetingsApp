@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
@@ -16,7 +15,6 @@ import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -35,7 +33,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composepractices.ui.theme.ComposePracticesTheme
 
-data class BottonNaigationItem(
+data class BottomNavigationItem(
     val title: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
@@ -50,20 +48,20 @@ class MainActivity : ComponentActivity() {
         setContent {
             ComposePracticesTheme {
                 val items = listOf(
-                    BottonNaigationItem(
+                    BottomNavigationItem(
                         title = "Home",
                         selectedIcon = Icons.Filled.Home,
                         unselectedIcon = Icons.Outlined.Home,
                         hasNew = false,
                     ),
-                    BottonNaigationItem(
+                    BottomNavigationItem(
                         title = "Chat",
                         selectedIcon = Icons.Filled.Email,
                         unselectedIcon = Icons.Outlined.Email,
                         hasNew = false,
                         badgeCount = 30
                     ),
-                    BottonNaigationItem(
+                    BottomNavigationItem(
                         title = "Settings",
                         selectedIcon = Icons.Filled.Settings,
                         unselectedIcon = Icons.Outlined.Settings,
@@ -74,7 +72,7 @@ class MainActivity : ComponentActivity() {
                 var selectedItemIndex by rememberSaveable {
                     mutableStateOf(0)
                 }
-                val content: @Composable () -> Unit
+
 
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -123,12 +121,7 @@ class MainActivity : ComponentActivity() {
                                     .padding(paddingValues) // Apply the received padding
                             ) {
                                 // Your actual screen content composables here
-                                Column {
-                                    Text("This is the content")
-                                    Button(onClick = { /* Do something */ }) {
-                                        Text("Click me")
-                                    }
-                                }
+
                             }
                         }
                     )
