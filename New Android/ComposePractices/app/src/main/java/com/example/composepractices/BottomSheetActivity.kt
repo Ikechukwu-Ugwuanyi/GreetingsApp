@@ -14,6 +14,10 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -33,23 +37,29 @@ class BottomSheetActivity : ComponentActivity() {
                 ) {
 
                     val sheetState = rememberModalBottomSheetState()
+                    var isSheetOpen by remember {
+                        mutableStateOf(false)
+                    }
 
                     Box(modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center) {
                         
                         Button(onClick = {
                         }) {
+                            isSheetOpen = true
                             Text(text = "Open Sheet")
                         }
                     }
 
-                    ModalBottomSheet(
-                        sheetState = sheetState,
-                        onDismissRequest = { 
-                        
-                    }) {
-                        Image(painterResource(id = R.drawable.woman),
-                            contentDescription = null)
+                    if (isSheetOpen){
+                        ModalBottomSheet(
+                            sheetState = sheetState,
+                            onDismissRequest = {
+
+                            }) {
+                            Image(painterResource(id = R.drawable.woman),
+                                contentDescription = null)
+                        }
                     }
                 }
             }
