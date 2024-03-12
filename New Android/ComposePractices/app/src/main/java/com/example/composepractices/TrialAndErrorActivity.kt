@@ -12,13 +12,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.rememberBottomSheetScaffoldState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -26,7 +24,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.composepractices.ui.theme.ComposePracticesTheme
 
-class BottomSheetActivity : ComponentActivity() {
+class TrialAndErrorActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,12 +41,10 @@ class BottomSheetActivity : ComponentActivity() {
                         mutableStateOf(false)
                     }
 
-                    val scaffoldState = rememberBottomSheetScaffoldState()
-                    val scope = rememberCoroutineScope()
-
-                    Box(modifier = Modifier.fillMaxSize(),
-                        contentAlignment = Alignment.Center) {
-
+                    Box(
+                        modifier = Modifier.fillMaxSize(),
+                        contentAlignment = Alignment.Center
+                    ) {
                         Button(onClick = {
                             isSheetOpen = true
                         }) {
@@ -56,37 +52,20 @@ class BottomSheetActivity : ComponentActivity() {
                         }
                     }
 
-                    if (isSheetOpen){
+
+                    if (isSheetOpen) {
                         ModalBottomSheet(
-                            sheetState = sheetState,
                             onDismissRequest = {
                                 isSheetOpen = false
-                            }) {
-                            Image(painterResource(id = R.drawable.woman),
-                                contentDescription = null)
+                            },
+                            sheetState = sheetState
+                        ) {
+                            Image(
+                                painterResource(id = R.drawable.woman),
+                                contentDescription = null
+                            )
                         }
                     }
-
-//                    BottomSheetScaffold(
-//                        sheetContent = {
-//                            Image(
-//                                painterResource(id = R.drawable.woman),
-//                                contentDescription = null)
-//                        },
-//                        sheetPeekHeight = 10.dp
-//                    ) {
-//                        Box(modifier = Modifier.fillMaxSize(),
-//                            contentAlignment = Alignment.Center) {
-//
-//                            Button(onClick = {
-//                                scope.launch {
-//                                    scaffoldState.bottomSheetState.expand()
-//                                }
-//                            }) {
-//                                Text(text = "Open Sheet")
-//                            }
-//                        }
-//                    }
 
                 }
             }
@@ -97,7 +76,7 @@ class BottomSheetActivity : ComponentActivity() {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+fun GreetingPreview3() {
     ComposePracticesTheme {
 
     }
