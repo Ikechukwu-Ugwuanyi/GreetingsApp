@@ -111,7 +111,6 @@ class MainActivity : ComponentActivity() {
                                             }
                                         })
                                 }
-
                             }
                         },
                         content = { paddingValues -> // Access paddingValues here
