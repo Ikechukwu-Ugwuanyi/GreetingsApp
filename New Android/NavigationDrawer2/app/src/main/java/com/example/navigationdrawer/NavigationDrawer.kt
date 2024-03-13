@@ -54,7 +54,7 @@ fun DrawerBody(
                     style = itemTextStyle)
             }
         }
-        MenuItem()
+
     }
 
 }
