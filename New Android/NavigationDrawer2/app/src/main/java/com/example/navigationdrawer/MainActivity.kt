@@ -79,11 +79,13 @@ class MainActivity : ComponentActivity() {
                     }
 
                     ModalNavigationDrawer(
+                        drawerState = drawerState,
                         drawerContent = {
                             ModalDrawerSheet {
                                 DrawerHeader()
                                 items.forEachIndexed { index, item ->
                                     NavigationDrawerItem(
+
                                         label = { Text(text = item.title) },
                                         selected = index == selectedItemIndex,
                                         onClick = {
@@ -105,8 +107,8 @@ class MainActivity : ComponentActivity() {
                                     )
                                 }
                             }
-                        },
-                        drawerState = drawerState
+                        }
+
                     ) {
 
                         Scaffold(
