@@ -116,7 +116,9 @@ class MainActivity : ComponentActivity() {
                                 TopAppBar(title = { Text(text = stringResource(id = R.string.app_name)) },
                                     Modifier.background(MaterialTheme.colorScheme.primary),
                                     navigationIcon = {
-                                        IconButton(onClick = { DrawerValue.Open }) {
+                                        IconButton(onClick = { scope.launch {
+                                            drawerState.open()
+                                        } }) {
                                             Icon(
                                                 imageVector = Icons.Default.Menu,
                                                 contentDescription = "Drawer Icon"
