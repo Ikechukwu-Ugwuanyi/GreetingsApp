@@ -81,6 +81,7 @@ class MainActivity : ComponentActivity() {
                     ModalNavigationDrawer(
                         drawerContent = {
                             ModalDrawerSheet {
+                                DrawerHeader()
                                 items.forEachIndexed { index, item ->
                                     NavigationDrawerItem(
                                         label = { Text(text = item.title) },
