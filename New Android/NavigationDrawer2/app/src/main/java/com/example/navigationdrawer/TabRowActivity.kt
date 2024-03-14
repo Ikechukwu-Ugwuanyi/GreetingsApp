@@ -12,9 +12,12 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.ShoppingCart
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -46,7 +49,7 @@ class TabRowActivity : ComponentActivity() {
                         Icons.Outlined.AccountCircle
                     ),
                 )
-                var selectedTabIndex by remember{
+                var selectedTabIndex by remember {
                     mutableIntStateOf(0)
                 }
                 // A surface container using the 'background' color from the theme
@@ -55,12 +58,29 @@ class TabRowActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
-                    Column(modifier =
-                    Modifier.fillMaxSize()) {
+                    Column(
+                        modifier =
+                        Modifier.fillMaxSize()
+                    ) {
 
                         TabRow(selectedTabIndex = selectedTabIndex) {
                             items.forEachIndexed { index, tabItem ->
-
+                                Tab(selected = index == selectedTabIndex,
+                                    onClick = { selectedTabIndex = index },
+                                    text = {
+                                        Text(text = tabItem.title)
+                                    },
+                                    icon = {
+                                        Icon(
+                                            imageVector = if (index == selectedTabIndex) {
+                                                tabItem.selectedIcon
+                                            } else {
+                                                tabItem.unselectedIcon
+                                            },
+                                            contentDescription = tabItem.title
+                                        )
+                                    }
+                                )
                             }
                         }
                     }
