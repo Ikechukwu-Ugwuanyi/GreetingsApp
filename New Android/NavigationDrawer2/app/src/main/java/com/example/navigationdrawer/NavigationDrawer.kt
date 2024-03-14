@@ -17,8 +17,8 @@ fun DrawerHeader() {
     Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 60.dp)
-            .background(Color.Red),
+            .padding(vertical = 30.dp)
+            .background(Color.Magenta),
         contentAlignment = Alignment.Center,
     ) {
         Text(text = "Header", fontSize = 64.sp, color = Color.White)

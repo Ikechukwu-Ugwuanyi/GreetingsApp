@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">NavigationDrawer</string>
+    <string name="title_activity_tab_row">TabRowActivity</string>
 </resources>
