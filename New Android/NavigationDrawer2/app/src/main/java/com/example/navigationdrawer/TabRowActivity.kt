@@ -64,21 +64,22 @@ class TabRowActivity : ComponentActivity() {
                     tabItem.size
                 }
 
-                LaunchedEffect(selectedTabIndex){
-                    pagerState.animateScrollToPage(selectedTabIndex)
-                }
 
-                LaunchedEffect(pagerState.currentPage){
-                    if (!pagerState.isScrollInProgress){
-                        selectedTabIndex = pagerState.currentPage
-                    }
-
-                }
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+                    LaunchedEffect(selectedTabIndex){
+                        pagerState.animateScrollToPage(selectedTabIndex)
+                    }
+
+                    LaunchedEffect(pagerState.currentPage){
+                        if (!pagerState.isScrollInProgress){
+                            selectedTabIndex = pagerState.currentPage
+                        }
+
+                    }
 
                     Column(
                         modifier =
