@@ -42,21 +42,22 @@ class TabRowActivity : ComponentActivity() {
 
                 val tabItem = listOf(
                     TabItem(
-                        "Home",
-                        Icons.Filled.Home,
-                        Icons.Outlined.Home
+                        title = "Home",
+                        selectedIcon = Icons.Filled.Home,
+                        unselectedIcon = Icons.Outlined.Home
                     ),
                     TabItem(
-                        "Browse",
-                        Icons.Filled.ShoppingCart,
-                        Icons.Outlined.ShoppingCart
+                        title = "Browse",
+                        selectedIcon = Icons.Filled.ShoppingCart,
+                        unselectedIcon = Icons.Outlined.ShoppingCart
                     ),
                     TabItem(
-                        "Account",
-                        Icons.Filled.AccountCircle,
-                        Icons.Outlined.AccountCircle
+                        title = "Account",
+                        selectedIcon = Icons.Filled.AccountCircle,
+                        unselectedIcon = Icons.Outlined.AccountCircle
                     ),
                 )
+
                 var selectedTabIndex by remember {
                     mutableIntStateOf(0)
                 }
@@ -64,21 +65,19 @@ class TabRowActivity : ComponentActivity() {
                     tabItem.size
                 }
 
-
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LaunchedEffect(selectedTabIndex){
+                    LaunchedEffect(selectedTabIndex) {
                         pagerState.animateScrollToPage(selectedTabIndex)
                     }
 
-                    LaunchedEffect(pagerState.currentPage){
-                        if (!pagerState.isScrollInProgress){
+                    LaunchedEffect(pagerState.currentPage) {
+                        if (!pagerState.isScrollInProgress) {
                             selectedTabIndex = pagerState.currentPage
                         }
-
                     }
 
                     Column(
@@ -112,7 +111,7 @@ class TabRowActivity : ComponentActivity() {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .weight(1f)
-                        ) {  index->
+                        ) { index ->
                             Box(
                                 modifier = Modifier.fillMaxSize(),
                                 contentAlignment = Alignment.Center

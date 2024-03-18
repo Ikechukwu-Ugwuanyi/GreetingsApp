@@ -12,17 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ComposePractices"
         tools:targetApi="31">
-        <activity
-            android:name=".NavigationDrawerActivity"
-            android:exported="true"
-            android:label="@string/title_activity_navigation_drawer"
-            android:theme="@style/Theme.ComposePractices">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".TrialAndErrorActivity"
             android:exported="true"
