@@ -3,4 +3,5 @@
     <string name="title_activity_bottom_sheet">BottomSheetActivity</string>
     <string name="title_activity_trial_and_error">TrialAndErrorActivity</string>
     <string name="title_activity_navigation_drawer">NavigationDrawerActivity</string>
+    <string name="title_activity_mobile_uidesign">MobileUIDesign</string>
 </resources>

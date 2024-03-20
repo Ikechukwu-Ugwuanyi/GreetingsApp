@@ -72,13 +72,10 @@ class TrialAndErrorActivity : ComponentActivity() {
                                             city = item
                                         })
                                 }
-
                             }
-
 
                         }
                     }
-
                 }
             }
         }
