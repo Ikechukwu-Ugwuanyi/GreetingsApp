@@ -78,8 +78,8 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended-android:1.6.3")
     implementation("androidx.compose.material:material-icons-core:1.6.3")
 
-    //implementation("androidx.compose.runtime:runtime:1.6.3")
-   // implementation("androidx.compose.ui:ui:1.6.3")
+    implementation("androidx.compose.runtime:runtime:1.6.3")
+    implementation("androidx.compose.ui:ui:1.6.3")
 
     implementation("androidx.constraintlayout:constraintlayout-compose:1.1.0-alpha13")
     implementation("androidx.compose.material3:material3:1.2.1")
