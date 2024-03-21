@@ -109,13 +109,38 @@ fun Dashboard() {
                     .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                     .background(
                         color = Color.White,
-                        shape = RoundedCornerShape(20.dp))
-                    .constrainAs(profile){
+                        shape = RoundedCornerShape(20.dp)
+                    )
+                    .constrainAs(profile) {
                         top.linkTo(topImg.bottom)
                         start.linkTo(parent.start)
                         end.linkTo(parent.end)
                         bottom.linkTo(topImg.bottom)
                     }) {
+
+                Column(
+                    modifier = Modifier
+                        .padding(top = 12.dp, bottom = 12.dp, end = 12.dp)
+                        .height(90.dp)
+                        .width(90.dp)
+                        .background(
+                            color = Color(android.graphics.Color.parseColor("#b6c2fe")),
+                            shape = RoundedCornerShape(20.dp)
+                        ),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+
+                    Image(
+                        painter = painterResource(id = R.drawable.video_call),
+                        contentDescription = null,
+                        modifier = Modifier.padding(top = 8.dp, bottom = 8.dp)
+                    )
+                    Text(
+                        text = "Video Call",
+                        fontSize = 14.sp
+                    )
+
+                }
 
 
             }
