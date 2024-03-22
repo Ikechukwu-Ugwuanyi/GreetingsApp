@@ -115,7 +115,7 @@ fun Dashboard() {
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 16.dp)
+                    .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 10.dp)
                     .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                     .background(
                         color = Color.White,
