@@ -16,8 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
@@ -221,7 +222,7 @@ fun Dashboard() {
             onValueChange = { text = it },
             label = { Text(text = "Searching for ...") },
             trailingIcon = {
-                Icon(
+                Image(
                     painter = painterResource(id = R.drawable.search_icon),
                     contentDescription = null,
                     modifier = Modifier
@@ -232,14 +233,71 @@ fun Dashboard() {
             shape = RoundedCornerShape(58.dp),
             colors = TextFieldDefaults.outlinedTextFieldColors(
                 backgroundColor = Color.White,
-                focusedBorderColor =  Color.Transparent,
+                focusedBorderColor = Color.Transparent,
                 unfocusedBorderColor = Color.Transparent,
                 textColor = Color(android.graphics.Color.parseColor("#5e5e5e")),
                 unfocusedLabelColor = Color(android.graphics.Color.parseColor("#5e5e5e"))
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp))
+                .padding(24.dp)
+                .shadow(3.dp, shape = RoundedCornerShape(50.dp))
+                .background(Color.White, CircleShape)
+        )
+
+        ConstraintLayout(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp, end = 24.dp, start = 24.dp)
+                .shadow(3.dp, RoundedCornerShape(25.dp))
+                .height(145.dp)
+                .background(
+                    brush = Brush.horizontalGradient(
+                        colors = listOf(
+                            Color(android.graphics.Color.parseColor("#7787f9")),
+                            Color(android.graphics.Color.parseColor("#b6c2fe"))
+                        )
+                    ),
+                    shape = RoundedCornerShape(25.dp)
+                )
+        ) {
+            val (image, text1, text2) = createRefs()
+
+            Image(
+                modifier = Modifier.constrainAs(image) {
+                    top.linkTo(parent.top)
+                    end.linkTo(parent.end)
+                    bottom.linkTo(parent.bottom)
+                },
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = null
+            )
+
+            Text(text = "Get to Unlimited",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier
+                    .padding(top = 32.dp)
+                    .constrainAs(text1) {
+                        top.linkTo(parent.top)
+                        end.linkTo(image.start)
+                        start.linkTo(parent.start)
+                    })
+
+            Text(text = "Upgrade Your Account",
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.White,
+                modifier = Modifier
+                    .padding(top = 16.dp)
+                    .constrainAs(text2) {
+                        top.linkTo(text1.bottom)
+                        end.linkTo(text1.end)
+                        start.linkTo(text1.start)
+                    })
+
+        }
 
 
     }
