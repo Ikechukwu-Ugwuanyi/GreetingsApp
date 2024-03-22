@@ -76,7 +76,7 @@ fun Dashboard() {
             Row(
                 Modifier
                     .fillMaxWidth()
-                    .padding(top = 48.dp, start = 24.dp, end = 24.dp)
+                    .padding(top = 40.dp, start = 24.dp, end = 24.dp)
             ) {
 
                 Column(
@@ -115,7 +115,7 @@ fun Dashboard() {
                 horizontalArrangement = Arrangement.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 24.dp)
+                    .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 16.dp)
                     .shadow(3.dp, shape = RoundedCornerShape(20.dp))
                     .background(
                         color = Color.White,
@@ -240,7 +240,7 @@ fun Dashboard() {
             ),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(24.dp)
+                .padding(top = 12.dp, start = 16.dp, end = 24.dp, bottom = 16.dp)
                 .shadow(3.dp, shape = RoundedCornerShape(50.dp))
                 .background(Color.White, CircleShape)
         )
@@ -248,7 +248,7 @@ fun Dashboard() {
         ConstraintLayout(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 24.dp, end = 24.dp, start = 24.dp)
+                .padding(top = 10.dp, end = 24.dp, start = 24.dp)
                 .shadow(3.dp, RoundedCornerShape(25.dp))
                 .height(145.dp)
                 .background(
@@ -297,6 +297,234 @@ fun Dashboard() {
                         start.linkTo(text1.start)
                     })
 
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp, start = 24.dp, end = 16.dp)
+        ) {
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_1),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Inbox",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_2),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Maps",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_3),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Chat",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_4),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Report",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+            }
+        }
+
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp, start = 24.dp, end = 16.dp)
+        ) {
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_5),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Calendar",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_6),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Tips",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_7),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "Sttings",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+            }
+
+            Column(
+                modifier = Modifier.weight(0.25f),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                Image(
+                    painter = painterResource(id = R.drawable.ic_8),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(top = 8.dp, bottom = 4.dp)
+                        .background(
+                            color = Color.White,
+                            shape = RoundedCornerShape(10.dp)
+                        )
+                        .padding(16.dp)
+                )
+
+                Text(
+                    text = "More",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.Bold,
+                    modifier = Modifier.padding(top = 8.dp),
+                    color = Color(android.graphics.Color.parseColor("#7787f9"))
+                )
+            }
         }
 
 
