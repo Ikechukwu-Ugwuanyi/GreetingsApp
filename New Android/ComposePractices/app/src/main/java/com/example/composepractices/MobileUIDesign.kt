@@ -83,7 +83,7 @@ fun Dashboard() {
                     Modifier
                         .height(100.dp)
                         .padding(start = 14.dp)
-                        .weight(0.7f),
+                        .weight(0.2f),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.Start
                 ) {
@@ -526,7 +526,6 @@ fun Dashboard() {
                 )
             }
         }
-
 
     }
 }
