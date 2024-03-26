@@ -68,7 +68,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     implementation("com.google.accompanist:accompanist-flowlayout:0.24.8-beta")
+    implementation("androidx.compose.foundation:foundation:1.6.4")
 
-    implementation("io.coil-kt:coil:2.0.0")
-    implementation("io.coil-kt:coil-compose:2.0.0")
+    implementation("io.coil-kt:coil:2.6.0")
+    implementation("io.coil-kt:coil-compose:2.6.0")
 }
