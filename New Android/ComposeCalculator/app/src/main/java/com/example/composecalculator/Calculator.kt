@@ -45,7 +45,8 @@ fun Calculator(
                 fontWeight = FontWeight.Light,
                 color = Color.White,
                 maxLines = 2,
-                lineHeight = 60.sp
+                letterSpacing = (-2).sp,
+                lineHeight = 80.sp
             )
 
             Row(
