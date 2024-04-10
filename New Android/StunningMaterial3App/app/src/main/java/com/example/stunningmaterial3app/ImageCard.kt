@@ -30,7 +30,7 @@ import kotlin.random.Random
 @Composable
 fun ImageCard(
     title: String,
-    contentDescription: String,
+    contentDescription: String? = null,
     modifier: Modifier = Modifier
 ) {
     Card(
@@ -45,7 +45,7 @@ fun ImageCard(
             painter = rememberAsyncImagePainter(
                 model = "https://picsum.photos/seed/${Random.nextInt()}/300/200"
             ),
-            contentDescription = null,
+            contentDescription = contentDescription,
             modifier = modifier
                 .fillMaxWidth()
                 .clip(MaterialTheme.shapes.large)
