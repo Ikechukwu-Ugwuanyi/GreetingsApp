@@ -36,11 +36,12 @@ fun Calculator(
         ) {
 
             Text(
-                text = state.number1 + (state.operation ?: "") + state.number2,
+                text = state.number1 + (state.operation?.symbol ?: "") + state.number2,
                 textAlign = TextAlign.End,
                 fontSize = 80.sp,
                 fontWeight = FontWeight.Light,
                 color = Color.White,
+                maxLines = 2,
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(vertical = 32.dp)
@@ -74,9 +75,9 @@ fun Calculator(
                 CalculatorButton(
                     symbol = "/",
                     modifier = Modifier
-                        .background(Color.LightGray)
-                        .aspectRatio(2f)
-                        .weight(2f),
+                        .background(Orange)
+                        .aspectRatio(1f)
+                        .weight(1f),
                     onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Divide)) }
                 )
             }
@@ -178,7 +179,7 @@ fun Calculator(
                         .background(Color.DarkGray)
                         .aspectRatio(1f)
                         .weight(1f),
-                    onClick = { onAction(CalculatorAction.Number(4)) }
+                    onClick = { onAction(CalculatorAction.Number(1)) }
                 )
 
                 CalculatorButton(
@@ -187,7 +188,7 @@ fun Calculator(
                         .background(Color.DarkGray)
                         .aspectRatio(1f)
                         .weight(1f),
-                    onClick = { onAction(CalculatorAction.Number(5)) }
+                    onClick = { onAction(CalculatorAction.Number(2)) }
                 )
 
                 CalculatorButton(
@@ -196,7 +197,7 @@ fun Calculator(
                         .background(Color.DarkGray)
                         .aspectRatio(1f)
                         .weight(1f),
-                    onClick = { onAction(CalculatorAction.Number(6)) }
+                    onClick = { onAction(CalculatorAction.Number(3)) }
                 )
 
                 CalculatorButton(
@@ -241,11 +242,7 @@ fun Calculator(
                         .weight(1f),
                     onClick = { onAction(CalculatorAction.Calculate) }
                 )
-
             }
-
-
         }
-
     }
 }

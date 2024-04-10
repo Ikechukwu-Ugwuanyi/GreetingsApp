@@ -3,8 +3,9 @@ package com.example.composecalculator
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
+import androidx.lifecycle.ViewModel
 
-class CalculatorViewModel {
+class CalculatorViewModel : ViewModel() {
     var state by mutableStateOf(CalculatorState())
         private set
 
@@ -72,7 +73,9 @@ class CalculatorViewModel {
                 null -> return
             }
             state = state.copy(
-                number1 = result.toString().take(15)
+                number1 = result.toString().take(15),
+                number2 = "",
+                operation = null
             )
         }
     }
