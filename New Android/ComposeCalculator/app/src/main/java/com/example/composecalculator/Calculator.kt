@@ -38,13 +38,14 @@ fun Calculator(
             Text(
                 text = state.number1 + (state.operation?.symbol ?: "") + state.number2,
                 textAlign = TextAlign.End,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 32.dp),
                 fontSize = 80.sp,
                 fontWeight = FontWeight.Light,
                 color = Color.White,
                 maxLines = 2,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 32.dp)
+                lineHeight = 60.sp
             )
 
             Row(
@@ -59,7 +60,6 @@ fun Calculator(
                         .aspectRatio(2f)
                         .weight(2f),
                     onClick = { onAction(CalculatorAction.Clear) }
-
                 )
 
                 CalculatorButton(
@@ -69,7 +69,6 @@ fun Calculator(
                         .aspectRatio(1f)
                         .weight(1f),
                     onClick = { onAction(CalculatorAction.Delete) }
-
                 )
 
                 CalculatorButton(
