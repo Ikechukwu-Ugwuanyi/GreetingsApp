@@ -10,6 +10,45 @@ class CalculatorViewModel : ViewModel() {
         private set
 
     fun onAction(action: CalculatorAction){
+        when(action){
+            is CalculatorAction.Number -> enterNumber(action.number)
+            is CalculatorAction.Decimal -> enterDecimal()
+            is CalculatorAction.Clear -> state = CalculatorState()
+            is CalculatorAction.Delete -> performDeletion()
+            is CalculatorAction.Calculate -> performCalculation()
+            is CalculatorAction.Operation -> enterOperation(action.operation)
+        }
+    }
+
+    private fun enterOperation(operation: CalculatorOperation) {
+        if(state.number1.isNotBlank()){
+            state = state.copy(operation = operation)
+        }
+    }
+
+    private fun performDeletion() {
+        when {
+            state.number2.isNotBlank() -> state = state.copy(
+                number2 = state.number2.dropLast(1)
+            )
+            state.operation != null -> state = state.copy(
+                operation = null
+            )
+            state.number1.isNotBlank() -> state = state.copy(
+                number1 = state.number1.dropLast(1)
+            )
+        }
+    }
+
+    private fun enterDecimal() {
+
+    }
+
+    private fun performCalculation() {
+
+    }
+
+    private fun enterNumber(number: Int) {
 
     }
 }
