@@ -27,7 +27,6 @@ class CalculatorViewModel : ViewModel() {
                 number1 = state.number1 + operation
             )
         }
-
     }
 
     private fun enterDecimal() {
@@ -66,7 +65,6 @@ class CalculatorViewModel : ViewModel() {
                 operation = null
             )
         }
-
     }
 
     private fun performDeletion() {
@@ -83,12 +81,11 @@ class CalculatorViewModel : ViewModel() {
                 number1 = state.number1.dropLast(1)
             )
         }
-
     }
 
     private fun enterNumber(number: Int) {
         if (state.operation != null) {
-            if (state.number1.length >= MAX_NUM_LENGHT){
+            if (state.number1.length >= MAX_NUM_LENGHT) {
                 return
             }
             state = state.copy(
@@ -96,17 +93,16 @@ class CalculatorViewModel : ViewModel() {
             )
         }
 
-        if (state.number2.length >= MAX_NUM_LENGHT){
+        if (state.number2.length >= MAX_NUM_LENGHT) {
             return
         }
         state = state.copy(
             number2 = state.number2 + number
         )
-
     }
 
-    companion object{
-        private const val  MAX_NUM_LENGHT = 15
+    companion object {
+        private const val MAX_NUM_LENGHT = 15
     }
 
 
