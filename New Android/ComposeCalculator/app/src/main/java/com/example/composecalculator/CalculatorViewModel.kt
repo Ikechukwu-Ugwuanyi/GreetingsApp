@@ -96,7 +96,6 @@ class CalculatorViewModel : ViewModel() {
         state = state.copy(
             number2 = state.number2 + number
         )
-
     }
 
     companion object {

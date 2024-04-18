@@ -1,4 +1,4 @@
-package com.example.calculatorpractice
+package com.example.calculatorpractice2
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -15,13 +15,13 @@ import androidx.compose.ui.unit.sp
 fun CalculatorButton(
     symbol: String,
     modifier: Modifier,
-    onClick: () -> Unit
+    onclick: () -> Unit
 ) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
             .clip(CircleShape)
-            .clickable { onClick() }
+            .clickable { onclick }
             .then(modifier)
     ) {
         Text(
@@ -30,5 +30,4 @@ fun CalculatorButton(
             color = Color.White
         )
     }
-
 }

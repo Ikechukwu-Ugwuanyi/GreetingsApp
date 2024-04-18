@@ -34,7 +34,7 @@ fun Calculator(
             verticalArrangement = Arrangement.spacedBy(buttonSpacing)
         ) {
             Text(
-                text = state.number1 + (state.operation) + state.number2,
+                text = state.number1 + (state.operation?.symbol?: "") + state.number2,
                 textAlign = TextAlign.End,
                 fontSize = 80.sp,
                 maxLines = 2,
@@ -48,7 +48,8 @@ fun Calculator(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "AC",
@@ -77,7 +78,8 @@ fun Calculator(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "7",
@@ -114,7 +116,8 @@ fun Calculator(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "4",
@@ -146,12 +149,13 @@ fun Calculator(
                         .background(Orange)
                         .aspectRatio(1f)
                         .weight(1f),
-                    onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Subtract)) })
+                    onClick = { onAction(CalculatorAction.Operation(CalculatorOperation.Subtract))})
             }
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "1",
@@ -188,7 +192,8 @@ fun Calculator(
 
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(buttonSpacing)
             ) {
                 CalculatorButton(
                     symbol = "0",
