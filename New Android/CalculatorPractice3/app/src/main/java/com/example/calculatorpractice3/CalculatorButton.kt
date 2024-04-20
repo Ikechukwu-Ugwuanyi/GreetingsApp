@@ -1,4 +1,4 @@
-package com.example.composecalculator
+package com.example.calculatorpractice3
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -16,10 +16,8 @@ fun CalculatorButton(
     symbol: String,
     modifier: Modifier,
     onClick: () -> Unit
-
 ) {
-    Box(
-        contentAlignment = Alignment.Center,
+    Box(contentAlignment = Alignment.Center,
         modifier = Modifier
             .clip(CircleShape)
             .clickable { onClick() }
