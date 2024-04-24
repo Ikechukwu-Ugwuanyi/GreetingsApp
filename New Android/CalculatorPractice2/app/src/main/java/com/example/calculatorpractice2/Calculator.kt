@@ -22,7 +22,7 @@ import com.example.calculatorpractice2.ui.theme.Orange
 
 @Composable
 fun Calculator(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
     buttonSpacing: Dp = 8.dp,
     state: CalculatorState,
     onAction: (CalculatorAction) -> Unit

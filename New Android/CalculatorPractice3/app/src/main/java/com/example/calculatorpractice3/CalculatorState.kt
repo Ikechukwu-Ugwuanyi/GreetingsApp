@@ -1,7 +1,7 @@
 package com.example.calculatorpractice3
 
 data class CalculatorState(
-    var number1 : String = "",
-    var number2 : String = "",
-    var operation: CalculatorOperation? = null
+    val number1 : String = "",
+    val number2 : String = "",
+    val operation: CalculatorOperation? = null
 )

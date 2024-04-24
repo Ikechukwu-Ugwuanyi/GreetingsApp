@@ -6,5 +6,5 @@ sealed class CalculatorAction {
     object Clear: CalculatorAction()
     object Calculate: CalculatorAction()
     object Decimal: CalculatorAction()
-    data class Operation(var operation: CalculatorOperation): CalculatorAction()
+    data class Operation(val operation: CalculatorOperation): CalculatorAction()
 }

@@ -7,10 +7,10 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.calculatorpractice3.ui.theme.CalculatorPractice3Theme
+import com.example.calculatorpractice3.ui.theme.MediumGray
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,13 +23,13 @@ class MainActivity : ComponentActivity() {
                 val state = viewModel.state
 
                 Calculator(
+                    state = state,
+                    buttonSpacing = buttonSpacing,
+                    onAction = viewModel::onAction,
                     modifier = Modifier
                         .fillMaxSize()
-                        .background(Color.DarkGray)
-                        .padding(16.dp),
-                    state = state,
-                    onAction = viewModel::onAction,
-                    buttonSpacing = buttonSpacing,
+                        .background(MediumGray)
+                        .padding(16.dp)
                 )
             }
         }
