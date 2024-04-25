@@ -1,5 +1,6 @@
 package com.example.meditationapp
 
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +35,9 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.meditationapp.ui.theme.ButtonBlue
 import com.example.meditationapp.ui.theme.DarkerButtonBlue
 import com.example.meditationapp.ui.theme.DeepBlue
@@ -182,17 +185,18 @@ fun FeaturedSection(feature: List<Feature>) {
     ) {
 
         Text(
-            text = "Featured",
+            text = "Feature",
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier
                 .padding(15.dp)
         )
 
-        LazyVerticalGrid(columns = GridCells.Fixed(2),
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
             contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp),
             modifier = Modifier.fillMaxHeight()
-        ){
-            items(feature.size){
+        ) {
+            items(feature.size) {
 
             }
         }
@@ -212,7 +216,7 @@ fun FeatureItem(
             .background(feature.darkColor)
     ) {
         val width = constraints.maxWidth
-        val  height = constraints.maxHeight
+        val height = constraints.maxHeight
 
         //Medium Colored Path
         val mediumColoredPoint1 = Offset(0f, height * 0.3f)
@@ -221,8 +225,81 @@ fun FeatureItem(
         val mediumColoredPoint4 = Offset(width * 0.75f, height * 0.7f)
         val mediumColoredPoint5 = Offset(width * 1.4f, -height.toFloat())
 
-        val mediumColoredPath = Path.apply {
+        val mediumColoredPath = Path().apply {
+            moveTo(mediumColoredPoint1.x, mediumColoredPoint1.y)
+            standardQuadFromTo(mediumColoredPoint1, mediumColoredPoint2)
+            standardQuadFromTo(mediumColoredPoint2, mediumColoredPoint3)
+            standardQuadFromTo(mediumColoredPoint3, mediumColoredPoint4)
+            standardQuadFromTo(mediumColoredPoint4, mediumColoredPoint5)
+            lineTo(width.toFloat() + 100f, height.toFloat() + 100f)
+            lineTo(-100f, height.toFloat() + 100f)
+            close()
+        }
 
+        //Light Colored Path
+        val lightColoredPoint1 = Offset(0f, height * 0.35f)
+        val lightColoredPoint2 = Offset(width * 0.1f, height * 0.4f)
+        val lightColoredPoint3 = Offset(width * 0.3f, height * 0.35f)
+        val lightColoredPoint4 = Offset(width * 0.65f, height * 0.7f)
+        val lightColoredPoint5 = Offset(width * 1.4f, -height.toFloat() / 3f)
+
+        val lightColoredPath = Path().apply {
+            moveTo(lightColoredPoint1.x, lightColoredPoint1.y)
+            standardQuadFromTo(lightColoredPoint1, lightColoredPoint2)
+            standardQuadFromTo(lightColoredPoint2, lightColoredPoint3)
+            standardQuadFromTo(lightColoredPoint3, lightColoredPoint4)
+            standardQuadFromTo(lightColoredPoint4, lightColoredPoint5)
+            lineTo(width.toFloat() + 100f, height.toFloat() + 100f)
+            lineTo(-100f, height.toFloat() + 100f)
+            close()
+        }
+
+        Canvas(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
+            drawPath(
+                path = mediumColoredPath,
+                color = feature.mediumColor
+            )
+
+            drawPath(
+                path = mediumColoredPath,
+                color = feature.lightColor
+            )
+        }
+
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(15.dp)
+        ) {
+
+            Text(
+                text = feature.title,
+                style = MaterialTheme.typography.headlineMedium,
+                lineHeight = 26.sp,
+                modifier = Modifier
+                    .align(Alignment.TopStart)
+            )
+
+            Icon(
+                painter = painterResource(id = feature.iconId),
+                contentDescription = feature.title,
+                tint = Color.White,
+                modifier = Modifier.align(Alignment.BottomStart)
+            )
+            
+            Text(text = "Start",
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                modifier = Modifier
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable {  }
+                    .background(ButtonBlue)
+                    .padding(vertical = 6.dp, horizontal = 15.dp)
+                    .align(Alignment.BottomEnd))
         }
 
     }
