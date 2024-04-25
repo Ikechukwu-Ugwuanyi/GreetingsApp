@@ -38,10 +38,19 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.meditationapp.ui.theme.BlueViolet1
+import com.example.meditationapp.ui.theme.BlueViolet2
+import com.example.meditationapp.ui.theme.BlueViolet3
 import com.example.meditationapp.ui.theme.ButtonBlue
 import com.example.meditationapp.ui.theme.DarkerButtonBlue
 import com.example.meditationapp.ui.theme.DeepBlue
+import com.example.meditationapp.ui.theme.LightGreen1
+import com.example.meditationapp.ui.theme.LightGreen2
+import com.example.meditationapp.ui.theme.LightGreen3
 import com.example.meditationapp.ui.theme.LightRed
+import com.example.meditationapp.ui.theme.OrangeYellow1
+import com.example.meditationapp.ui.theme.OrangeYellow2
+import com.example.meditationapp.ui.theme.OrangeYellow3
 import com.example.meditationapp.ui.theme.TextWhite
 
 @Composable
@@ -55,6 +64,29 @@ fun HomeScreen() {
             GreetingSection()
             ChipSection(feelings = listOf("Insonia", "Depression", "Sweet Sleep"))
             CurrentMeditation()
+            FeaturedSection(feature = listOf(
+                Feature(
+                    title = "Sleep Meditation",
+                    R.drawable.ic_headphone,
+                    BlueViolet1,
+                    BlueViolet2,
+                    BlueViolet3
+                ),
+                Feature(
+                    title = "Tips for Sleeping",
+                    R.drawable.ic_videocam,
+                    LightGreen1,
+                    LightGreen2,
+                    LightGreen3
+                ),
+                Feature(
+                    title = "Sleep Meditation",
+                    R.drawable.ic_videocam,
+                    OrangeYellow1,
+                    OrangeYellow2,
+                    OrangeYellow3
+                )
+            ))
         }
 
     }
@@ -197,7 +229,7 @@ fun FeaturedSection(feature: List<Feature>) {
             modifier = Modifier.fillMaxHeight()
         ) {
             items(feature.size) {
-
+                FeatureItem(feature = feature[it])
             }
         }
     }
@@ -296,7 +328,7 @@ fun FeatureItem(
                 fontSize = 14.sp,
                 modifier = Modifier
                     .clip(RoundedCornerShape(10.dp))
-                    .clickable {  }
+                    .clickable { }
                     .background(ButtonBlue)
                     .padding(vertical = 6.dp, horizontal = 15.dp)
                     .align(Alignment.BottomEnd))
