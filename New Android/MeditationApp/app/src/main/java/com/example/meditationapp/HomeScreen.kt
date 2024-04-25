@@ -38,6 +38,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.meditationapp.ui.theme.AquaBlue
+import com.example.meditationapp.ui.theme.Beige1
+import com.example.meditationapp.ui.theme.Beige2
+import com.example.meditationapp.ui.theme.Beige3
 import com.example.meditationapp.ui.theme.BlueViolet1
 import com.example.meditationapp.ui.theme.BlueViolet2
 import com.example.meditationapp.ui.theme.BlueViolet3
@@ -64,33 +68,52 @@ fun HomeScreen() {
             GreetingSection()
             ChipSection(feelings = listOf("Insonia", "Depression", "Sweet Sleep"))
             CurrentMeditation()
-            FeaturedSection(feature = listOf(
-                Feature(
-                    title = "Sleep Meditation",
-                    R.drawable.ic_headphone,
-                    BlueViolet1,
-                    BlueViolet2,
-                    BlueViolet3
-                ),
-                Feature(
-                    title = "Tips for Sleeping",
-                    R.drawable.ic_videocam,
-                    LightGreen1,
-                    LightGreen2,
-                    LightGreen3
-                ),
-                Feature(
-                    title = "Sleep Meditation",
-                    R.drawable.ic_videocam,
-                    OrangeYellow1,
-                    OrangeYellow2,
-                    OrangeYellow3
+            FeaturedSection(
+                feature = listOf(
+                    Feature(
+                        title = "Sleep Meditation",
+                        R.drawable.ic_headphone,
+                        BlueViolet1,
+                        BlueViolet2,
+                        BlueViolet3
+                    ),
+                    Feature(
+                        title = "Tips for Sleeping",
+                        R.drawable.ic_videocam,
+                        LightGreen1,
+                        LightGreen2,
+                        LightGreen3
+                    ),
+                    Feature(
+                        title = "Sleep Meditation",
+                        R.drawable.ic_videocam,
+                        OrangeYellow1,
+                        OrangeYellow2,
+                        OrangeYellow3
+                    ),
+                    Feature(
+                        title = "Calming Sounds",
+                        R.drawable.ic_headphone,
+                        Beige1,
+                        Beige2,
+                        Beige3
+                    )
                 )
-            ))
+            )
         }
-
     }
+}
 
+@Composable
+fun BottomMenu(
+ items : List<BottomMenuContent>,
+ modifier: Modifier = Modifier,
+ activeHighlightColor: Color = ButtonBlue,
+ activeTextColor: Color = Color.White,
+ inactiveTextColor: Color = AquaBlue,
+ initialSelectedItemIndex: Int = 0
+) {
+    
 }
 
 @Composable
@@ -321,7 +344,7 @@ fun FeatureItem(
                 tint = Color.White,
                 modifier = Modifier.align(Alignment.BottomStart)
             )
-            
+
             Text(text = "Start",
                 color = Color.White,
                 fontWeight = FontWeight.Bold,
